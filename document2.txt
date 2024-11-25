@@ -1,0 +1,31 @@
+Ca2+/Calmodulin-dependent protein kinase II (CaMKII) is abundant in synapses
+and able to mediate cell signalling in response to Ca2+ transients. Both in vitro and
+in vivo studies revealed that synaptic stimulation causes a rapid translocation of
+CaMKII to the synapse (Lisman, 1985; Wu and Betz, 1998) and an acute increase
+of CaMKII activity leads to a potentiation followed by an occlusion of LTP (Wu
+and Betz, 1998), indicating a key role in synaptic plasticity (Whitlock et al., 2006).
+The CaMKII property, as multienzymatic systems, to phosphorylate itself, is the
+molecular basis for a form of switch-like behaviour that is thought to be implicated
+with memory storing. The CaMKII phosphorylated state, in contraposition to the
+non-phosphorylated one, is more active even at low calcium concentration and may
+provide a mechanism for long-lasting memory without gene expression that is under
+intense investigation from long time (Lisman 85 e nuovo).
+The protein kinase A cyclic adenosine monophosphate (cAMP)-dependent (PKA)
+is thought to be a LTP modulator. Recent studies showed that PKA act as a gating
+factor for the threshold of LTP induction (Carmignoto and Vicini, 1992), probably
+through the GluR1 phosphorylation at Ser845 site that might increase the AMPAr
+open-probability (Quinlan et al., 1999).
+The protein kinase C (PKC) has attracted great attention in the last 15 years. To
+date the PKC enzyme family consists of 12 isozymes that can be further categorized into Ca2+-dependent and Ca2+-independent isoforms. Recently PKC has been
+characterized as responsible for the phosphorylation at the Tir840 site of the GluR1
+(Philpot et al., 2001).
+Protein phosphatase 1 (PP1) complexes are necessary for normal regulation of
+AMPA- and NMDA-receptors and modulate dendritic spine formation and dynamics (Petralia and Wenthold, 1992). PP1 activity might be antagonistically modulated
+by cAMP and Ca2+ signalling pathways (Walaas and Greengard, 1991), allowing
+multiple neurotransmitters to fine-tune synaptic plasticity (for review, see Malinow
+and Malenka, 2002).
+PP2B (also known as calcineurin) is the only phosphatase directly modulated by a
+second messenger (Ca2+ acting via calmodulin and the B regulatory subunit). PP2B
+has a relatively restricted substrate specificity compared with other phosphatases.
+Because PP2B is activated at lower Ca2+/calmodulin concentrations than CaMKII,
+weak synaptic stimulation may preferentially activate PP2B, whereas stronger stimulation also recruits CaMKII activation (Tzounopoulos et al., 2007).

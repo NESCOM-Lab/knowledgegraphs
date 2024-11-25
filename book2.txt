@@ -1,0 +1,10 @@
+The polarized structure and long neurites of neurons pose a unique challenge for proper mitochondrial 
+distribution. It is widely accepted that mitochondria move from the cell body to axon ends and vice 
+versa; however, we have found that mitochondria originating from the axon ends moving in the retrograde
+ direction never reach to the cell body, and only a limited number of mitochondria moving in the 
+ anterograde direction from the cell body arrive at the axon ends of mouse hippocampal neurons. 
+ Furthermore, we have derived a mathematical formula using the Fokker-Planck equation to characterize 
+ features of mitochondrial transport, and the equation could determine altered mitochondrial transport 
+ in axons overexpressing parkin. Our analysis will provide new insights into the dynamics of
+  mitochondrial transport in axons of normal and unhealthy neurons.
+

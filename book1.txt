@@ -1,0 +1,9 @@
+Altered Transport Velocity of Axonal Mitochondria in Retinal Ganglion Cells After Laser-Induced Axonal Injury In Vitro
+Abstract
+Purpose: Axonal damage precedes retinal ganglion cell (RGC) apoptosis in glaucomatous optic neuropathy. Because mitochondria in RGC axons are damaged before cell death, we examined axonal mitochondrial transport dynamics after axonal injury.
+
+Methods: Mitochondria in rat-cultivated RGCs were stained with rhodamine 123. After axonal injury induced using a laser microdissection system, axonal transport was evaluated by time-lapse imaging. The RGC apoptosis was detected using ethidium homodimer-1 on day 3 after axonal injury.
+
+Results: The rate of stationary mitochondria in RGC axons significantly increased from 37.6% before axonal injury to 70.6% at 5 minutes (P < 0.001) and 63.6% at 18 hours (P < 0.001) after axonal injury. The mean axonal mitochondrial transport velocity in RGCs transiently deteriorated from 0.48 ± 0.01 μm/s before axonal injury to 0.37 ± 0.02 μm/s at 5 minutes after axonal injury (P < 0.001). However, 23.5% of RGCs showed recovered axonal transport velocity at 18 hours after injury. On day 3 after axonal injury, RGCs with the recovery of axonal transport did not undergo apoptosis, whereas 69.2% of RGCs without the recovery of axonal transport underwent apoptosis (P = 0.029).
+
+Conclusions: Axonal injury disrupts mitochondrial transport in RGC axons. Irreversible decreased axonal mitochondrial transport velocity may be useful to predict RGC apoptosis after axonal injury.
