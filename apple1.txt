@@ -1,1 +1,1 @@
-Apples are very red
+Apples are objects that are very red
