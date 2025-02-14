@@ -3,5 +3,6 @@ documents
 __pycache__
 .conda
 
-pipeline
 pipeline.ipynb
+
+pdf_pipeline
