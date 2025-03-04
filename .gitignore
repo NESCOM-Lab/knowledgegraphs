@@ -1,8 +1,4 @@
 .env
 documents
 __pycache__
-.conda
-
-pipeline.ipynb
-
-pdf_pipeline
+.condaDELETE
