@@ -118,20 +118,10 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph):
 
     # Run batching process
     await process_batches(docs, batch_size=2)
-    
 
-
-async def main():
-    # Initialize neo4j
-    print("Initializing neo4j")
-    graph = neo4j_setup()
-
-
-    # Initialize openai
-    print("Initializing OpenAI")
-    api_key = os.getenv("OPENAI_API_KEY")
-    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
-
+# returns llm_tranformer, embedding model, and vector_retriever
+def load_llm_transformer():
+    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo") # ChatOpenAI version
     additional_instructions = """
     When creating entities, add a "document_id" property to each node and set it to the document's unique ID.
     For example, if the document ID is "doc123", each created node should include document_id: "doc123".
@@ -152,44 +142,74 @@ async def main():
         embedding_node_property="embedding"
     )
     vector_retriever = vector_index.as_retriever()
+
+    return llm_transformer, embed, vector_retriever
+    
+
+# Query neo4j with agents
+def query_neo4j(user_prompt, query_agent, subgraph_agent):
+    # Querying the system
+    print("Enter a query: ")
+    user_query = user_prompt
+    print("Running query agent")
+    retrieved_chunks = query_agent.run(user_query)
+    print("----")
+    print("Running subgraph agent")
+    subgraph_agent.run(retrieved_chunks)
+    print("----")
+    return retrieved_chunks
+
+
+async def main():
+    # Initialize neo4j
+    print("Initializing neo4j")
+    graph = neo4j_setup()
+
+
+    # Initialize openai
+    print("Initializing OpenAI")
+    api_key = os.getenv("OPENAI_API_KEY")
+    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+    llm_transformer, embed, vector_retriever = load_llm_transformer(llm)
+    
     
 
     # Chunk the document
-    print("Would you like to add a document? Enter 1 or 0")
-    while True:
-        ans = int(input())
-        if (ans == 1 or ans == 0):
-            break
-    if (ans == 1):
-        print("Chunking document")
-        try:
-            pdf_path = "resume.pdf"
-            processed_chunks = chunk_document(pdf_path)
-        except:
-            print("Invalid pdf path")
+    # print("Would you like to add a document? Enter 1 or 0")
+    # while True:
+    #     ans = int(input())
+    #     if (ans == 1 or ans == 0):
+    #         break
+    # if (ans == 1):
+    #     print("Chunking document")
+    #     try:
+    #         pdf_path = "resume.pdf"
+    #         processed_chunks = chunk_document(pdf_path)
+    #     except:
+    #         print("Invalid pdf path")
 
 
-        # Ingest document
-        print("Ingesting document")
-        try:
-            await ingest_document(processed_chunks, embed, llm_transformer, graph)
-        except Exception as e:
-            print(f"Error occured while ingesting document: {e}")
+    #     # Ingest document
+    #     print("Ingesting document")
+    #     try:
+    #         await ingest_document(processed_chunks, embed, llm_transformer, graph)
+    #     except Exception as e:
+    #         print(f"Error occured while ingesting document: {e}")
 
 
-    # Querying the system
-    query_agent = QueryAgent(vector_retriever)
-    subgraph_agent = SubGraphAgent(graph)
+    # # Querying the system
+    # query_agent = QueryAgent(vector_retriever)
+    # subgraph_agent = SubGraphAgent(graph)
 
-    while True:
-        print("Enter a query: ")
-        user_query = input()
-        print("Running query agent")
-        retrieved_chunks = query_agent.run(user_query)
-        print("----")
-        print("Running subgraph agent")
-        subgraph_agent.run(retrieved_chunks)
-        print("----")
+    # while True:
+    #     print("Enter a query: ")
+    #     user_query = input()
+    #     print("Running query agent")
+    #     retrieved_chunks = query_agent.run(user_query)
+    #     print("----")
+    #     print("Running subgraph agent")
+    #     subgraph_agent.run(retrieved_chunks)
+    #     print("----")
 
 
 
