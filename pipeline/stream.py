@@ -1,5 +1,15 @@
 import streamlit as st
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
 
+
+
+# Load llm
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+llm = OpenAI(api_key=OPENAI_API_KEY)
 
 
 # Streamlit UI
@@ -31,8 +41,16 @@ if user_prompt := st.chat_input("Query your documents here"):
     st.session_state.messages.append({"role": "user", "content": user_prompt})
 
     # display LLM's response
-    response = f"wsg "
     with st.chat_message("llm"):
-        st.markdown(response)
+        stream = llm.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": msg["role"], "content": msg["content"]}
+                for msg in st.session_state.messages
+            ],
+            stream=True
+        )
+        response = st.write_stream(stream)
     
-    st.session_state.messages.append({"role": "llm", "content": response})
+    # add llm's response to chat history
+    st.session_state.messages.append({"role": "assistant", "content": response})
