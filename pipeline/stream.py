@@ -99,9 +99,17 @@ if st.session_state.loaded_neo4j is True:
         # loads agents into st.query_agent & st.subgraph_agent
         load_agents(st.session_state.graph, vector_retriever) # prob need to switch to session state
 
-        res = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
-        st.write(res)
+        results = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
+        # st.write(results)
 
+        # Structure the data
+        for doc in results:
+            source = f"Source: {doc.metadata['source']}" 
+            page_n = f"Page number: {doc.metadata['page_number']}" 
+            page_c = f"Content: {doc.page_content}"
+            st.write(source)
+            st.write(page_n)
+            st.write(page_c)
 
 
         print("finished")
