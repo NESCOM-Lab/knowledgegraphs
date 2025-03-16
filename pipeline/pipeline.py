@@ -155,9 +155,9 @@ def query_neo4j(user_prompt, query_agent, subgraph_agent):
     retrieved_chunks = query_agent.run(user_query)
     print("----")
     print("Running subgraph agent")
-    subgraph_agent.run(retrieved_chunks)
+    retrieved_graph_data = subgraph_agent.run(retrieved_chunks)
     print("----")
-    return retrieved_chunks
+    return retrieved_chunks, retrieved_graph_data
 
 
 async def main():

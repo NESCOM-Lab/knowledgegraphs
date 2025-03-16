@@ -30,6 +30,10 @@ class SubGraphAgent():
         {type: type(r)} AS Relationship, 
         {id: x.id} AS Concept2
         """
-        print(self.graph.query(prompt_query))
+        # print(self.graph.query(prompt_query))
+        retrieved_graph_data = self.graph.query(prompt_query)
+        return retrieved_graph_data
 
 
+    def convert_to_text():
+        pass
