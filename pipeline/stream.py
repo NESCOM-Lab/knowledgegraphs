@@ -24,6 +24,9 @@ st.title("Knowledge graphs")
 if "loaded_neo4j" not in st.session_state:
     st.session_state.loaded_neo4j = False
 
+if "loaded_agents" not in st.session_state:
+    st.session_state.loaded_neo4j = False
+
 if "graph" not in st.session_state:
     st.session_state.graph = []
 
@@ -66,9 +69,16 @@ def load_agents(graph, vector_retriever):
 if st.session_state.loaded_neo4j is False:  
     with st.spinner(text="Running load_neo4j()"):
         st.session_state.graph = load_neo4j()
+    with st.spinner(text="Loading pipeline"):
+        # load the GraphRAG pipeline
+        llm_transformer, embed, vector_retriever = load_llm_transformer() # uses a different version (ChatOpenAI)
+
+        # loads agents into st.query_agent & st.subgraph_agent
+        load_agents(st.session_state.graph, vector_retriever) # prob need to switch to session state
+        st.session_state.loaded_agents = True
     
 
-if st.session_state.loaded_neo4j is True:
+if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
     if user_prompt := st.chat_input("Query your documents here"):
 
         # display user's message in UI
@@ -93,23 +103,19 @@ if st.session_state.loaded_neo4j is True:
         # # add llm's response to chat history
         # st.session_state.messages.append({"role": "assistant", "content": response})
 
-        # run the GraphRAG pipeline
-        llm_transformer, embed, vector_retriever = load_llm_transformer() # uses a different version (ChatOpenAI)
+       
+        with st.spinner(text="Searching"):
+            results = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
+            st.write(results)
 
-        # loads agents into st.query_agent & st.subgraph_agent
-        load_agents(st.session_state.graph, vector_retriever) # prob need to switch to session state
-
-        results = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
-        # st.write(results)
-
-        # Structure the data
-        for doc in results:
-            source = f"Source: {doc.metadata['source']}" 
-            page_n = f"Page number: {doc.metadata['page_number']}" 
-            page_c = f"Content: {doc.page_content}"
-            st.write(source)
-            st.write(page_n)
-            st.write(page_c)
+            # Structure the data
+            for doc in results:
+                source = f"Source: {doc.metadata['source']}" 
+                page_n = f"Page number: {doc.metadata['page_number']}" 
+                page_c = f"Content: {doc.page_content}"
+                st.write(source)
+                st.write(page_n)
+                st.write(page_c)
 
 
         print("finished")
