@@ -170,31 +170,31 @@ async def main():
     print("Initializing OpenAI")
     api_key = os.getenv("OPENAI_API_KEY")
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
-    llm_transformer, embed, vector_retriever = load_llm_transformer(llm)
+    llm_transformer, embed, vector_retriever = load_llm_transformer()
     
     
 
     # Chunk the document
-    # print("Would you like to add a document? Enter 1 or 0")
-    # while True:
-    #     ans = int(input())
-    #     if (ans == 1 or ans == 0):
-    #         break
-    # if (ans == 1):
-    #     print("Chunking document")
-    #     try:
-    #         pdf_path = "resume.pdf"
-    #         processed_chunks = chunk_document(pdf_path)
-    #     except:
-    #         print("Invalid pdf path")
+    print("Would you like to add a document? Enter 1 or 0")
+    while True:
+        ans = int(input())
+        if (ans == 1 or ans == 0):
+            break
+    if (ans == 1):
+        print("Chunking document")
+        try:
+            pdf_path = "paper.pdf"
+            processed_chunks = chunk_document(pdf_path)
+        except:
+            print("Invalid pdf path")
 
 
-    #     # Ingest document
-    #     print("Ingesting document")
-    #     try:
-    #         await ingest_document(processed_chunks, embed, llm_transformer, graph)
-    #     except Exception as e:
-    #         print(f"Error occured while ingesting document: {e}")
+        # Ingest document
+        print("Ingesting document")
+        try:
+            await ingest_document(processed_chunks, embed, llm_transformer, graph)
+        except Exception as e:
+            print(f"Error occured while ingesting document: {e}")
 
 
     # # Querying the system
