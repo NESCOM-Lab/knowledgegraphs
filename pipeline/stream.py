@@ -19,8 +19,8 @@ llm = OpenAI(api_key=OPENAI_API_KEY)
 
 # Streamlit UI
 
-st.set_page_config(page_title="Knowledge Graphs")
-st.title("Knowledge graphs")
+st.set_page_config(page_title="Knowledge Graphs", layout='wide')
+st.title("Knowledge Graphs")
 
 # Session state variables
 
@@ -53,7 +53,6 @@ def display_all_messages():
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
-display_all_messages()
 
 
 
@@ -69,7 +68,7 @@ def load_neo4j():
 def load_agents(graph, vector_retriever):
     st.session_state.query_agent = QueryAgent(vector_retriever)
     st.session_state.subgraph_agent = SubGraphAgent(graph)
-    st.session_state.response_agent = ResponseAgent()
+    st.session_state.response_agent = ResponseAgent(st)
 
 
 # NetworkX graph for graph DB visualization
@@ -108,6 +107,7 @@ def visualize_graph(G):
         return tmp_file.name
 
 # Main loop
+col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns together
 if st.session_state.loaded_neo4j is False:  
     with st.spinner(text="Running load_neo4j()"):
         st.session_state.graph = load_neo4j()
@@ -122,65 +122,71 @@ if st.session_state.loaded_neo4j is False:
 
 if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
     if user_prompt := st.chat_input("Query your documents here"):
-
-        # display user's message in UI
-        with st.chat_message("user"):
-            st.markdown(user_prompt)
         
-        # add user's message to chat history
-        st.session_state.messages.append({"role": "user", "content": user_prompt})
+        with col1:
+            display_all_messages()
+            # display user's message in UI
+            with st.chat_message("user"):
+                st.markdown(user_prompt)
+            
+            # add user's message to chat history
+            st.session_state.messages.append({"role": "user", "content": user_prompt})
 
-        # display LLM's response
-        # with st.chat_message("llm"):
-        #     stream = llm.chat.completions.create(
-        #         model="gpt-3.5-turbo",
-        #         messages=[
-        #             {"role": msg["role"], "content": msg["content"]}
-        #             for msg in st.session_state.messages
-        #         ],
-        #         stream=True
-        #     )
-        #     response = st.write_stream(stream)
-        
-        # # add llm's response to chat history
-        # st.session_state.messages.append({"role": "assistant", "content": response})
-
-       
-        with st.spinner(text="Searching"):
-            results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
-            # st.write(results)
+            # display LLM's response
+            # with st.chat_message("llm"):
+            #     stream = llm.chat.completions.create(
+            #         model="gpt-3.5-turbo",
+            #         messages=[
+            #             {"role": msg["role"], "content": msg["content"]}
+            #             for msg in st.session_state.messages
+            #         ],
+            #         stream=True
+            #     )
+            #     response = st.write_stream(stream)
+            
+            # # add llm's response to chat history
+            # st.session_state.messages.append({"role": "assistant", "content": response})
 
         
+            with st.spinner(text="Searching"):
+                results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
+                # st.write(results)
+
+            
 
         # Create retrieved graph
-        graph_html = None
-        with st.spinner(text="Generating graph"):
-            G = create_graph(retrieved_graph_data)
-            graph_html = visualize_graph(G)
-            # unmounts (deleted) later?
-        st.write(f"**Here is the graph I retrieved.**")
-        
-        # show graph in streamlit
-        st.components.v1.html(open(graph_html, "r").read(), height=550)
-        os.remove(graph_html)
+        with col2:
+            graph_html = None
+            with st.spinner(text="Generating graph"):
+                G = create_graph(retrieved_graph_data)
+                graph_html = visualize_graph(G)
+                # unmounts (deleted) later?
+            st.write(f"**Here is the graph I retrieved.**")
+            
+            # show graph in streamlit
+            st.components.v1.html(open(graph_html, "r").read(), height=550)
+            os.remove(graph_html)
 
-        # show concept reasoning from llm
-        concept_text = ""
-        with st.spinner(text="Reasoning"):
-            concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data)
-            st.write(concept_text)
-        st.write(f"**This is the context I retrieved.**")
+        with col1:
+            # show concept reasoning from llm
+            concept_text = ""
+            with st.spinner(text="Reasoning"):
+                concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data)
+                st.write(concept_text)
+            st.write(f"**This is the context I retrieved.**")
 
 
-        st.write(f"**Finished reasoning.**")
+            st.write(f"**Finished reasoning.**")
 
-        final_answer = st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
-        st.write(final_answer)
-        
-        # Structure the data
-        for doc in results:
-            source = f"Source: {doc.metadata['source']}" 
-            page_n = f"Page number: {doc.metadata['page_number']}" 
-            st.write(source)
-            st.write(page_n)
-        st.write(f"**Finished generation.**")
+            with st.spinner(text="Responding"):
+                # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
+                final_answer = st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
+                st.write(f"**{final_answer}**")
+
+            # Cite the data
+            for doc in results:
+                source = f"Source: {doc.metadata['source']}" 
+                page_n = f"Page number: {doc.metadata['page_number']}" 
+                st.write(source)
+                st.write(page_n)
+            st.write(f"**Finished generation.**")

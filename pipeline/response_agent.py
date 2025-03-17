@@ -5,10 +5,11 @@ a response
 
 import openai
 class ResponseAgent():
-    def __init__(self):
+    def __init__(self, streamlit_obj):
+        self.st = streamlit_obj
         # System prompt
         self.prompt = f"""
-        Answer the question based on the contexts given. Keep the answer concise. 
+        Answer the question based on the contexts given and be detailed.
         There will be two contexts provided; the first will be detailed information, and the second will be
         concise contextual information that has been processed to describe the relationships between concepts.
         Respond "Unsure about answer" if not sure about the answer, or if the contextual information
@@ -16,7 +17,7 @@ class ResponseAgent():
 
 
 
-        Example
+        Example of input:
         1. Detailed Information: 
         Apples are nutritious, round fruits that grow on apple trees (Malus domestica). They come in various colors, such as
         red, green, and yellow, and are rich in vitamins, fiber, and antioxidants. Apples are commonly eaten raw, 
@@ -41,7 +42,7 @@ class ResponseAgent():
 
         Question: How do vacuums use air movement to trap and contain particles, and what are the different ways they store collected debris?
         
-        Output:
+        Example of Output:
         Vacuums work by creating a partial vacuum, which allows them to pull in air and particles from floors and other surfaces. As air is drawn into the vacuum, it carries dirt, dust, and debris, which are then trapped inside the vacuum.
 
         Vacuums store collected debris in two main ways:
@@ -49,7 +50,6 @@ class ResponseAgent():
         Bag Storage -- The particles are trapped in the bag, which can be removed and disposed of when full.
         Container Storage -- The particles are trapped in the container, which can be emptied and reused.
         By using air movement to pull in and trap particles, vacuums effectively clean surfaces and floors.
-
         """
         
 
@@ -73,6 +73,21 @@ class ResponseAgent():
             ]
         ) 
         
+        # display LLM's response
+        # with self.st.chat_message("assistant"):
+        #     stream = openai.chat.completions.create(
+        #         model="gpt-3.5-turbo",
+        #         messages=[{"role": "system", "content": self.prompt}] + [
+        #             {"role": msg["role"], "content": msg["content"]}
+        #             for msg in self.st.session_state.messages
+        #         ],
+        #         stream=True
+        #     )
+        #     response = self.st.write_stream(stream)
+        
+        # add llm's response to chat history
+        # self.st.session_state.messages.append({"role": "assistant", "content": response})
+
         return response.choices[0].message.content
 
 
