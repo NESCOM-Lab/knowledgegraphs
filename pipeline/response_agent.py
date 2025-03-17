@@ -9,7 +9,7 @@ class LLMAgent():
         
 
 
-    def run(self, query):
+    def run(self, streamlit, query):
         prompt = f"""
         Answer the question based on the context below. Keep the answer short and concise. 
         Respond "Unsure about answer" if not sure about the answer.
@@ -18,4 +18,6 @@ class LLMAgent():
         Question: {query}
         Answer:
         """
+
+
         

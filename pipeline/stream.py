@@ -169,4 +169,4 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
         os.remove(graph_html)
 
 
-        print("finished")
+        st.write("Finished")
