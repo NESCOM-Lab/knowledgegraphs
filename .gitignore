@@ -3,3 +3,4 @@ documents
 __pycache__
 .condaDELETE
 venv
+lib

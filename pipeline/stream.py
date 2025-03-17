@@ -7,7 +7,7 @@ import networkx as nx
 import tempfile
 
 from pipeline import *
-
+from response_agent import *
 
 
 # Load llm
@@ -37,7 +37,10 @@ if "query_agent" not in st.session_state:
     st.session_state.query_agent = None
 
 if "subgraph_agent" not in st.session_state:
-        st.session_state.subgraph_agent = None
+    st.session_state.subgraph_agent = None
+
+if "response_agent" not in st.session_state:
+    st.session_state.response_agent = None
 
 
 # chat history
@@ -66,6 +69,7 @@ def load_neo4j():
 def load_agents(graph, vector_retriever):
     st.session_state.query_agent = QueryAgent(vector_retriever)
     st.session_state.subgraph_agent = SubGraphAgent(graph)
+    st.session_state.response_agent = ResponseAgent()
 
 
 # NetworkX graph for graph DB visualization
@@ -147,14 +151,14 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             # st.write(results)
 
             # Structure the data
-            for doc in results:
+            # for doc in results:
             #     source = f"Source: {doc.metadata['source']}" 
             #     page_n = f"Page number: {doc.metadata['page_number']}" 
-            #     page_c = f"Content: {doc.page_content}"
+                # page_c = f"Content: {doc.page_content}"
             #     st.write(source)
             #     st.write(page_n)
-            #     st.write(page_c)
-                st.write(retrieved_graph_data)
+                # st.write(page_c)
+            #     st.write(retrieved_graph_data)
         
 
         # Create retrieved graph
@@ -170,11 +174,15 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
         os.remove(graph_html)
 
         # show concept reasoning from llm
-        with st.spinner(text="Processing contextual information"):
+        concept_text = ""
+        with st.spinner(text="Reasoning"):
             concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data)
             st.write(concept_text)
         st.write(f"**This is the context I retrieved.**")
 
 
         st.write(f"**Finished reasoning.**")
+
+        final_answer = st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
+        st.write(final_answer)
         st.write(f"**Finished generation.**")
