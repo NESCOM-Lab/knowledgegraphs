@@ -163,10 +163,18 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             G = create_graph(retrieved_graph_data)
             graph_html = visualize_graph(G)
             # unmounts (deleted) later?
+        st.write(f"**Here is the graph I retrieved.**")
         
         # show graph in streamlit
         st.components.v1.html(open(graph_html, "r").read(), height=550)
         os.remove(graph_html)
 
+        # show concept reasoning from llm
+        with st.spinner(text="Processing contextual information"):
+            concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data)
+            st.write(concept_text)
+        st.write(f"**This is the context I retrieved.**")
 
-        st.write("Finished")
+
+        st.write(f"**Finished reasoning.**")
+        st.write(f"**Finished generation.**")
