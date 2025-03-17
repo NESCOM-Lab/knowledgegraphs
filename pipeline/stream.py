@@ -70,17 +70,34 @@ def load_agents(graph, vector_retriever):
 
 # NetworkX graph for graph DB visualization
 # https://python-textbook.pythonhumanities.com/06_sna/06_01_05_networkx_pyvis.html
-def create_graph():
+def create_graph(edges):
+    # process to format networkx uses
+    edges = [ (x['Concept1']['id'], x['Concept2']['id'], {'relationship': x['Relationship']['type']}) for x in edges ]
     G = nx.Graph()
-    G.add_edge("a", "b")
-    G.add_edge("b", "c")
-    G.add_edge("c", "a")
+    # edges2 = [
+    #     ('A', 'B', {'relationship': 'Edge1'}),
+    #     ('B', 'C', {'relationship': 'Edge2'}),
+    #     ('B', 'D', {'relationship': 'Edge3'})
+    # ]
+    G.add_edges_from(edges)
+    # G.add_edge("a", "b")
+    # G.add_edge("b", "c")
+    # G.add_edge("c", "a")
+    
+
     return G
 
 def visualize_graph(G):
     net = Network(height="500px", width="100%", notebook=False)
     net.from_nx(G) # pass in graph
 
+    # add relationship names to edges
+    for edge in net.edges:
+        u, v = edge["from"], edge["to"]
+        edge_label = G[u][v].get("relationship", "") # get rship name
+        edge["title"] = edge_label # hover text
+        edge["label"] = edge_label # display on edge
+    
     # save graph as temp html file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
         net.save_graph(tmp_file.name)
@@ -131,18 +148,21 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
 
             # Structure the data
             for doc in results:
-                source = f"Source: {doc.metadata['source']}" 
-                page_n = f"Page number: {doc.metadata['page_number']}" 
-                page_c = f"Content: {doc.page_content}"
-                st.write(source)
-                st.write(page_n)
-                st.write(page_c)
+            #     source = f"Source: {doc.metadata['source']}" 
+            #     page_n = f"Page number: {doc.metadata['page_number']}" 
+            #     page_c = f"Content: {doc.page_content}"
+            #     st.write(source)
+            #     st.write(page_n)
+            #     st.write(page_c)
                 st.write(retrieved_graph_data)
         
+
+        # Create retrieved graph
         graph_html = None
         with st.spinner(text="Generating graph"):
-            G = create_graph()
+            G = create_graph(retrieved_graph_data)
             graph_html = visualize_graph(G)
+            # unmounts (deleted) later?
         
         # show graph in streamlit
         st.components.v1.html(open(graph_html, "r").read(), height=550)
