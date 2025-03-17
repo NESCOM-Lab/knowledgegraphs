@@ -150,15 +150,6 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
             # st.write(results)
 
-            # Structure the data
-            # for doc in results:
-            #     source = f"Source: {doc.metadata['source']}" 
-            #     page_n = f"Page number: {doc.metadata['page_number']}" 
-                # page_c = f"Content: {doc.page_content}"
-            #     st.write(source)
-            #     st.write(page_n)
-                # st.write(page_c)
-            #     st.write(retrieved_graph_data)
         
 
         # Create retrieved graph
@@ -185,4 +176,11 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
 
         final_answer = st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
         st.write(final_answer)
+        
+        # Structure the data
+        for doc in results:
+            source = f"Source: {doc.metadata['source']}" 
+            page_n = f"Page number: {doc.metadata['page_number']}" 
+            st.write(source)
+            st.write(page_n)
         st.write(f"**Finished generation.**")
