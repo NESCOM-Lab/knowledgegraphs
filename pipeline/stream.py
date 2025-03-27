@@ -1,3 +1,5 @@
+import time
+from pipeline import chunk_document, ingest_document
 import streamlit as st
 import os
 from dotenv import load_dotenv
@@ -32,6 +34,12 @@ if "loaded_agents" not in st.session_state:
 
 if "graph" not in st.session_state:
     st.session_state.graph = []
+
+if "embed" not in st.session_state:
+    st.session_state.embed = []
+
+if "llm_transformer" not in st.session_state:
+    st.session_state.llm_transformer = []
 
 if "query_agent" not in st.session_state:
     st.session_state.query_agent = None
@@ -110,12 +118,51 @@ def visualize_graph(G):
 
 # Main loop
 col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns together
+
+# Streamlit PDF uploader
+with col1:
+    uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
+    st.write(uploaded_file.name if uploaded_file else "No file uploaded")
+    if st.button("Ingest document"):
+        if uploaded_file is not None:
+            # save the uploaded file temporarily
+            temp_pdf_path = uploaded_file.name
+            with open(temp_pdf_path, "wb") as f:
+                f.write(uploaded_file.read())
+
+            # ingest
+            async def ingest_and_process():
+                start_time=  time.time()
+                with st.spinner(text="Ingesting document"):
+                    # Chunk document
+                    processed_chunks = chunk_document(temp_pdf_path)
+
+                    # Ingest document
+                    try:
+                        await ingest_document(processed_chunks, 
+                                              st.session_state.embed, 
+                                              st.session_state.llm_transformer, 
+                                              st.session_state.graph)
+                    except Exception as e:
+                        print(f"Error occurred while ingesting document: {e}")
+                    finally:
+                        if os.path.exists(temp_pdf_path):
+                            os.remove(temp_pdf_path)
+                end_time = time.time()
+                st.write(f"**Ingested document in {end_time - start_time:.2f} seconds.**")
+
+            # Run the async function
+            import asyncio
+            asyncio.run(ingest_and_process())
+
 if st.session_state.loaded_neo4j is False:  
     with st.spinner(text="Running load_neo4j()"):
         st.session_state.graph = load_neo4j()
     with st.spinner(text="Loading pipeline"):
         # load the GraphRAG pipeline
         llm_transformer, embed, vector_retriever = load_llm_transformer() # uses a different version (ChatOpenAI)
+        st.session_state.llm_transformer = llm_transformer
+        st.session_state.embed = embed
 
         # loads agents into st.query_agent & st.subgraph_agent
         load_agents(st.session_state.graph, vector_retriever) # prob need to switch to session state
