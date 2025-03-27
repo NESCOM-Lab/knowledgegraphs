@@ -1,5 +1,5 @@
 # Knowledge Graphs
-Extract knowledge graphs from papers and improve LLM reasoning with contextual understanding and a chain of thought system through HybridRAG.
+Extract knowledge graphs from papers and improve LLM reasoning with contextual understanding and a chain-of-thought system through HybridRAG.
 
 ## Architecture
-![Architecture (1)](https://github.com/user-attachments/assets/297d10bb-b4a6-4c30-84c2-2c2074ec8be9)
+![Architecture](https://github.com/user-attachments/assets/6d6c1b53-704f-4579-9bda-f5dc5328ee64)
