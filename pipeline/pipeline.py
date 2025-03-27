@@ -33,7 +33,7 @@ def neo4j_setup():
     neo_db_id = os.getenv("DB_ID")
 
     graph = Neo4jGraph(
-        url="neo4j+s://" + neo_db_id + "databases.neo4j.io",
+        url=f"neo4j+s://{neo_db_id}.databases.neo4j.io",
         username="neo4j",
         password=neo_pass,
         enhanced_schema=True

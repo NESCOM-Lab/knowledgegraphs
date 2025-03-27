@@ -100,6 +100,8 @@ def visualize_graph(G):
         edge_label = G[u][v].get("relationship", "") # get rship name
         edge["title"] = edge_label # hover text
         edge["label"] = edge_label # display on edge
+        edge["color"] = "black"  # edge color
+        # edge["font"] = {"size": 14, "color": "white", "face": "Arial"}  #  styling for edge labels
     
     # save graph as temp html file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
@@ -164,7 +166,25 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             st.write(f"**Here is the graph I retrieved.**")
             
             # show graph in streamlit
-            st.components.v1.html(open(graph_html, "r").read(), height=550)
+            with open(graph_html, "r", encoding="utf-8") as f:
+                graph_html_content = f.read()
+
+            # style the pyvis html
+            # graph_html_content = graph_html_content.replace(
+            #     "<body>", 
+            #     "<body style='background-color: black; color: white; border: none;'>"
+            # )
+            # custom_style = """
+            # <style>
+            #     #mynetwork {
+            #         border: none !important;
+            #     }
+            # </style>
+            # """
+            # graph_html_content = graph_html_content.replace("</head>", custom_style + "</head>")
+            # display the styled HTML in Streamlit
+            st.components.v1.html(graph_html_content, height=550)
+
             os.remove(graph_html)
 
         with col1:
@@ -172,7 +192,8 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             concept_text = ""
             with st.spinner(text="Reasoning"):
                 concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data)
-                st.write(concept_text)
+                with st.expander("See context"):
+                    st.write(concept_text)
             st.write(f"**This is the context I retrieved.**")
 
 
