@@ -32,13 +32,16 @@ def neo4j_setup():
     neo_pass = os.getenv("NEO4J_PASS")
     neo_db_id = os.getenv("DB_ID")
 
+
+    print("Connecting to Neo4j")
     graph = Neo4jGraph(
         url=f"neo4j+s://{neo_db_id}.databases.neo4j.io",
         username="neo4j",
         password=neo_pass,
-        enhanced_schema=True
-        # refresh_schema=Fa lse
+        enhanced_schema=False, # this takes a while to load but is faster for queries
+        refresh_schema=False # same effect?
     )
+    print("loaded neo4j")
     return graph
 
 
