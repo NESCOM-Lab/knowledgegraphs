@@ -28,7 +28,8 @@ class SubGraphAgent():
         WHERE d.text_preview = \"""" + retrieved_text_preview + """\" AND NOT p:Document AND NOT x:Document
         RETURN {id: p.id} AS Concept1, 
         {type: type(r)} AS Relationship, 
-        {id: x.id} AS Concept2
+        {id: x.id} AS Concept2,
+        {id: d.source} AS Source
         """
         # print(self.graph.query(prompt_query))
         retrieved_graph_data = self.graph.query(prompt_query)
