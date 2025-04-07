@@ -85,18 +85,21 @@ def load_agents(graph, vector_retriever):
 # https://python-textbook.pythonhumanities.com/06_sna/06_01_05_networkx_pyvis.html
 def create_graph(edges):
     # process to format networkx uses
-    edges = [ (x['Concept1']['id'], x['Concept2']['id'], {'relationship': x['Relationship']['type']}) for x in edges ]
     G = nx.Graph()
-    # edges2 = [
-    #     ('A', 'B', {'relationship': 'Edge1'}),
-    #     ('B', 'C', {'relationship': 'Edge2'}),
-    #     ('B', 'D', {'relationship': 'Edge3'})
-    # ]
-    G.add_edges_from(edges)
-    # G.add_edge("a", "b")
-    # G.add_edge("b", "c")
-    # G.add_edge("c", "a")
-    
+
+    for x in edges:
+        c1 = x['Concept1']['id']
+        c2 = x['Concept2']['id']
+        relationship = x['Relationship']['type']
+        source = x['Source']['id']  # e.g., 'paper1.pdf'
+        st.write(source)
+
+        # add the edge with its relationship
+        G.add_edge(c1, c2, relationship=relationship)
+
+        # add source to each concept node 
+        G.nodes[c1]['source'] = source
+        G.nodes[c2]['source'] = source
 
     return G
 
@@ -112,6 +115,14 @@ def visualize_graph(G):
         edge["label"] = edge_label # display on edge
         edge["color"] = "black"  # edge color
         # edge["font"] = {"size": 14, "color": "white", "face": "Arial"}  #  styling for edge labels
+    
+    # add source names to nodes
+    for node in net.nodes:
+        node_id = node["id"]
+        st.write("YR")
+        st.write(G.nodes[node_id])
+        source = G.nodes[node_id].get("source", "unknown") # get source name
+        node["title"] = source # hover text
     
     # save graph as temp html file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
