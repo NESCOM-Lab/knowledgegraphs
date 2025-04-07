@@ -49,6 +49,8 @@ if "subgraph_agent" not in st.session_state:
 
 if "response_agent" not in st.session_state:
     st.session_state.response_agent = None
+if "k_value" not in st.session_state:
+    st.session_state.k_value = 1
 
 
 # chat history
@@ -118,6 +120,11 @@ def visualize_graph(G):
 
 # Main loop
 col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns together
+
+# k-value for retriever agent
+with col1:
+    k_value = st.number_input("Set k-value for retriever agent", min_value=1, max_value=10, value=1, step=1)
+    st.session_state.k_value = k_value
 
 # Streamlit PDF uploader
 with col1:
@@ -198,9 +205,17 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
 
         
             with st.spinner(text="Searching"):
-                results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.query_agent, st.session_state.subgraph_agent)
+                results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.k_value, 
+                                                            st.session_state.query_agent, 
+                                                            st.session_state.subgraph_agent)
                 # st.write(results)
 
+            # Display results
+            with st.expander("See retrieved chunks"):
+                for doc in results:
+                    st.write("Source: " + doc.metadata['source'])
+                    st.write("Page #: " + str(doc.metadata['page_number']))
+                    st.write("Text Preview: " + doc.metadata['text_preview'])
             
 
         # Create retrieved graph
@@ -246,15 +261,16 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
 
             st.write(f"**Finished reasoning.**")
 
-            with st.spinner(text="Responding"):
-                # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
-                final_answer = st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
-                st.write(f"**{final_answer}**")
 
             # Cite the data
             for doc in results:
+                with st.spinner(text="Responding"):
+                    # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
+                    final_answer = st.session_state.response_agent.run(doc.page_content, 
+                                                                    concept_text, user_prompt)
+                    st.write(f"**{final_answer}**")
                 source = f"Source: {doc.metadata['source']}" 
                 page_n = f"Page number: {doc.metadata['page_number']}" 
-                st.write(source)
-                st.write(page_n)
-            st.write(f"**Finished generation.**")
+                st.write(source + ", " + page_n)
+
+            st.write(f"**Finished response.**")

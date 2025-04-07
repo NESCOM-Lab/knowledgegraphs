@@ -150,12 +150,12 @@ def load_llm_transformer():
     
 
 # Query neo4j with agents
-def query_neo4j(user_prompt, query_agent, subgraph_agent):
+def query_neo4j(user_prompt, k_value, query_agent, subgraph_agent):
     # Querying the system
     print("Enter a query: ")
     user_query = user_prompt
     print("Running query agent")
-    retrieved_chunks = query_agent.run(user_query)
+    retrieved_chunks = query_agent.run(user_query, k_value)
     print("----")
     print("Running subgraph agent")
     retrieved_graph_data = subgraph_agent.run(retrieved_chunks)

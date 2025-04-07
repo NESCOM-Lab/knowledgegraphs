@@ -5,11 +5,11 @@ class QueryAgent():
         self.vector_retriever = vect_retriever
 
 
-    def run(self, query):
+    def run(self, query, k_value):
         """
         Runs the query agent with the provided query on the vector retriever from neo4j DB
         """
-        self.vector_retriever.search_kwargs = {"k": 1} # change k value later (depends on length of context)
+        self.vector_retriever.search_kwargs = {"k": k_value} # change k value later (depends on length of context)
         results = self.vector_retriever.invoke(query)
 
         # print(len(results))
