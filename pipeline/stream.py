@@ -92,7 +92,6 @@ def create_graph(edges):
         c2 = x['Concept2']['id']
         relationship = x['Relationship']['type']
         source = x['Source']['id']  # e.g., 'paper1.pdf'
-        st.write(source)
 
         # add the edge with its relationship
         G.add_edge(c1, c2, relationship=relationship)
@@ -119,8 +118,6 @@ def visualize_graph(G):
     # add source names to nodes
     for node in net.nodes:
         node_id = node["id"]
-        st.write("YR")
-        st.write(G.nodes[node_id])
         source = G.nodes[node_id].get("source", "unknown") # get source name
         node["title"] = source # hover text
     
@@ -233,7 +230,10 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
         with col2:
             graph_html = None
             with st.spinner(text="Generating graph"):
-                G = create_graph(retrieved_graph_data)
+                # cheese = retrieved_graph_data[1][0]
+                # cheese['Source']['id'] = "abi"
+                # st.write(cheese) # for debugging -- checks if different source can be shown in graph 
+                G = create_graph([item for sublist in retrieved_graph_data for item in sublist]) # use all chunks in the graph
                 graph_html = visualize_graph(G)
                 # unmounts (deleted) later?
             st.write(f"**Here is the graph I retrieved.**")
@@ -264,7 +264,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             # show concept reasoning from llm
             concept_text = ""
             with st.spinner(text="Reasoning"):
-                concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data)
+                concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data[0]) # for now only use first chunk for context
                 with st.expander("See context"):
                     st.write(concept_text)
             st.write(f"**This is the context I retrieved.**")
