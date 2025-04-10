@@ -29,7 +29,7 @@ def clean_graph(graph):
 
 def neo4j_setup():
     load_dotenv()
-    neo_pass = os.getenv("NEO4J_PASS")
+    neo_pass = os.getenv("NEO4J_PASSWORD")
     neo_db_id = os.getenv("DB_ID")
 
 
