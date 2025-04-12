@@ -216,7 +216,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                 results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.k_value, 
                                                             st.session_state.query_agent, 
                                                             st.session_state.subgraph_agent)
-                # st.write(results)
+                st.write(results)
 
             # Display results
             with st.expander("See retrieved chunks"):
