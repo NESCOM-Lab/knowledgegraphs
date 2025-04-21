@@ -1,8 +1,9 @@
-
+from retriever_utils import add_similarity_scores
 
 class QueryAgent():
-    def __init__(self, vect_retriever):
+    def __init__(self, vect_retriever, embed_model):
         self.vector_retriever = vect_retriever
+        self.embed_model = embed_model
 
 
     def run(self, query, k_value):
@@ -11,6 +12,9 @@ class QueryAgent():
         """
         self.vector_retriever.search_kwargs = {"k": k_value} # change k value later (depends on length of context)
         results = self.vector_retriever.invoke(query)
+
+        # add cosine similarity to results
+        results = add_similarity_scores(results, query, self.embed_model)
 
         # print(len(results))
         print("Retrieved chunk: ")

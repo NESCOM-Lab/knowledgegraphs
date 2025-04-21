@@ -76,7 +76,7 @@ def load_neo4j():
 
 # Load agents
 def load_agents(graph, vector_retriever):
-    st.session_state.query_agent = QueryAgent(vector_retriever)
+    st.session_state.query_agent = QueryAgent(vector_retriever, st.session_state.embed)
     st.session_state.subgraph_agent = SubGraphAgent(graph)
     st.session_state.response_agent = ResponseAgent(st)
 
@@ -224,6 +224,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                     st.write("Source: " + doc.metadata['source'])
                     st.write("Page #: " + str(doc.metadata['page_number']))
                     st.write("Text Preview: " + doc.metadata['text_preview'])
+                    st.write("Similarity score: "  + str(doc.metadata['score']))
             
 
         # Create retrieved graph
