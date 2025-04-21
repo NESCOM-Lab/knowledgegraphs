@@ -89,38 +89,58 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph):
         for chunk in processed_chunks
     ]
 
-    # Function to process documents in batches
-    async def process_batches(docs, batch_size=2, retry_delay=20, max_retries=5):
-        for i in range(0, len(docs), batch_size):
-            batch = docs[i : i + batch_size] # Use subset of documents
-            retries = 0
+    for doc in docs:
+        # generate embeddings for each doc
+        embedding = embed.embed_query(doc.page_content)
+        doc.metadata["embedding"] = embedding
+
+        graph_docs = await llm_transformer.aconvert_to_graph_documents([doc])
+        print(f"Processed chunk {doc.metadata['chunk_id']}:")
+        graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
+        print(f"Successfully added chunk {doc.metadata['chunk_id']} to Neo4j")
+
+# async def ingest_document(processed_chunks, embed, llm_transformer, graph):
+#     # Convert processed chunks to Langchain Document for Neo4j db
+#     docs = [
+#         Document(
+#             page_content=chunk['text'],
+#             metadata=chunk['metadata']
+#         )
+#         for chunk in processed_chunks
+#     ]
+
+#     # Function to process documents in batches
+#     async def process_batches(docs, batch_size=2, retry_delay=20, max_retries=5):
+#         for i in range(0, len(docs), batch_size):
+#             batch = docs[i : i + batch_size] # Use subset of documents
+#             retries = 0
             
-            while retries < max_retries:
-                try:
-                    # generate embeddings for each doc
-                    for doc in batch:
-                        embedding = embed.embed_query(doc.page_content)
-                        doc.metadata["embedding"] = embedding
+#             while retries < max_retries:
+#                 try:
+#                     # generate embeddings for each doc
+#                     for doc in batch:
+#                         embedding = embed.embed_query(doc.page_content)
+#                         doc.metadata["embedding"] = embedding
 
 
-                    graph_docs = await llm_transformer.aconvert_to_graph_documents(batch)
-                    print(f"Processed batch {i // batch_size + 1}:")
+#                     graph_docs = await llm_transformer.aconvert_to_graph_documents(batch)
+#                     print(f"Processed batch {i // batch_size + 1}:")
                     
-                    # Add to Neo4j
-                    graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
-                    print(f"Successfully added batch {i // batch_size + 1} to Neo4j")
-                    break  # exit if retry works
+#                     # Add to Neo4j
+#                     graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
+#                     print(f"Successfully added batch {i // batch_size + 1} to Neo4j")
+#                     break  # exit if retry works
                 
-                except Exception as e:
-                    if "rate_limit_exceeded" in str(e):
-                        retries += 1
-                        print(f"Rate limit hit. Retrying batch {i // batch_size + 1} in {retry_delay} seconds... (Attempt {retries}/{max_retries})")
-                        await asyncio.sleep(retry_delay)
-                    else:
-                        raise  # other error
+#                 except Exception as e:
+#                     if "rate_limit_exceeded" in str(e):
+#                         retries += 1
+#                         print(f"Rate limit hit. Retrying batch {i // batch_size + 1} in {retry_delay} seconds... (Attempt {retries}/{max_retries})")
+#                         await asyncio.sleep(retry_delay)
+#                     else:
+#                         raise  # other error
 
-    # Run batching process
-    await process_batches(docs, batch_size=2)
+#     # Run batching process
+#     await process_batches(docs, batch_size=2)
 
 # returns llm_tranformer, embedding model, and vector_retriever
 def load_llm_transformer():
