@@ -9,4 +9,5 @@ Extract knowledge graphs from papers and improve LLM reasoning with contextual u
 Setup API Keys in .env_example and rename it to .env <br>
 Cd into `/pipeline` and run `streamlit run stream.py`
 
-
+## References
+https://arxiv.org/abs/2501.00309v2
