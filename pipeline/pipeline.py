@@ -157,7 +157,7 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph):
         print("Time taken: ", end - start)
 
     # Run batching process
-    await process_batches(docs, batch_size=3)
+    await process_batches(docs, batch_size=25)
 
 # returns llm_tranformer, embedding model, and vector_retriever
 def load_llm_transformer():
