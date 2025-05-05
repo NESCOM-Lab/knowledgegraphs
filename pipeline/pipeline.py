@@ -222,7 +222,7 @@ async def main():
 
 
     # Initialize openai
-    print("Initializing OpenAI")
+    print("Initializing Gemini")
     # api_key = os.getenv("OPENAI_API_KEY")
     # api_key = os.getenv("GOOGLE_API_KEY")
     # if "GOOGLE_API_KEY" not in os.environ:
