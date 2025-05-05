@@ -10,6 +10,7 @@ import getpass
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Neo4jVector
 from langchain_community.document_loaders import PyPDFLoader
@@ -161,7 +162,9 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph):
 # returns llm_tranformer, embedding model, and vector_retriever
 def load_llm_transformer():
     # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano") # ChatOpenAI version
-    llm = ChatOllama(model="llama3.2:latest", format='json') # Ollama
+    # llm = ChatOllama(model="llama3.2:latest", format='json') # Ollama
+    # llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite")
+    llm = build_gemini_llm()
     # additional_instructions = """
     # When creating entities, add a "document_id" property to each node and set it to the document's unique ID.
     # For example, if the document ID is "doc123", each created node should include document_id: "doc123".
@@ -200,6 +203,18 @@ def query_neo4j(user_prompt, k_value, query_agent, subgraph_agent):
     return retrieved_chunks, retrieved_graph_data
 
 
+def build_gemini_llm():
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise ValueError("Set the GOOGLE_API_KEY environment variable.")
+    return GoogleGenerativeAI(
+        model="gemini-2.0-flash-lite",
+        api_key=api_key,               
+        temperature=0.2,
+        max_output_tokens=1024,
+        # region="us-central1",
+    )
+
 async def main():
     # Initialize neo4j
     print("Initializing neo4j")
@@ -208,7 +223,10 @@ async def main():
 
     # Initialize openai
     print("Initializing OpenAI")
-    api_key = os.getenv("OPENAI_API_KEY")
+    # api_key = os.getenv("OPENAI_API_KEY")
+    # api_key = os.getenv("GOOGLE_API_KEY")
+    # if "GOOGLE_API_KEY" not in os.environ:
+    #     os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter your Google AI API key: ")
     # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano")
     llm_transformer, embed, vector_retriever = load_llm_transformer()
     
