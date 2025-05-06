@@ -6,6 +6,7 @@ from pipeline import neo4j_setup
 from pipeline import load_llm_transformer
 from pipeline import chunk_document
 from pipeline import ingest_document
+from pipeline import clean_graph
 
 async def main():
     # Initialize neo4j
@@ -19,7 +20,15 @@ async def main():
     # llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
     llm_transformer, embed, vector_retriever = load_llm_transformer()
     
-    
+    print("Would you like to clean db?")
+    while True:
+        ans = int(input())
+        if (ans == 1 or ans == 0):
+            break
+    if (ans == 1):
+        clean_graph(graph)
+        
+        
 
     # Chunk the document
     print("Would you like to add a document? Enter 1 or 0")
