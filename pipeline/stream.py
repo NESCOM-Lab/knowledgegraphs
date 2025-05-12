@@ -194,7 +194,24 @@ if st.session_state.loaded_neo4j is False:
         # loads agents into st.query_agent & st.subgraph_agent
         load_agents(st.session_state.graph, vector_retriever) # prob need to switch to session state
         st.session_state.loaded_agents = True
-    
+
+# add zoom limits to the HTML networkx graph 
+def add_zoom_limits(html_content):
+    injection_js = """
+    <script type="text/javascript">
+    network.on("zoom", function (params) {
+      const MIN_SCALE = 0.2;
+      const MAX_SCALE = 2;
+      const currentScale = network.getScale();
+      if (currentScale < MIN_SCALE) {
+        network.moveTo({ scale: MIN_SCALE });
+      } else if (currentScale > MAX_SCALE) {
+        network.moveTo({ scale: MAX_SCALE });
+      }
+    });
+    </script>
+    """
+    return html_content.replace("</body>", injection_js + "\n</body>")
 
 if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
     if user_prompt := st.chat_input("Query your documents here"):
@@ -254,6 +271,9 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             # show graph in streamlit
             with open(graph_html, "r", encoding="utf-8") as f:
                 graph_html_content = f.read()
+            
+            graph_html_content = add_zoom_limits(graph_html_content)
+
 
             # style the pyvis html
             # graph_html_content = graph_html_content.replace(
