@@ -286,13 +286,13 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             st.write(f"**Finished reasoning.**")
 
 
-            # Cite the data
+            # Respond and Cite the data
             for doc in results:
                 with st.spinner(text="Responding"):
                     # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
                     final_answer = st.session_state.response_agent.run(doc.page_content, 
                                                                     concept_text, user_prompt)
-                    st.write(f"**{final_answer}**")
+                    # st.write(f"**{final_answer}**")
                 source = f"Source: {doc.metadata['source']}" 
                 page_n = f"Page number: {doc.metadata['page_number']}" 
                 st.write(source + ", " + page_n)

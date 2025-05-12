@@ -65,30 +65,38 @@ class ResponseAgent():
         Question: {query}
         """
 
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": self.prompt},
-                {"role": "user", "content": full_query}
-            ]
-        ) 
+        # response = openai.chat.completions.create(
+        #     model="gpt-3.5-turbo",
+        #     messages=[
+        #         {"role": "system", "content": self.prompt},
+        #         {"role": "user", "content": full_query}
+        #     ]
+        # ) 
         
-        # display LLM's response
-        # with self.st.chat_message("assistant"):
-        #     stream = openai.chat.completions.create(
-        #         model="gpt-3.5-turbo",
-        #         messages=[{"role": "system", "content": self.prompt}] + [
-        #             {"role": msg["role"], "content": msg["content"]}
-        #             for msg in self.st.session_state.messages
-        #         ],
-        #         stream=True
-        #     )
-        #     response = self.st.write_stream(stream)
-        
-        # add llm's response to chat history
-        # self.st.session_state.messages.append({"role": "assistant", "content": response})
+        # add user's question
+        self.st.session_state.messages.append({"role": "user", "content": full_query})
 
-        return response.choices[0].message.content
+        # display LLM's response with streaming
+        response = ""
+        with self.st.chat_message("assistant"):
+            stream = openai.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "system", "content": self.prompt}] + [
+                    {"role": msg["role"], "content": msg["content"]}
+                    for msg in self.st.session_state.messages
+                ],
+                stream=True
+            )
+            response = self.st.write_stream(stream)
+
+        # remove user's full query (w/ detailed info) and add just the question
+        self.st.session_state.messages.pop()
+        self.st.session_state.messages.append({"role": "user", "content": query})
+
+        # add llm's response to chat history
+        self.st.session_state.messages.append({"role": "assistant", "content": response})
+
+        # return response.choices[0].message.content
 
 
         
