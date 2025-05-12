@@ -52,6 +52,8 @@ if "response_agent" not in st.session_state:
 if "k_value" not in st.session_state:
     st.session_state.k_value = 1
 
+if "compare_mode" not in st.session_state:
+    st.session_state.compare_mode = False
 
 # chat history
 if "messages" not in st.session_state:
@@ -150,6 +152,16 @@ with col1:
 with col1:
     uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"], accept_multiple_files=False)
     st.write(uploaded_file.name if uploaded_file else "No file uploaded")
+
+    compare_toggle = st.toggle("Comparison mode")
+
+    # toggle comparison mode
+    if compare_toggle:
+        st.write("Comparison mode on")
+        st.session_state.compare_mode = True
+    if not compare_toggle:
+        st.session_state.compare_mode = False
+
     if st.button("Ingest document"):
         if uploaded_file is not None:
             # save the uploaded file temporarily
@@ -215,90 +227,91 @@ def add_zoom_limits(html_content):
 
 if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
     if user_prompt := st.chat_input("Query your documents here"):
-        
-        with col1:
-            display_all_messages()
-            # display user's message in UI
-            with st.chat_message("user"):
-                st.markdown(user_prompt)
-            
-            
-    
-        
-            with st.spinner(text="Searching"):
-                results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.k_value, 
-                                                            st.session_state.query_agent, 
-                                                            st.session_state.subgraph_agent)
-                # st.write(results)
+        if not st.session_state.compare_mode:
 
-            # Display results
-            with st.expander("See retrieved chunks"):
+            with col1:
+                display_all_messages()
+                # display user's message in UI
+                with st.chat_message("user"):
+                    st.markdown(user_prompt)
+                
+                
+        
+            
+                with st.spinner(text="Searching"):
+                    results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.k_value, 
+                                                                st.session_state.query_agent, 
+                                                                st.session_state.subgraph_agent)
+                    # st.write(results)
+
+                # Display results
+                with st.expander("See retrieved chunks"):
+                    for doc in results:
+                        st.write("Source: " + doc.metadata['source'])
+                        st.write("Page #: " + str(doc.metadata['page_number']))
+                        st.write("Text Preview: " + doc.metadata['text_preview'])
+                        st.write("Similarity score: "  + str(doc.metadata['score']))
+                
+
+            # Create retrieved graph
+            with col2:
+                graph_html = None
+                with st.spinner(text="Generating graph"):
+                    # cheese = retrieved_graph_data[1][0]
+                    # cheese['Source']['id'] = "abi"
+                    # st.write(cheese) # for debugging -- checks if different source can be shown in graph 
+                    G = create_graph([item for sublist in retrieved_graph_data for item in sublist]) # use all chunks in the graph
+                    graph_html = visualize_graph(G)
+                    # unmounts (deleted) later?
+                st.write(f"**Here is the graph I retrieved.**")
+                
+                # show graph in streamlit
+                with open(graph_html, "r", encoding="utf-8") as f:
+                    graph_html_content = f.read()
+                
+                graph_html_content = add_zoom_limits(graph_html_content)
+
+
+                # style the pyvis html
+                # graph_html_content = graph_html_content.replace(
+                #     "<body>", 
+                #     "<body style='background-color: black; color: white; border: none;'>"
+                # )
+                # custom_style = """
+                # <style>
+                #     #mynetwork {
+                #         border: none !important;
+                #     }
+                # </style>
+                # """
+                # graph_html_content = graph_html_content.replace("</head>", custom_style + "</head>")
+                # display the styled HTML in Streamlit
+                st.components.v1.html(graph_html_content, height=550)
+
+                os.remove(graph_html)
+
+            with col1:
+                # show concept reasoning from llm
+                concept_text = ""
+                with st.spinner(text="Reasoning"):
+                    concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data[0]) # for now only use first chunk for context
+                    with st.expander("See context"):
+                        st.write(concept_text)
+                st.write(f"**This is the context I retrieved.**")
+
+
+                st.write(f"**Finished reasoning.**")
+
+
+                # Respond and Cite the data
                 for doc in results:
-                    st.write("Source: " + doc.metadata['source'])
-                    st.write("Page #: " + str(doc.metadata['page_number']))
-                    st.write("Text Preview: " + doc.metadata['text_preview'])
-                    st.write("Similarity score: "  + str(doc.metadata['score']))
-            
+                    with st.spinner(text="Responding"):
+                        # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
+                        final_answer = st.session_state.response_agent.run(doc.page_content, 
+                                                                        concept_text, user_prompt)
+                        # st.write(f"**{final_answer}**")
+                    source = f"Source: {doc.metadata['source']}" 
+                    page_n = f"Page number: {doc.metadata['page_number']}" 
+                    st.write(source + ", " + page_n)
 
-        # Create retrieved graph
-        with col2:
-            graph_html = None
-            with st.spinner(text="Generating graph"):
-                # cheese = retrieved_graph_data[1][0]
-                # cheese['Source']['id'] = "abi"
-                # st.write(cheese) # for debugging -- checks if different source can be shown in graph 
-                G = create_graph([item for sublist in retrieved_graph_data for item in sublist]) # use all chunks in the graph
-                graph_html = visualize_graph(G)
-                # unmounts (deleted) later?
-            st.write(f"**Here is the graph I retrieved.**")
-            
-            # show graph in streamlit
-            with open(graph_html, "r", encoding="utf-8") as f:
-                graph_html_content = f.read()
-            
-            graph_html_content = add_zoom_limits(graph_html_content)
-
-
-            # style the pyvis html
-            # graph_html_content = graph_html_content.replace(
-            #     "<body>", 
-            #     "<body style='background-color: black; color: white; border: none;'>"
-            # )
-            # custom_style = """
-            # <style>
-            #     #mynetwork {
-            #         border: none !important;
-            #     }
-            # </style>
-            # """
-            # graph_html_content = graph_html_content.replace("</head>", custom_style + "</head>")
-            # display the styled HTML in Streamlit
-            st.components.v1.html(graph_html_content, height=550)
-
-            os.remove(graph_html)
-
-        with col1:
-            # show concept reasoning from llm
-            concept_text = ""
-            with st.spinner(text="Reasoning"):
-                concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data[0]) # for now only use first chunk for context
-                with st.expander("See context"):
-                    st.write(concept_text)
-            st.write(f"**This is the context I retrieved.**")
-
-
-            st.write(f"**Finished reasoning.**")
-
-
-            # Respond and Cite the data
-            for doc in results:
-                with st.spinner(text="Responding"):
-                    # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
-                    final_answer = st.session_state.response_agent.run(doc.page_content, 
-                                                                    concept_text, user_prompt)
-                    # st.write(f"**{final_answer}**")
-                source = f"Source: {doc.metadata['source']}" 
-                page_n = f"Page number: {doc.metadata['page_number']}" 
-                st.write(source + ", " + page_n)
-
-            st.write(f"**Finished response.**")
+                st.write(f"**Finished response.**")

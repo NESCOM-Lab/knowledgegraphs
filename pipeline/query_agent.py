@@ -24,5 +24,25 @@ class QueryAgent():
         #     print("\tpage number: " + str(doc.metadata['page_number']))
         #     print("\tpreview: " + doc.metadata['text_preview'])
         return results
+    
+    def run_unique(self, query, k_value) -> list:
+        """
+        Runs the query agent with query grouping by unique sources    
+        (Takes longer since it gets more nodes)
+        """
+
+        self.vector_retriever.search_kwargs = {"k": k_value}
+        try:
+            results = self.vector_retriever.invoke(query)
+        except Exception as e:
+            print("Error running unique retriever: " + str(e))
+
+        
+        
+        
+        for doc in results:
+            print(doc.metadata['source'])
+
+
 
 
