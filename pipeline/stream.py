@@ -227,7 +227,32 @@ def add_zoom_limits(html_content):
 
 if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
     if user_prompt := st.chat_input("Query your documents here"):
-        if not st.session_state.compare_mode:
+        if st.session_state.compare_mode:
+            # Comparison Mode
+            with col1:
+                display_all_messages()
+                # display user's message in UI
+                with st.chat_message("user"):
+                    st.markdown(user_prompt)
+                
+                with st.spinner(text="Searching"):
+                    results, retrieved_graph_data = query_neo4j(user_prompt, 10, 
+                                                                st.session_state.query_agent, 
+                                                                st.session_state.subgraph_agent, True)
+                    # st.write(results)
+
+                # Display results
+                with st.expander("See retrieved chunks"):
+                    for doc in results:
+                        st.write("Source: " + doc.metadata['source'])
+                        st.write("Page #: " + str(doc.metadata['page_number']))
+                        st.write("Text Preview: " + doc.metadata['text_preview'])
+                        st.write("Similarity score: "  + str(doc.metadata['score']))
+                
+
+
+        if st.session_state.compare_mode == False:
+            # Regular GraphRAG
 
             with col1:
                 display_all_messages()

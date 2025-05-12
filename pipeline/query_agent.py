@@ -36,6 +36,9 @@ class QueryAgent():
             results = self.vector_retriever.invoke(query)
         except Exception as e:
             print("Error running unique retriever: " + str(e))
+        
+         # add cosine similarity to results
+        results = add_similarity_scores(results, query, self.embed_model)
 
         
         
@@ -43,6 +46,8 @@ class QueryAgent():
         for doc in results:
             print(doc.metadata['source'])
 
+
+        return results
 
 
 
