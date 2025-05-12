@@ -5,7 +5,7 @@ class SubGraphAgent():
         self.graph = provided_graph
 
 
-    def run(self, retrieved_chunks):
+    def run(self, retrieved_chunks) -> list:
         """
         Retrieves the subgraphs around the retrieved chunks in the neo4j DB
         """
@@ -43,7 +43,7 @@ class SubGraphAgent():
     # Convert JSON formatted graph data to text for LLM to understand
     # Uses an LLM
     @staticmethod
-    def convert_to_text(graph_data):
+    def convert_to_text(graph_data) -> str | None:
         graph_data = [ (x['Concept1']['id'], x['Concept2']['id'], {'relationship': x['Relationship']['type']}) for x in graph_data ]
         graph_data = "".join(str(x) for x in graph_data) # convert to string
 

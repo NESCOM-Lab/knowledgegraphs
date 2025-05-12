@@ -56,7 +56,7 @@ class ResponseAgent():
 
     # Combines contextual information (sentences) from graph with exact sentences from retrieved chunk 
     # and produces a final response
-    def run(self, chunk_information, graph_context_information, query):
+    def run(self, chunk_information, graph_context_information, query) -> str | None:
 
         # add all context together to query llm
         full_query = f"""

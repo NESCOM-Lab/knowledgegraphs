@@ -6,7 +6,7 @@ class QueryAgent():
         self.embed_model = embed_model
 
 
-    def run(self, query, k_value):
+    def run(self, query, k_value) -> list:
         """
         Runs the query agent with the provided query on the vector retriever from neo4j DB
         """

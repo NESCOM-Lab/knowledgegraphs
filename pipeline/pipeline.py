@@ -21,7 +21,7 @@ from langchain_core.documents import Document
 from query_agent import QueryAgent
 from subgraph_agent import SubGraphAgent
 
-def clean_graph(graph):
+def clean_graph(graph) -> None:
     query = """
     MATCH (n)
     DETACH DELETE n
@@ -29,7 +29,7 @@ def clean_graph(graph):
     graph.query(query)
 
 
-def neo4j_setup():
+def neo4j_setup() -> Neo4jGraph:
     load_dotenv()
     neo_pass = os.getenv("NEO4J_PASSWORD")
     neo_db_id = os.getenv("DB_ID")
@@ -47,7 +47,7 @@ def neo4j_setup():
     return graph
 
 
-def chunk_document(pdf_path):
+def chunk_document(pdf_path) -> list:
     # pdf_path = "resume2.pdf"
     loader = PyPDFLoader(pdf_path)
     pages = loader.load_and_split()
@@ -101,7 +101,7 @@ def chunk_document(pdf_path):
 #         graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
 #         print(f"Successfully added chunk {doc.metadata['chunk_id']} to Neo4j")
 
-async def ingest_document(processed_chunks, embed, llm_transformer, graph):
+async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> None:
     # Convert processed chunks to Langchain Document for Neo4j db
     docs = [
         Document(
@@ -160,7 +160,7 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph):
     await process_batches(docs, batch_size=25)
 
 # returns llm_tranformer, embedding model, and vector_retriever
-def load_llm_transformer():
+def load_llm_transformer() -> tuple[LLMGraphTransformer, OpenAIEmbeddings, any]:
     # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano") # ChatOpenAI version
     # llm = ChatOllama(model="llama3.2:latest", format='json') # Ollama
     # llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite")
@@ -203,7 +203,7 @@ def query_neo4j(user_prompt, k_value, query_agent, subgraph_agent):
     return retrieved_chunks, retrieved_graph_data
 
 
-def build_gemini_llm():
+def build_gemini_llm() -> GoogleGenerativeAI:
     api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
         raise ValueError("Set the GOOGLE_API_KEY environment variable.")

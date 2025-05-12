@@ -4,7 +4,7 @@ import numpy as np
 # https://python.langchain.com/docs/how_to/add_scores_retriever/
 
 
-def add_similarity_scores(docs, query, embed_model):
+def add_similarity_scores(docs, query, embed_model) -> list:
     query_embedding = embed_model.embed_query(query)
     query_norm = np.linalg.norm(query_embedding)
 
