@@ -21,8 +21,8 @@ class SubGraphAgent():
             WHERE d.text_preview = \"""" + retrieved_text_preview + """\" AND NOT p:Document AND NOT x:Document RETURN p,r,x
 
             """
-            print(subgraph_cypher_query)
-            print("----")
+            # print(subgraph_cypher_query)
+            # print("----")
 
             # Query the graph
             # this prompt gets JSON in a very specific format that explains Concept1 --> Relationship --> Concept2

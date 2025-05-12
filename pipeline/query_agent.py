@@ -17,12 +17,12 @@ class QueryAgent():
         results = add_similarity_scores(results, query, self.embed_model)
 
         # print(len(results))
-        print("Retrieved chunk: ")
-        for doc in results:
-            # print(doc.id)
-            print("\tsource: " + doc.metadata['source'])
-            print("\tpage number: " + str(doc.metadata['page_number']))
-            print("\tpreview: " + doc.metadata['text_preview'])
+        # print("Retrieved chunk: ")
+        # for doc in results:
+        #     # print(doc.id)
+        #     print("\tsource: " + doc.metadata['source'])
+        #     print("\tpage number: " + str(doc.metadata['page_number']))
+        #     print("\tpreview: " + doc.metadata['text_preview'])
         return results
 
 
