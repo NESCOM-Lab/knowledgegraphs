@@ -222,23 +222,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
             with st.chat_message("user"):
                 st.markdown(user_prompt)
             
-            # add user's message to chat history
-            st.session_state.messages.append({"role": "user", "content": user_prompt})
-
-            # display LLM's response
-            # with st.chat_message("llm"):
-            #     stream = llm.chat.completions.create(
-            #         model="gpt-3.5-turbo",
-            #         messages=[
-            #             {"role": msg["role"], "content": msg["content"]}
-            #             for msg in st.session_state.messages
-            #         ],
-            #         stream=True
-            #     )
-            #     response = st.write_stream(stream)
             
-            # # add llm's response to chat history
-            # st.session_state.messages.append({"role": "assistant", "content": response})
     
         
             with st.spinner(text="Searching"):
