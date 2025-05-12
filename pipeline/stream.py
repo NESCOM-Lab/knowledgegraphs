@@ -104,7 +104,7 @@ def create_graph(edges):
 
 def visualize_graph(G):
     net = Network(height="500px", width="100%", notebook=False)
-    net.from_nx(G) # pass in graph
+    net.from_nx(G, default_node_size=15) # pass in graph
 
     # add relationship names to edges
     for edge in net.edges:
@@ -122,9 +122,21 @@ def visualize_graph(G):
         node["title"] = source # hover text
     
     # save graph as temp html file
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmp_file:
-        net.save_graph(tmp_file.name)
-        return tmp_file.name
+    from pathlib import Path
+    tmp_dir = Path(tempfile.gettempdir())
+    filename = "temp_graph.html"
+    tmp_path = tmp_dir.joinpath(filename)
+
+    # WORKAROUND: change into the temp dir
+    old_cwd = os.getcwd()
+    os.chdir(tmp_dir)
+
+    try:
+        net.write_html(filename)  # just give the name, not full path
+    finally:
+        os.chdir(old_cwd)
+
+    return str(tmp_path)
 
 # Main loop
 col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns together
