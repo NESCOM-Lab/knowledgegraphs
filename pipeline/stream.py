@@ -136,7 +136,7 @@ with col1:
 
 # Streamlit PDF uploader
 with col1:
-    uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
+    uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"], accept_multiple_files=False)
     st.write(uploaded_file.name if uploaded_file else "No file uploaded")
     if st.button("Ingest document"):
         if uploaded_file is not None:
