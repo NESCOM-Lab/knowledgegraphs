@@ -236,10 +236,10 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                     st.markdown(user_prompt)
                 
                 with st.spinner(text="Searching"):
-                    results, retrieved_graph_data = query_neo4j(user_prompt, 10, 
+                    results, sources = query_neo4j(user_prompt, 10, 
                                                                 st.session_state.query_agent, 
                                                                 st.session_state.subgraph_agent, True)
-                    # st.write(results)
+                    st.write(sources)
 
                 # Display results
                 with st.expander("See retrieved chunks"):

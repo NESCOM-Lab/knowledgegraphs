@@ -42,12 +42,22 @@ class QueryAgent():
 
         
         
-        
+        sources = {} 
+        # store chunks by their source
+        # for now only add 1 chunk per source
         for doc in results:
-            print(doc.metadata['source'])
+            curr_source = doc.metadata['source']
+            if sources.get(curr_source, -1) == -1:
+                sources[curr_source] = []
+                sources[curr_source].append(doc)
+        
+        if len(sources) == 0:
+            # only 1 source dominating
+            print("Only 1 relevant source. Can't compare")
+        else:
+            print("Multiple sources")
 
-
-        return results
+        return results, sources
 
 
 
