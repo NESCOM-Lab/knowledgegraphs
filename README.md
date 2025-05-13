@@ -10,6 +10,7 @@ LLM streaming agents: GPT-3.5-turbo
 
 ## Usage
 Setup API Keys in .env_example and rename it to .env <br>
+Install requirements in virtual env with `pip install -r requirements.txt` <br/>
 Cd into `/pipeline` and run `streamlit run stream.py`
 
 ## References
