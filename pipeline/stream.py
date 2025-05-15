@@ -145,7 +145,7 @@ col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns 
 
 # k-value for retriever agent
 with col1:
-    k_value = st.number_input("Set k-value for retriever agent", min_value=1, max_value=10, value=1, step=1)
+    k_value = st.number_input("Number of chunks retrieved", min_value=1, max_value=10, value=1, step=1)
     st.session_state.k_value = k_value
 
 # Streamlit PDF uploader
@@ -248,6 +248,26 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                         st.write("Page #: " + str(doc.metadata['page_number']))
                         st.write("Text Preview: " + doc.metadata['text_preview'])
                         st.write("Similarity score: "  + str(doc.metadata['score']))
+                
+                # Compare results
+                # if len(sources) == 1:
+                #     # only 1 source dominating
+                #     st.write("Only 1 relevant source. Can't compare")
+                # else:
+                #     print("Multiple sources")
+                #     with st.spinner(text="Reasoning"):
+                #         concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data[0]) # for now only use first chunk for context
+                #         with st.expander("See context"):
+                #             st.write(concept_text)
+                #     st.write(f"**This is the context I retrieved.**")
+
+
+                #     st.write(f"**Finished reasoning.**")
+
+
+                
+
+                    
                 
 
 
