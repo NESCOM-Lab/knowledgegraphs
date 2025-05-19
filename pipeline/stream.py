@@ -10,6 +10,7 @@ import tempfile
 
 from pipeline import *
 from response_agent import *
+from comparison_agent import *
 
 
 # Load llm
@@ -49,6 +50,10 @@ if "subgraph_agent" not in st.session_state:
 
 if "response_agent" not in st.session_state:
     st.session_state.response_agent = None
+
+if "comparison_agent" not in st.session_state:
+    st.session_state.comparison_agent = None
+
 if "k_value" not in st.session_state:
     st.session_state.k_value = 1
 
@@ -81,6 +86,7 @@ def load_agents(graph, vector_retriever):
     st.session_state.query_agent = QueryAgent(vector_retriever, st.session_state.embed)
     st.session_state.subgraph_agent = SubGraphAgent(graph)
     st.session_state.response_agent = ResponseAgent(st)
+    st.session_state.comparison_agent = ComparisonAgent(st)
 
 
 # NetworkX graph for graph DB visualization
@@ -239,7 +245,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                     results, sources = query_neo4j(user_prompt, 10, 
                                                                 st.session_state.query_agent, 
                                                                 st.session_state.subgraph_agent, True)
-                    st.write(sources)
+                    # st.write(sources)
 
                 # Display results
                 with st.expander("See retrieved chunks"):
@@ -250,19 +256,23 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                         st.write("Similarity score: "  + str(doc.metadata['score']))
                 
                 # Compare results
-                # if len(sources) == 1:
-                #     # only 1 source dominating
-                #     st.write("Only 1 relevant source. Can't compare")
-                # else:
-                #     print("Multiple sources")
-                #     with st.spinner(text="Reasoning"):
-                #         concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data[0]) # for now only use first chunk for context
-                #         with st.expander("See context"):
-                #             st.write(concept_text)
-                #     st.write(f"**This is the context I retrieved.**")
+                if len(sources) == 1:
+                    # only 1 source dominating
+                    st.write("Only 1 relevant source. Can't compare")
+                else:
+                    print("Multiple sources")
+                    st.session_state.comparison_agent.run(sources, user_prompt)
+                    
 
 
-                #     st.write(f"**Finished reasoning.**")
+                    # with st.spinner(text="Reasoning"):
+                    #     concept_tex       t = SubGraphAgent.convert_to_text(retrieved_graph_data[0]) # for now only use first chunk for context
+                    #     with st.expander("See context"):
+                    #         st.write(concept_text)
+                    # st.write(f"**This is the context I retrieved.**")
+
+
+                    st.write(f"**Finished reasoning.**")
 
 
                 
