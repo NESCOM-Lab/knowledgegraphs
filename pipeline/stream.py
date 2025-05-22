@@ -112,7 +112,7 @@ def create_graph(edges):
 
 def visualize_graph(G):
     net = Network(height="500px", width="100%", notebook=False)
-    net.from_nx(G, default_node_size=10) # pass in graph
+    net.from_nx(G, default_node_size=9) # pass in graph
 
     # add relationship names to edges
     for edge in net.edges:
