@@ -1,0 +1,23 @@
+1998-Protein kinase C as a molecular machine for decoding calcium and diacylglycerol signals.pdf
+2004-etcheberrigaray-et-al-therapeutic-effects-of-pkc-activators-in-alzheimer-s-disease-transgenic-mice.pdf
+2007-PKC signaling deficits- a mechanistic hypothesis for the origins of AD.pdf
+2009-REVIEW-Calcium signaling in neurodegeneration.pdf
+2012-Understanding the physiological roles of the neuronal calcium sensor proteins.pdf
+2015-REVIEW-Dopamine Receptors and Neurodegeneration.pdf
+2017-Calcium signaling and molecular mechanisms underlying neurodegenerative diseases.pdf
+2017-REVIEW-Conventional protein kinase C in the brain.pdf
+2018-lee-et-al-Altered-ER-mitochondria-contact-impacts-mitochondria-calcium-homeostasis-and-contributes-to-neurodegeneration.pdf
+2018-mini REVIEW-Mitochondria and Calcium Regulation as Basis of Neurodegeneration Associated With Aging.pdf
+2018-Mini REVIEW-New Insights Into Interactions of Presynaptic Calcium.pdf
+2018-Neuronal calcium signaling via store-operated channels in health and disease.pdf
+2018-REVIEW-Calcium signaling and molecular mechanisms underlying neurodegenerative diseases.pdf
+2019-Protein Kinase C and Calmodulin Serve As Calcium Sensors.pdf
+2019-REVIEW-Noxious Iron�Calcium Connections in Neurodegeneration.pdf
+2019-REVIEW-The Interplay between Ca2+ Signaling Pathways and Neurodegeneration.pdf
+2020-Sorcin is an early marker of neurodegeneration, Ca2+ dysregulation and endoplasmic reticulum stress.pdf
+2021-Conventional protein kinase C in the brain- repurposing cancer drugs.pdf
+2022-Lorden-Enhanced activity of Alzheimer disease-associated.pdf
+2022-Role of Ca2+-Calmodulin-Dependent Protein Kinase Type II.pdf
+2023-REVIEW-Microglia in neurodegenerative diseases- mechanism and potential therapeutic targets.pdf
+2024-casas-unraveling-the-connection-cholesterol-calcium-signaling-and-neurodegeneration.pdf
+2024-REVIEW-Calcium-Associated Proteins in Neuroregeneration.pdf
