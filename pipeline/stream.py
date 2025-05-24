@@ -127,7 +127,7 @@ def visualize_graph(G):
     for node in net.nodes:
         node_id = node["id"]
         source = G.nodes[node_id].get("source", "unknown") # get source name
-        node["title"] = source # hover text
+        node["title"] = str(node_id) # hover text
     
     # save graph as temp html file
     from pathlib import Path
