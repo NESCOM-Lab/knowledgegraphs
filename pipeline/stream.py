@@ -159,14 +159,7 @@ with col1:
     uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"], accept_multiple_files=False)
     st.write(uploaded_file.name if uploaded_file else "No file uploaded")
 
-    compare_toggle = st.toggle("Comparison mode")
-
-    # toggle comparison mode
-    if compare_toggle:
-        st.write("Comparison mode on")
-        st.session_state.compare_mode = True
-    if not compare_toggle:
-        st.session_state.compare_mode = False
+    
 
     if st.button("Ingest document"):
         if uploaded_file is not None:
@@ -199,6 +192,13 @@ with col1:
             # Run the async function
             import asyncio
             asyncio.run(ingest_and_process())
+    
+    # toggle comparison mode
+    compare_toggle = st.toggle("Comparison mode")
+    if compare_toggle:
+        st.session_state.compare_mode = True
+    if not compare_toggle:
+        st.session_state.compare_mode = False
 
 if st.session_state.loaded_neo4j is False:  
     with st.spinner(text="Running load_neo4j()"):
