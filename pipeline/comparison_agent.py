@@ -47,7 +47,7 @@ class ComparisonAgent():
             response = ""
             with self.st.chat_message("assistant"):
                 stream = openai.chat.completions.create(
-                    model="gpt-3.5-turbo",
+                    model="gpt-4.1",
                     messages=[{"role": "system", "content": self.prompt}] + [
                         {"role": msg["role"], "content": msg["content"]}
                         for msg in self.st.session_state.messages
@@ -82,7 +82,7 @@ class ComparisonAgent():
         response = ""
         with self.st.chat_message("assistant"):
             stream = openai.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4.1",
                 messages=[{"role": "system", "content": self.comparison_prompt}] + [
                     {"role": msg["role"], "content": msg["content"]}
                     for msg in self.st.session_state.messages

@@ -86,7 +86,7 @@ class SubGraphAgent():
         """
 
         response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4.1",
             messages=[
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": graph_data}

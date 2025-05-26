@@ -315,7 +315,31 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                     # cheese = retrieved_graph_data[1][0]
                     # cheese['Source']['id'] = "abi"
                     # st.write(cheese) # for debugging -- checks if different source can be shown in graph 
-                    G = create_graph([item for sublist in retrieved_graph_data for item in sublist]) # use all chunks in the graph
+                    # G = create_graph([item for sublist in retrieved_graph_data for item in sublist]) # use all chunks in the graph
+                    
+                    # limit # of edges seen in UI
+                    all_edges = [item for sublist in retrieved_graph_data for item in sublist]
+
+                    MAX_NODES = 40
+                    # Collect edges that only involve up to MAX_NODES unique nodes
+                    node_ids = set()
+                    limited_edges = []
+                    for edge in all_edges:
+                        c1 = edge['Concept1']['id']
+                        c2 = edge['Concept2']['id']
+                        # Only add edge if we haven't exceeded MAX_NODES unique nodes
+                        if len(node_ids) < MAX_NODES or (c1 in node_ids and c2 in node_ids):
+                            limited_edges.append(edge)
+                            node_ids.add(c1)
+                            node_ids.add(c2)
+                        if len(node_ids) >= MAX_NODES:
+                            # Stop adding new nodes, but allow edges between already-included nodes
+                            continue
+
+                    G = create_graph(limited_edges)
+                    
+                    
+                    
                     graph_html = visualize_graph(G)
                     # unmounts (deleted) later?
                 st.write(f"**Here is the graph I retrieved.**")
