@@ -6,7 +6,7 @@ Extract knowledge graphs from papers and improve LLM reasoning with contextual u
 
 ## Models
 PDF Ingestion (LLMGraphTransformer): Gemini-2.0-flash-lite <br/>
-LLM streaming agents: GPT-3.5-turbo
+LLM streaming agents: GPT-4.1
 
 ## Usage
 Setup API Keys in .env_example and rename it to .env <br>
