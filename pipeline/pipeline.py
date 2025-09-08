@@ -176,7 +176,7 @@ def load_llm_transformer() -> tuple[LLMGraphTransformer, OpenAIEmbeddings, any]:
     llm_transformer = LLMGraphTransformer(llm=llm)
 
     # Embeddings for later search queries
-    embed = OpenAIEmbeddings(model="text-embedding-3-small")
+    embed = OpenAIEmbeddings(model="text-embedding-3-small", dimensions=768)
     vector_index = Neo4jVector.from_existing_graph(
         embedding=embed,
         search_type="vector",
