@@ -3,10 +3,16 @@ Takes in context from retrieved chunk & retrieved graph information and outputs
 a response
 """
 
-import openai
+from langchain_ollama import ChatOllama
+import os
 class ResponseAgent():
     def __init__(self, streamlit_obj):
         self.st = streamlit_obj
+        self.llm = ChatOllama(
+            model=os.getenv("LLM", "gemma2:9b"),
+            base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+            temperature=0.5,
+        )
         # System prompt
         self.prompt = f"""
         Answer the question based on the contexts given and be detailed.
@@ -79,22 +85,18 @@ class ResponseAgent():
         # display LLM's response with streaming
         response = ""
         with self.st.chat_message("assistant"):
-            stream = openai.chat.completions.create(
-                model="gpt-4.1",
-                messages=[{"role": "system", "content": self.prompt}] + [
-                    {"role": msg["role"], "content": msg["content"]}
-                    for msg in self.st.session_state.messages
-                ],
-                stream=True
-            )
-            response = self.st.write_stream(stream)
+            response = self.llm.invoke([
+                {"role": "system", "content": self.prompt},
+                {"role": "user", "content": full_query}
+            ])
+            self.st.write(f"{response.response_metadata['model']} \n {response.content}")
 
         # remove user's full query (w/ detailed info) and add just the question
         self.st.session_state.messages.pop()
         self.st.session_state.messages.append({"role": "user", "content": query})
 
         # add llm's response to chat history
-        self.st.session_state.messages.append({"role": "assistant", "content": response})
+        self.st.session_state.messages.append({"role": "assistant", "content": f"{response.response_metadata['model']} \n {response.content}"})
 
         # return response.choices[0].message.content
 

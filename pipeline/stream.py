@@ -386,6 +386,13 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                 for doc in results:
                     with st.spinner(text="Responding"):
                         # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
+                        print("*********8")
+                        print(doc.page_content)
+                        print("*********8")
+                        print(concept_text)
+                        print("*********8")
+                        print(user_prompt)
+                        print("***************")
                         final_answer = st.session_state.response_agent.run(doc.page_content, 
                                                                         concept_text, user_prompt)
                         # st.write(f"**{final_answer}**")

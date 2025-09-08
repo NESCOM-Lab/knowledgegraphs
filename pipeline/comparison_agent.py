@@ -1,9 +1,15 @@
 from typing import Dict, Any
-import openai
+from langchain_ollama import ChatOllama
+import os
 
 class ComparisonAgent():
     def __init__(self, streamlit_obj):
         self.st = streamlit_obj
+        self.llm = ChatOllama(
+            model=os.getenv("LLM", "gemma2:9b"),
+            base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+            temperature=0.5,
+        )
         self.prompt = """
         Answer the question using only the information from the provided source.
         Do not add or infer beyond what is explicitly stated.
@@ -46,17 +52,11 @@ class ComparisonAgent():
             # display LLM's response with streaming
             response = ""
             with self.st.chat_message("assistant"):
-                stream = openai.chat.completions.create(
-                    model="gpt-4.1",
-                    messages=[{"role": "system", "content": self.prompt}] + [
-                        {"role": msg["role"], "content": msg["content"]}
-                        for msg in self.st.session_state.messages
-                    ],
-                    stream=True
-                )
-                response = self.st.write_stream(stream)
-
-            # remove user's full query (w/ detailed info) and add just the question
+                response = self.llm.invoke([
+                    {"role": "system", "content": self.prompt},
+                    {"role": "user", "content": full_query}
+                ])
+                self.st.write(response)
             self.st.session_state.messages.pop()
             self.st.session_state.messages.append({"role": "user", "content": query})
 
@@ -81,21 +81,11 @@ class ComparisonAgent():
         # display LLM's response with streaming
         response = ""
         with self.st.chat_message("assistant"):
-            stream = openai.chat.completions.create(
-                model="gpt-4.1",
-                messages=[{"role": "system", "content": self.comparison_prompt}] + [
-                    {"role": msg["role"], "content": msg["content"]}
-                    for msg in self.st.session_state.messages
-                ],
-                stream=True
-            )
-            response = self.st.write_stream(stream)
-
-        # remove user's full query (w/ detailed info) and add just the question
-        # self.st.session_state.messages.pop()
-        # self.st.session_state.messages.append({"role": "user", "content": query})
-
-        # add llm's response to chat history
+            response = self.llm.invoke([
+                {"role": "system", "content": self.comparison_prompt},
+                {"role": "user", "content": full_query}
+            ])
+            self.st.write(response)
         self.st.session_state.messages.append({"role": "assistant", "content": response})
 
         return
