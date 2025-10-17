@@ -252,7 +252,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                     for doc in results:
                         st.write("Source: " + doc.metadata['source'])
                         st.write("Page #: " + str(doc.metadata['page_number']))
-                        st.write("Text Preview: " + doc.metadata['text_preview'])
+                        st.write("Text Preview: " + doc.metadata['text'])
                         st.write("Similarity score: "  + str(doc.metadata['score']))
                 
                 # Compare results
@@ -304,7 +304,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                     for doc in results:
                         st.write("Source: " + doc.metadata['source'])
                         st.write("Page #: " + str(doc.metadata['page_number']))
-                        st.write("Text Preview: " + doc.metadata['text_preview'])
+                        st.write("Text Preview: " + doc.metadata['text'])
                         st.write("Similarity score: "  + str(doc.metadata['score']))
                 
 
