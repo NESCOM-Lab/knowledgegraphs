@@ -9,7 +9,7 @@ class ResponseAgent():
     def __init__(self, streamlit_obj):
         self.st = streamlit_obj
         self.llm = ChatOllama(
-            model=os.getenv("LLM", "gemma2:9b"),
+            model=os.getenv("FLASH_LLM", "gemma2:9b"),
             base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
             temperature=0.5,
         )
