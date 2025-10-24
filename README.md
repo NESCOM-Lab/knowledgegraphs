@@ -4,9 +4,9 @@ Extract knowledge graphs from papers and improve LLM reasoning with contextual u
 ## Architecture
 ![Architecture](https://github.com/user-attachments/assets/6d6c1b53-704f-4579-9bda-f5dc5328ee64)
 
-## Models
-PDF Ingestion (LLMGraphTransformer): Gemini-2.0-flash-lite <br/>
-LLM streaming agents: GPT-4.1
+## Agents
+PDF Ingestion (LLMGraphTransformer) <br/>
+LLM response agents
 
 ## Usage
 Setup API Keys in .env_example and rename it to .env <br>
