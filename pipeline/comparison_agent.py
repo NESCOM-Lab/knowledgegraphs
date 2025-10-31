@@ -56,12 +56,12 @@ class ComparisonAgent():
                     {"role": "system", "content": self.prompt},
                     {"role": "user", "content": full_query}
                 ])
-                self.st.write(response)
+                self.st.write(f"{response.response_metadata['model']} \n {response.content}")
             self.st.session_state.messages.pop()
             self.st.session_state.messages.append({"role": "user", "content": query})
 
             # add llm's response to chat history
-            self.st.session_state.messages.append({"role": "assistant", "content": response})
+            self.st.session_state.messages.append({"role": "assistant", "content": f"{response.response_metadata['model']} \n {response.content}"})
 
             responses.append([source, chunk[0].page_content])
     
@@ -85,7 +85,7 @@ class ComparisonAgent():
                 {"role": "system", "content": self.comparison_prompt},
                 {"role": "user", "content": full_query}
             ])
-            self.st.write(response)
-        self.st.session_state.messages.append({"role": "assistant", "content": response})
+            self.st.write(f"{response.response_metadata['model']} \n {response.content}")
+        self.st.session_state.messages.append({"role": "assistant", "content": f"{response.response_metadata['model']} \n {response.content}"})
 
         return

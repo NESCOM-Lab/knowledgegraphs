@@ -29,24 +29,26 @@ async def main():
         clean_graph(graph)
         
     
-    pdf_dir = "PapersNeuro2" ############# Change to directory with files
+    script_dir = os.path.dirname(__file__)
+    pdf_dir = os.path.abspath(os.path.join(script_dir, "..", "12_papers"))
     pdf_files = [f for f in os.listdir(pdf_dir) if f.endswith(".pdf")]
 
     if not pdf_files:
-        print("No PDF files found in PapersNeuro/")
+        print(f"No PDF files found in {pdf_dir}/")
         exit()
 
     # ask user if they want to ingest
     while True:
         try:
-            ans = int(input("Would you like to ingest all documents in PapersNeuro/? Enter 1 for yes, 0 for no: "))
+            ans = int(input(f"Would you like to ingest all documents in {pdf_dir}? Enter 1 for yes, 0 for no: "))
             if ans in [0, 1]:
                 break
         except ValueError:
             continue
 
     if ans == 1:
-        sources_file = "all_sources.txt"
+        sources_file = os.path.abspath(os.path.join(script_dir, "..", "all_sources_new.txt"))
+
 
         for file_name in pdf_files:
             pdf_path = os.path.join(pdf_dir, file_name)
