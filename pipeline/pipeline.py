@@ -8,8 +8,10 @@ from langchain_neo4j import GraphCypherQAChain
 from langchain_core.prompts import PromptTemplate
 import getpass
 from langchain_experimental.graph_transformers import LLMGraphTransformer
-from langchain_ollama import ChatOllama
-from langchain_community.embeddings import OllamaEmbeddings
+from langchain_openai import ChatOpenAI
+# from langchain_ollama import ChatOllama
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
+from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Neo4jVector
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -141,17 +143,22 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
                     
                     # Add to Neo4j
                     print("adding to DB")
-                    graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
-                    print(f"Successfully added batch {i // batch_size + 1} to Neo4j DB")
-                    break  # exit if retry works
+                    try:
+                        graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
+                        print(f"Successfully added batch {i // batch_size + 1} to Neo4j DB")
+                    except Exception as err:
+                        print(f"Error ingesting this batch: {err}. Skipping this")
+                    break  # break 
                 
                 except Exception as e:
-                    if "rate_limit_exceeded" in str(e):
+                    if "ResourceExhausted" in str(e) or "rate_limit_exceeded" in str(e):
                         retries += 1
                         print(f"Rate limit hit. Retrying batch {i // batch_size + 1} in {retry_delay} seconds... (Attempt {retries}/{max_retries})")
                         await asyncio.sleep(retry_delay)
                     else:
-                        raise  # other error
+                        # Don't raise the error, just print it and break to skip the batch
+                        print(f"Critical error on batch {i // batch_size + 1}: {e}. Skipping.")
+                        break
                 
         end = time.time()
         print("Time taken: ", end - start)
@@ -160,15 +167,11 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
     await process_batches(docs, batch_size=25)
 
 # returns llm_tranformer, embedding model, and vector_retriever
-def load_llm_transformer() -> tuple:
+def load_llm_transformer() -> tuple[LLMGraphTransformer, OpenAIEmbeddings, any]:
     # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano") # ChatOpenAI version
     # llm = ChatOllama(model="llama3.2:latest", format='json') # Ollama
     # llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite")
-    llm = ChatOllama(
-        model=os.getenv("LLM", "gemma2:9b"),
-        base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
-        temperature=0.5,
-    )
+    llm = build_gemini_llm()
     # additional_instructions = """
     # When creating entities, add a "document_id" property to each node and set it to the document's unique ID.
     # For example, if the document ID is "doc123", each created node should include document_id: "doc123".
@@ -180,10 +183,10 @@ def load_llm_transformer() -> tuple:
     llm_transformer = LLMGraphTransformer(llm=llm)
 
     # Embeddings for later search queries
-    embed = OllamaEmbeddings(model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"))
+    embed = OpenAIEmbeddings(model="text-embedding-3-small", dimensions=768)
     vector_index = Neo4jVector.from_existing_graph(
         embedding=embed,
-        search_type="vector", # alternative: hybrid
+        search_type="vector",
         node_label="Document",
         text_node_properties=["text"],
         embedding_node_property="embedding"
@@ -213,6 +216,17 @@ def query_neo4j(user_prompt, k_value, query_agent, subgraph_agent, comparison=Fa
         
 
 
+def build_gemini_llm() -> GoogleGenerativeAI:
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise ValueError("Set the GOOGLE_API_KEY environment variable.")
+    return GoogleGenerativeAI(
+        model="gemini-2.0-flash-lite",
+        api_key=api_key,               
+        temperature=0.2,
+        max_output_tokens=1024,
+        # region="us-central1",
+    )
 
 async def main():
     # Initialize neo4j
