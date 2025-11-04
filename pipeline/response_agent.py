@@ -118,7 +118,7 @@ class ResponseAgent():
         - Synthesize information from ALL provided chunks to give a complete answer
         - Use the relationship context to understand connections between concepts
         - If information from different chunks complements each other, combine them coherently
-        - Cite information by referring to general sources (don't make up specific citations)
+        - Cite information by referring to general source names (don't make up specific citations)
         - If you're unsure or the context doesn't fully answer the question, say so
         - Do not make up information not in the context
         - Focus on accuracy over completeness
