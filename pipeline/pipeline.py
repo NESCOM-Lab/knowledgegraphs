@@ -52,8 +52,8 @@ def neo4j_setup() -> Neo4jGraph:
 def chunk_document(pdf_path) -> list:
     # pdf_path = "resume2.pdf"
     loader = PyPDFLoader(pdf_path)
-    pages = loader.load_and_split()
     pages = loader.load() # load pages
+    paper_name = os.path.basename(pdf_path)
 
     # chunk overlap is the shared context window between chunks--allows context to be maintained across chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, length_function=len)
@@ -66,7 +66,7 @@ def chunk_document(pdf_path) -> list:
         # Process the chunk
         metadata = {
             "chunk_id": i,
-            "source": pdf_path,
+            "source": paper_name,
             "page_number": chunk.metadata.get("page", None),
             "total_length": len(chunk.page_content),
             "text_preview": (
