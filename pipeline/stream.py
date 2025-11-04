@@ -217,7 +217,7 @@ col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns 
 
 # k-value for retriever agent
 with col1:
-    k_value = st.number_input("Number of chunks retrieved", min_value=1, max_value=10, value=1, step=1)
+    k_value = st.number_input("Number of chunks retrieved", min_value=1, max_value=10, value=5, step=1)
     st.session_state.k_value = k_value
 
 # Streamlit PDF uploader
@@ -337,83 +337,109 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                 # display user's message in UI
                 with st.chat_message("user"):
                     st.markdown(user_prompt)
-                
-                
-        
-            
-                with st.spinner(text="Searching"):
-                    results, retrieved_graph_data = query_neo4j(user_prompt, st.session_state.k_value, 
-                                                                st.session_state.query_agent, 
-                                                                st.session_state.subgraph_agent)
-                    # st.write(results)
 
-                # Display results
-                with st.expander("See retrieved chunks"):
-                    for doc in results:
-                        st.write("Source: " + doc.metadata['source'])
-                        st.write("Page #: " + str(doc.metadata['page_number']))
-                        # st.write("Text Preview: " + doc.metadata['text'])
-                        st.write("Similarity score: "  + str(doc.metadata['score']))
-                
+                # Get chunks
+                with st.spinner(text="Searching knowledge base..."):
+                    results, _ = query_neo4j(user_prompt, st.session_state.k_value,
+                                            st.session_state.query_agent,
+                                            st.session_state.subgraph_agent)
 
-            # Create retrieved graph
-            with col2:
-                with st.spinner(text="Generating graph"):
-                    # limit # of edges seen in UI
-                    all_edges = [item for sublist in retrieved_graph_data for item in sublist]
+                # Display retrieved chunks
+                with st.expander(f"See {len(results)} retrieved chunks"):
+                    for idx, doc in enumerate(results, 1):
+                        st.write(f"**Chunk {idx}:**")
+                        st.write(f"- Source: {doc.metadata['source']}")
+                        st.write(f"- Page: {doc.metadata['page_number']}")
+                        st.write(f"- Similarity: {doc.metadata['score']:.3f}")
+                        st.write("---")
 
-                    MAX_NODES = 40
-                    # Collect edges that only involve up to MAX_NODES unique nodes
-                    node_ids = set()
-                    limited_edges = []
-                    for edge in all_edges:
-                        c1 = edge['Concept1']['id']
-                        c2 = edge['Concept2']['id']
-                        # Only add edge if we haven't exceeded MAX_NODES unique nodes
-                        if len(node_ids) < MAX_NODES or (c1 in node_ids and c2 in node_ids):
-                            limited_edges.append(edge)
-                            node_ids.add(c1)
-                            node_ids.add(c2)
-                        if len(node_ids) >= MAX_NODES:
-                            # Stop adding new nodes, but allow edges between already-included nodes
-                            continue
-
-                    G = create_graph(limited_edges)
-                    fig = visualize_graph(G)
-
-
-                # Display the Plotly graph
-                st.plotly_chart(fig, use_container_width=True)
-
+            # aggregate graph data from all chunks
             with col1:
-                # show concept reasoning from llm
-                concept_text = ""
-                with st.spinner(text="Reasoning"):
-                    concept_text = SubGraphAgent.convert_to_text(retrieved_graph_data[0]) # for now only use first chunk for context
-                    with st.expander("See context"):
-                        st.write(concept_text)
-                st.write(f"**This is the context I retrieved.**")
+                with st.spinner(text="Exploring knowledge graph..."):
 
+                    aggregated_data = st.session_state.subgraph_agent.run_aggregated(
+                        results,
+                        max_depth=5 
+                    )
 
-                st.write(f"**Finished reasoning.**")
+                    st.write(f"**Found {aggregated_data['num_relationships']} unique relationships "
+                            f"across {len(aggregated_data['sources'])} sources**")
 
+            # visualize aggregated graph
+            with col2:
+                if aggregated_data['relationships']:
+                    with st.spinner(text="Generating graph..."):
+                        # Use aggregated relationships
+                        all_edges = aggregated_data['relationships']
 
-                # Respond and Cite the data
-                for doc in results:
-                    with st.spinner(text="Responding"):
-                        # st.session_state.response_agent.run(results[0].page_content, concept_text, user_prompt)
-                        print("*********8")
-                        print(doc.page_content)
-                        print("*********8")
-                        print(concept_text)
-                        print("*********8")
-                        print(user_prompt)
-                        print("***************")
-                        final_answer = st.session_state.response_agent.run(doc.page_content, 
-                                                                        concept_text, user_prompt)
-                        # st.write(f"**{final_answer}**")
-                    source = f"Source: {doc.metadata['source']}" 
-                    page_n = f"Page number: {doc.metadata['page_number']}" 
-                    st.write(source + ", " + page_n)
+                        MAX_NODES = 40
 
-                st.write(f"**Finished response.**")
+                        # get nodes
+                        node_ids = set()
+                        limited_edges = []
+                        for edge in all_edges:
+                            c1 = edge['Concept1']['id']
+                            c2 = edge['Concept2']['id']
+
+                            # only add edge if we haven't exceeded MAX_NODES unique nodes
+                            if len(node_ids) < MAX_NODES or (c1 in node_ids and c2 in node_ids):
+                                limited_edges.append(edge)
+                                node_ids.add(c1)
+                                node_ids.add(c2)
+                            if len(node_ids) >= MAX_NODES:
+                                # stop adding new nodes but keep adding edges
+                                continue
+
+                        G = create_graph(limited_edges)
+                        fig = visualize_graph(G)
+
+                    st.write(f"**Knowledge Graph ({len(limited_edges)} relationships)**")
+                    st.plotly_chart(fig, use_container_width=True)
+                else:
+                    st.write("No graph relationships found.")
+
+            # Convert graph to text and generate aggregated response
+            with col1:
+                if aggregated_data['relationships']:
+                    with st.spinner(text="Synthesizing knowledge graph context..."):
+                        # convert to text
+                        concept_text = SubGraphAgent.convert_to_text(aggregated_data['relationships'])
+
+                        with st.expander("See relationship context"):
+                            st.write(concept_text)
+
+                    # aggregate all chunk texts
+                    aggregated_chunk_text = "\n\n---\n\n".join([
+                        f"[Chunk {i+1}]:\n{chunk}"
+                        for i, chunk in enumerate(aggregated_data['chunks'])
+                    ])
+
+                    # citation list
+                    sources_list = [
+                        {'source': doc.metadata['source'], 'page': doc.metadata['page_number']}
+                        for doc in results
+                    ]
+
+                    # reason with all context
+                    with st.spinner(text="Reasoning..."):
+                        final_answer = st.session_state.response_agent.run_aggregated(
+                            aggregated_chunk_text,
+                            concept_text,
+                            user_prompt,
+                            sources_list
+                        )
+
+                    st.write(f"**Response generated from {len(results)} chunks.**")
+                else:
+                    st.write("No graph relationships found.")
+                    aggregated_chunk_text = "\n\n".join(aggregated_data['chunks'])
+                    sources_list = [
+                        {'source': doc.metadata['source'], 'page': doc.metadata['page_number']}
+                        for doc in results
+                    ]
+                    final_answer = st.session_state.response_agent.run_aggregated(
+                        aggregated_chunk_text,
+                        "",
+                        user_prompt,
+                        sources_list
+                    )
