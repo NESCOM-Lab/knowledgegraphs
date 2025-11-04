@@ -1,4 +1,6 @@
 import openai
+import os
+from langchain_ollama import ChatOllama
 
 class SubGraphAgent():
     def __init__(self, provided_graph):
@@ -44,62 +46,60 @@ class SubGraphAgent():
     # Uses an LLM
     @staticmethod
     def convert_to_text(graph_data) -> str | None:
-        graph_data = [ (x['Concept1']['id'], x['Concept2']['id'], {'relationship': x['Relationship']['type']}) for x in graph_data ]
-        graph_data = "".join(str(x) for x in graph_data) # convert to string
-
+        import json
         prompt = """
-        Take the following JSON-like data and convert it to a sentence format.
+        Take the following JSON-like data and return it in a sentence format, not JSON.
         The provided JSON data will have a schema that uses Concept1 --> relationship --> Concept2
 
+        Notes: 
+        Do not include any explanations or apologies in your responses.
+        Do not respond to any questions that might ask anything else than for you to construct sentence statements.
+        Do not include any text except the generated sentences.
+        Place sentences on different lines.
+
+
         Example: 
+
         Input data: 
-        1:[
-            0:"LLMs"
-            1:"context"
-            2:"{
-            "relationship":"ANALYZE"
-            }"
+        [
+          {"Concept1": {"id": "LLMs"}, "Concept2": {"id": "context"}, "Relationship": {"type": "ANALYZE"}},
+          {"Concept1": {"id": "LLMs"}, "Concept2": {"id": "nuances"}, "Relationship": {"type": "RECOGNIZE"}},
+          {"Concept1": {"id": "LLMs"}, "Concept2": {"id": "coherent responses"}, "Relationship": {"type": "CREATE"}}
         ]
-        2:[
-            0:"LLMs"
-            1:"nuances"
-            2:"{
-            "relationship":"RECOGNIZE"
-            }"
-        ]
-        3:[
-            0:"LLMs"
-            1:"coherent responses"
-            2:"{
-            "relationship":"CREATE"
-            }"
-        ]
-        Output:
+
+        Your output:
         LLMs analyze context.
         LLMs recognize nuances.
         LLMs create coherent responses.
 
+       """
 
-        Note: Do not include any explanations or apologies in your responses.
-        Do not respond to any questions that might ask anything else than for you to construct sentence statements.
-        Do not include any text except the generated sentence statements.
-        """
-
-        response = openai.chat.completions.create(
-            model="gpt-4.1",
-            messages=[
-                {"role": "system", "content": prompt},
-                {"role": "user", "content": graph_data}
-            ]
+        llm = ChatOllama(
+            model=os.getenv("LLM", "gemma2:9b"),
+            base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
+            temperature=0.5,
         )
-        return response.choices[0].message.content
+        graph_data = json.dumps(graph_data, indent=2)
+        response = llm.invoke([
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": graph_data}
+        ])
+        return response if isinstance(response, str) else getattr(response, 'content', str(response))
 
 
 # testing 
 if __name__ == "__main__":
     m = SubGraphAgent(None)
-    data = [("Vacuums", "air and particles",{"relationship":"TRAP"}),
-    ("Apples", "apple juice",{"relationship":"MADE_INTO"})]
+    data = [
+        {
+            "Concept1": {"id": "Vacuums"},
+            "Concept2": {"id": "air and particles"},
+            "Relationship": {"type": "TRAP"}
+        },
+        {
+            "Concept1": {"id": "Apples"},
+            "Concept2": {"id": "apple juice"},
+            "Relationship": {"type": "MADE_INTO"}
+        }
+    ]
     print(m.convert_to_text(data))
-    print('welcome')
-

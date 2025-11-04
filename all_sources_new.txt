@@ -1,0 +1,12 @@
+2023-Marder-A biophysical perspective on the resilience of neuronal excitability across timescales.pdf
+2020-Sonninen-Metabolic alterations in Parkinson’s disease astrocytes.pdf
+2022-Bancroft-Emerging Roles for Aberrant Astrocytic Calcium Signals in Parkinson’s Disease.pdf
+2025-Montine-Deep learning-based cell type profiles reveal signatures of Alzheimer’s disease resilience and resistance.pdf
+2025-Hide-Molecular hallmarks of excitatory and inhibitory neuronal resilience and resistance to Alzheimer’s disease.pdf
+2025-Voorsluijs-REVIEW-Calcium-mediated mitochondrial energy deficiency in PD and AD-Insights from Computational Modelling.pdf
+2025-Wang-CA3 Pyramidal Neuron Activation Promotes Cognitive Resilience to Inflammation‐Induced Cognitive Inflexibility.pdf
+2017-Vardjan-Astrocytic Pathological Calcium Homeostasis and Impaired Vesicle Trafficking in Neurodegeneration.pdf
+2025-TO READ-REVIEW-Molecular pathways and biomarkers associated with age-related cognitive decline.pdf
+2025-TO READ-From Mike Lulz-Multiscale proteomic modeling reveals protein network driving AD pathogenesis.pdf
+2025-REVIEW-Wang-Calcium signaling hypothesis- A non-negligible pathogenesis in Alzheimer’s disease.pdf
+2021-Mulica-REVIEW-Astrocyte-Neuron Metabolic Crosstalk in Neurodegeneration-A Mitochondrial Perspective.pdf

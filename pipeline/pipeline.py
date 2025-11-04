@@ -8,10 +8,10 @@ from langchain_neo4j import GraphCypherQAChain
 from langchain_core.prompts import PromptTemplate
 import getpass
 from langchain_experimental.graph_transformers import LLMGraphTransformer
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
 # from langchain_ollama import ChatOllama
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
-from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Neo4jVector
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -33,12 +33,14 @@ def neo4j_setup() -> Neo4jGraph:
     load_dotenv()
     neo_pass = os.getenv("NEO4J_PASSWORD")
     neo_db_id = os.getenv("DB_ID")
+    neo_uri = os.getenv("NEO4J_URI")
+    neo_user = os.getenv("NEO4J_USERNAME")
 
 
     print("Connecting to Neo4j")
     graph = Neo4jGraph(
-        url=f"neo4j+s://{neo_db_id}.databases.neo4j.io",
-        username="neo4j",
+        url=neo_uri,
+        username=neo_user,
         password=neo_pass,
         enhanced_schema=False, # this takes a while to load but is faster for queries
         refresh_schema=False # same effect?
@@ -50,8 +52,8 @@ def neo4j_setup() -> Neo4jGraph:
 def chunk_document(pdf_path) -> list:
     # pdf_path = "resume2.pdf"
     loader = PyPDFLoader(pdf_path)
-    pages = loader.load_and_split()
     pages = loader.load() # load pages
+    paper_name = os.path.basename(pdf_path)
 
     # chunk overlap is the shared context window between chunks--allows context to be maintained across chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, length_function=len)
@@ -64,7 +66,7 @@ def chunk_document(pdf_path) -> list:
         # Process the chunk
         metadata = {
             "chunk_id": i,
-            "source": pdf_path,
+            "source": paper_name,
             "page_number": chunk.metadata.get("page", None),
             "total_length": len(chunk.page_content),
             "text_preview": (
@@ -141,17 +143,22 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
                     
                     # Add to Neo4j
                     print("adding to DB")
-                    graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
-                    print(f"Successfully added batch {i // batch_size + 1} to Neo4j DB")
-                    break  # exit if retry works
+                    try:
+                        graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
+                        print(f"Successfully added batch {i // batch_size + 1} to Neo4j DB")
+                    except Exception as err:
+                        print(f"Error ingesting this batch: {err}. Skipping this")
+                    break  # break 
                 
                 except Exception as e:
-                    if "rate_limit_exceeded" in str(e):
+                    if "ResourceExhausted" in str(e) or "rate_limit_exceeded" in str(e):
                         retries += 1
                         print(f"Rate limit hit. Retrying batch {i // batch_size + 1} in {retry_delay} seconds... (Attempt {retries}/{max_retries})")
                         await asyncio.sleep(retry_delay)
                     else:
-                        raise  # other error
+                        # Don't raise the error, just print it and break to skip the batch
+                        print(f"Critical error on batch {i // batch_size + 1}: {e}. Skipping.")
+                        break
                 
         end = time.time()
         print("Time taken: ", end - start)
@@ -160,7 +167,7 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
     await process_batches(docs, batch_size=25)
 
 # returns llm_tranformer, embedding model, and vector_retriever
-def load_llm_transformer() -> tuple[LLMGraphTransformer, OpenAIEmbeddings, any]:
+def load_llm_transformer() -> tuple[LLMGraphTransformer, OllamaEmbeddings, any]:
     # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano") # ChatOpenAI version
     # llm = ChatOllama(model="llama3.2:latest", format='json') # Ollama
     # llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite")
@@ -176,7 +183,7 @@ def load_llm_transformer() -> tuple[LLMGraphTransformer, OpenAIEmbeddings, any]:
     llm_transformer = LLMGraphTransformer(llm=llm)
 
     # Embeddings for later search queries
-    embed = OpenAIEmbeddings(model="text-embedding-3-small", dimensions=768)
+    embed = OllamaEmbeddings(model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"))
     vector_index = Neo4jVector.from_existing_graph(
         embedding=embed,
         search_type="vector",

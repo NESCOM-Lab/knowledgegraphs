@@ -1,9 +1,11 @@
 from retriever_utils import add_similarity_scores
+from langchain_community.embeddings import OllamaEmbeddings
+import os
 
 class QueryAgent():
     def __init__(self, vect_retriever, embed_model):
         self.vector_retriever = vect_retriever
-        self.embed_model = embed_model
+        self.embed_model = OllamaEmbeddings(model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"))
 
 
     def run(self, query, k_value) -> list:
