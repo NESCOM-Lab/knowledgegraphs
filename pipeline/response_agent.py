@@ -71,14 +71,6 @@ class ResponseAgent():
         Question: {query}
         """
 
-        # response = openai.chat.completions.create(
-        #     model="gpt-3.5-turbo",
-        #     messages=[
-        #         {"role": "system", "content": self.prompt},
-        #         {"role": "user", "content": full_query}
-        #     ]
-        # ) 
-        
         # add user's question
         self.st.session_state.messages.append({"role": "user", "content": full_query})
 
@@ -98,7 +90,78 @@ class ResponseAgent():
         # add llm's response to chat history
         self.st.session_state.messages.append({"role": "assistant", "content": f"{response.response_metadata['model']} \n {response.content}"})
 
-        # return response.choices[0].message.content
+        return response.content
+
+    def run_aggregated(self, aggregated_chunks, graph_context_information, query, sources_list) -> str | None:
+        """
+        Aggregates all chunks into one comprehensive answer.
+
+        args:
+            aggregated_chunks: Combined text from all retrieved chunks
+            graph_context_information: Aggregated relationship context
+            query: User's question
+            sources_list: List of sources to cite
+
+        output:
+            The generated response content
+        """
+
+        # Prompt
+        aggregated_prompt = f"""
+        Answer the question based on the contexts given. Be detailed and comprehensive.
+
+        You will receive:
+        1. Detailed Information from multiple document chunks
+        2. Relationship Context showing how concepts are connected in the knowledge graph
+
+        Instructions:
+        - Synthesize information from ALL provided chunks to give a complete answer
+        - Use the relationship context to understand connections between concepts
+        - If information from different chunks complements each other, combine them coherently
+        - Cite information by referring to general source names (don't make up specific citations)
+        - If you're unsure or the context doesn't fully answer the question, say so
+        - Do not make up information not in the context
+        - Focus on accuracy over completeness
+
+        The goal is to provide ONE comprehensive, well-structured answer that leverages all available context.
+        """
+
+        # Build full query with all aggregated information
+        full_query = f"""
+        Detailed Information (from {len(sources_list)} sources):
+        {aggregated_chunks}
+
+        Relationship Context:
+        {graph_context_information}
+
+        Question: {query}
+        """
+
+        # add user's question to history
+        self.st.session_state.messages.append({"role": "user", "content": query})
+
+        # display LLM's response
+        with self.st.chat_message("assistant"):
+            response = self.llm.invoke([
+                {"role": "system", "content": aggregated_prompt},
+                {"role": "user", "content": full_query}
+            ])
+            self.st.write(f"**Model:** {response.response_metadata.get('model', '?')}")
+            self.st.write(response.content)
+
+            # show sources
+            if sources_list:
+                self.st.write("\n**Sources:**")
+                for source_info in sources_list:
+                    self.st.write(f"- {source_info['source']} (Page {source_info['page']})")
+
+        # add llm's response to chat history
+        self.st.session_state.messages.append({
+            "role": "assistant",
+            "content": f"{response.response_metadata.get('model', '?')}\n{response.content}"
+        })
+
+        return response.content
 
 
         
