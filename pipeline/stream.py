@@ -4,9 +4,8 @@ import streamlit as st
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-from pyvis.network import Network
 import networkx as nx
-import tempfile
+import plotly.graph_objects as go
 
 from pipeline import *
 from response_agent import *
@@ -111,40 +110,107 @@ def create_graph(edges):
     return G
 
 def visualize_graph(G):
-    net = Network(height="500px", width="100%", notebook=False)
-    net.from_nx(G, default_node_size=9) # pass in graph
+    """Creates Plotly graph visualization with improved styling"""
 
-    # add relationship names to edges
-    for edge in net.edges:
-        u, v = edge["from"], edge["to"]
-        edge_label = G[u][v].get("relationship", "") # get rship name
-        edge["title"] = edge_label # hover text
-        edge["label"] = edge_label # display on edge
-        edge["color"] = "black"  # edge color
-        # edge["font"] = {"size": 14, "color": "white", "face": "Arial"}  #  styling for edge labels
-    
-    # add source names to nodes
-    for node in net.nodes:
-        node_id = node["id"]
-        source = G.nodes[node_id].get("source", "unknown") # get source name
-        node["title"] = str(node_id) # hover text
-    
-    # save graph as temp html file
-    from pathlib import Path
-    tmp_dir = Path(tempfile.gettempdir())
-    filename = "temp_graph.html"
-    tmp_path = tmp_dir.joinpath(filename)
+    # Use spring layout for better node positioning
+    pos = nx.spring_layout(G, k=0.5, iterations=50, seed=42)
 
-    # WORKAROUND: change into the temp dir
-    old_cwd = os.getcwd()
-    os.chdir(tmp_dir)
+    # Create edge traces
+    edge_traces = []
+    edge_label_traces = []
 
-    try:
-        net.write_html(filename)  # just give the name, not full path
-    finally:
-        os.chdir(old_cwd)
+    for edge in G.edges():
+        x0, y0 = pos[edge[0]]
+        x1, y1 = pos[edge[1]]
 
-    return str(tmp_path)
+        # Get relationship type for this edge
+        relationship = G[edge[0]][edge[1]].get('relationship', '')
+
+        # Edge line
+        edge_trace = go.Scatter(
+            x=[x0, x1, None],
+            y=[y0, y1, None],
+            mode='lines',
+            line=dict(width=2, color='#888'),
+            hoverinfo='none',
+            showlegend=False
+        )
+        edge_traces.append(edge_trace)
+
+        # Edge label (relationship) at midpoint
+        edge_label = go.Scatter(
+            x=[(x0 + x1) / 2],
+            y=[(y0 + y1) / 2],
+            mode='text',
+            text=[relationship],
+            textposition='middle center',
+            textfont=dict(size=10, color='#666'),
+            hoverinfo='text',
+            hovertext=f"Relationship: {relationship}",
+            showlegend=False
+        )
+        edge_label_traces.append(edge_label)
+
+    # Create node trace
+    node_x = []
+    node_y = []
+    node_text = []
+    node_hover = []
+    node_colors = []
+
+    # Group nodes by source for color coding
+    sources = set(G.nodes[node].get('source', 'unknown') for node in G.nodes())
+    source_colors = {}
+    colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2']
+    for idx, source in enumerate(sources):
+        source_colors[source] = colors[idx % len(colors)]
+
+    for node in G.nodes():
+        x, y = pos[node]
+        node_x.append(x)
+        node_y.append(y)
+
+        source = G.nodes[node].get('source', 'unknown')
+        node_text.append(str(node))
+        node_hover.append(f"<b>{node}</b><br>Source: {source}")
+        node_colors.append(source_colors[source])
+
+    node_trace = go.Scatter(
+        x=node_x,
+        y=node_y,
+        mode='markers+text',
+        text=node_text,
+        textposition='top center',
+        textfont=dict(size=10, color='#000'),
+        hovertext=node_hover,
+        hoverinfo='text',
+        marker=dict(
+            size=20,
+            color=node_colors,
+            line=dict(width=2, color='#fff')
+        ),
+        showlegend=False
+    )
+
+    # Create figure
+    fig = go.Figure(data=edge_traces + edge_label_traces + [node_trace])
+
+    # Update layout for better appearance
+    fig.update_layout(
+        title=dict(
+            text='Knowledge Graph Visualization',
+            font=dict(size=20, color='#333')
+        ),
+        showlegend=False,
+        hovermode='closest',
+        margin=dict(b=20, l=5, r=5, t=40),
+        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        plot_bgcolor='#f8f9fa',
+        height=600
+    )
+
+    return fig
 
 # Main loop
 col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns together
@@ -200,7 +266,7 @@ with col1:
     if not compare_toggle:
         st.session_state.compare_mode = False
 
-if st.session_state.loaded_neo4j is False:  
+if st.session_state.loaded_neo4j is False:
     with st.spinner(text="Running load_neo4j()"):
         st.session_state.graph = load_neo4j()
     with st.spinner(text="Loading pipeline"):
@@ -212,24 +278,6 @@ if st.session_state.loaded_neo4j is False:
         # loads agents into st.query_agent & st.subgraph_agent
         load_agents(st.session_state.graph, vector_retriever) # prob need to switch to session state
         st.session_state.loaded_agents = True
-
-# add zoom limits to the HTML networkx graph 
-def add_zoom_limits(html_content):
-    injection_js = """
-    <script type="text/javascript">
-    network.on("zoom", function (params) {
-      const MIN_SCALE = 0.2;
-      const MAX_SCALE = 2;
-      const currentScale = network.getScale();
-      if (currentScale < MIN_SCALE) {
-        network.moveTo({ scale: MIN_SCALE });
-      } else if (currentScale > MAX_SCALE) {
-        network.moveTo({ scale: MAX_SCALE });
-      }
-    });
-    </script>
-    """
-    return html_content.replace("</body>", injection_js + "\n</body>")
 
 if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
     if user_prompt := st.chat_input("Query your documents here"):
@@ -310,13 +358,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
 
             # Create retrieved graph
             with col2:
-                graph_html = None
                 with st.spinner(text="Generating graph"):
-                    # cheese = retrieved_graph_data[1][0]
-                    # cheese['Source']['id'] = "abi"
-                    # st.write(cheese) # for debugging -- checks if different source can be shown in graph 
-                    # G = create_graph([item for sublist in retrieved_graph_data for item in sublist]) # use all chunks in the graph
-                    
                     # limit # of edges seen in UI
                     all_edges = [item for sublist in retrieved_graph_data for item in sublist]
 
@@ -337,37 +379,11 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                             continue
 
                     G = create_graph(limited_edges)
-                    
-                    
-                    
-                    graph_html = visualize_graph(G)
-                    # unmounts (deleted) later?
-                st.write(f"**Here is the graph I retrieved.**")
-                
-                # show graph in streamlit
-                with open(graph_html, "r", encoding="utf-8") as f:
-                    graph_html_content = f.read()
-                
-                graph_html_content = add_zoom_limits(graph_html_content)
+                    fig = visualize_graph(G)
 
 
-                # style the pyvis html
-                # graph_html_content = graph_html_content.replace(
-                #     "<body>", 
-                #     "<body style='background-color: black; color: white; border: none;'>"
-                # )
-                # custom_style = """
-                # <style>
-                #     #mynetwork {
-                #         border: none !important;
-                #     }
-                # </style>
-                # """
-                # graph_html_content = graph_html_content.replace("</head>", custom_style + "</head>")
-                # display the styled HTML in Streamlit
-                st.components.v1.html(graph_html_content, height=550)
-
-                os.remove(graph_html)
+                # Display the Plotly graph
+                st.plotly_chart(fig, use_container_width=True)
 
             with col1:
                 # show concept reasoning from llm
