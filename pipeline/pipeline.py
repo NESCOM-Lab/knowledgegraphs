@@ -8,10 +8,10 @@ from langchain_neo4j import GraphCypherQAChain
 from langchain_core.prompts import PromptTemplate
 import getpass
 from langchain_experimental.graph_transformers import LLMGraphTransformer
+from langchain_community.embeddings import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
 # from langchain_ollama import ChatOllama
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
-from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Neo4jVector
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -167,7 +167,7 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
     await process_batches(docs, batch_size=25)
 
 # returns llm_tranformer, embedding model, and vector_retriever
-def load_llm_transformer() -> tuple[LLMGraphTransformer, OpenAIEmbeddings, any]:
+def load_llm_transformer() -> tuple[LLMGraphTransformer, OllamaEmbeddings, any]:
     # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano") # ChatOpenAI version
     # llm = ChatOllama(model="llama3.2:latest", format='json') # Ollama
     # llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite")
@@ -183,7 +183,7 @@ def load_llm_transformer() -> tuple[LLMGraphTransformer, OpenAIEmbeddings, any]:
     llm_transformer = LLMGraphTransformer(llm=llm)
 
     # Embeddings for later search queries
-    embed = OpenAIEmbeddings(model="text-embedding-3-small", dimensions=768)
+    embed = OllamaEmbeddings(model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"))
     vector_index = Neo4jVector.from_existing_graph(
         embedding=embed,
         search_type="vector",
