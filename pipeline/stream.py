@@ -381,7 +381,6 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                     G = create_graph(limited_edges)
                     fig = visualize_graph(G)
 
-                st.write(f"**Here is the graph I retrieved.**")
 
                 # Display the Plotly graph
                 st.plotly_chart(fig, use_container_width=True)
