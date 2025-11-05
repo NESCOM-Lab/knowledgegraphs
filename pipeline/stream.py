@@ -59,6 +59,9 @@ if "k_value" not in st.session_state:
 if "compare_mode" not in st.session_state:
     st.session_state.compare_mode = False
 
+if "current_graph_fig" not in st.session_state:
+    st.session_state.current_graph_fig = None
+
 # chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -393,10 +396,14 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                         G = create_graph(limited_edges)
                         fig = visualize_graph(G)
 
+                        # store figure in session state for download after agent response
+                        st.session_state.current_graph_fig = fig
+
                     st.write(f"**Knowledge Graph ({len(limited_edges)} relationships)**")
                     st.plotly_chart(fig, use_container_width=True)
                 else:
                     st.write("No graph relationships found.")
+                    st.session_state.current_graph_fig = None
 
             # Convert graph to text and generate aggregated response
             with col1:
@@ -443,3 +450,18 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                         user_prompt,
                         sources_list
                     )
+
+            # Download SVG button after response
+            with col2:
+                if st.session_state.current_graph_fig is not None:
+                    try:
+                        svg_bytes = st.session_state.current_graph_fig.to_image(format="svg")
+                        st.download_button(
+                            label="Download graph as SVG",
+                            data=svg_bytes,
+                            file_name="knowledge_graph.svg",
+                            mime="image/svg+xml",
+                            key=f"download_svg_{len(st.session_state.messages)}"  # use a unique key for each query
+                        )
+                    except Exception as e:
+                        st.warning(f"SVG export requires kaleido: pip install kaleido")
