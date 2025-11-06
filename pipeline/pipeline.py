@@ -1,5 +1,3 @@
-
-
 # Neo4j setup
 from langchain_neo4j import Neo4jGraph
 from dotenv import load_dotenv
@@ -83,25 +81,6 @@ def chunk_document(pdf_path) -> list:
     print(str(len(processed_chunks)) + " chunks processed")
     return processed_chunks
 
-# async def ingest_document(processed_chunks, embed, llm_transformer, graph):
-#     # Convert processed chunks to Langchain Document for Neo4j db
-#     docs = [
-#         Document(
-#             page_content=chunk['text'],
-#             metadata=chunk['metadata']
-#         )
-#         for chunk in processed_chunks
-#     ]
-
-#     for doc in docs:
-#         # generate embeddings for each doc
-#         embedding = embed.embed_query(doc.page_content)
-#         doc.metadata["embedding"] = embedding
-
-#         graph_docs = await llm_transformer.aconvert_to_graph_documents([doc])
-#         print(f"Processed chunk {doc.metadata['chunk_id']}:")
-#         graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
-#         print(f"Successfully added chunk {doc.metadata['chunk_id']} to Neo4j")
 
 async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> None:
     # Convert processed chunks to Langchain Document for Neo4j db
@@ -115,12 +94,6 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
 
     # Function to process documents in batches
     async def process_batches(docs, batch_size=2, retry_delay=20, max_retries=5):
-        # print("aconverting to graph documents")
-        # graph_docs = await llm_transformer.aconvert_to_graph_documents(docs)
-
-        # print("adding graph documents to DB")
-        # graph.add_graph_documents(graph_docs, include_source=True, baseEntityLabel=True)
-        # return
         import time
         start = time.time()
         for i in range(0, len(docs), batch_size):
@@ -168,18 +141,8 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
 
 # returns llm_tranformer, embedding model, and vector_retriever
 def load_llm_transformer() -> tuple[LLMGraphTransformer, OllamaEmbeddings, any]:
-    # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano") # ChatOpenAI version
-    # llm = ChatOllama(model="llama3.2:latest", format='json') # Ollama
-    # llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite")
+
     llm = build_gemini_llm()
-    # additional_instructions = """
-    # When creating entities, add a "document_id" property to each node and set it to the document's unique ID.
-    # For example, if the document ID is "doc123", each created node should include document_id: "doc123".
-    # Query example: 
-    # CREATE (n:NodeLabel) 
-    # SET n.document_id = "doc123" 
-    # RETURN n
-    # """
     llm_transformer = LLMGraphTransformer(llm=llm)
 
     # Embeddings for later search queries
@@ -236,11 +199,6 @@ async def main():
 
     # Initialize openai
     print("Initializing Gemini")
-    # api_key = os.getenv("OPENAI_API_KEY")
-    # api_key = os.getenv("GOOGLE_API_KEY")
-    # if "GOOGLE_API_KEY" not in os.environ:
-    #     os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter your Google AI API key: ")
-    # llm = ChatOpenAI(temperature=0, model_name="gpt-4.1-nano")
     llm_transformer, embed, vector_retriever = load_llm_transformer()
     
     
@@ -266,21 +224,6 @@ async def main():
             await ingest_document(processed_chunks, embed, llm_transformer, graph)
         except Exception as e:
             print(f"Error occured while ingesting document: {e}")
-
-
-    # # Querying the system
-    # query_agent = QueryAgent(vector_retriever)
-    # subgraph_agent = SubGraphAgent(graph)
-
-    # while True:
-    #     print("Enter a query: ")
-    #     user_query = input()
-    #     print("Running query agent")
-    #     retrieved_chunks = query_agent.run(user_query)
-    #     print("----")
-    #     print("Running subgraph agent")
-    #     subgraph_agent.run(retrieved_chunks)
-    #     print("----")
 
 
 
