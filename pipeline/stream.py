@@ -220,7 +220,7 @@ col1, col2 = st.columns(spec=2, vertical_alignment="bottom") # aligns 2 columns 
 
 # k-value for retriever agent
 with col1:
-    k_value = st.number_input("Number of chunks retrieved", min_value=1, max_value=10, value=5, step=1)
+    k_value = st.number_input("Number of chunks retrieved", min_value=1, max_value=10, value=10, step=1)
     st.session_state.k_value = k_value
 
 # Streamlit PDF uploader
@@ -456,6 +456,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                 if st.session_state.current_graph_fig is not None:
                     try:
                         svg_bytes = st.session_state.current_graph_fig.to_image(format="svg")
+                        st.write("Warning: reloads window with download")
                         st.download_button(
                             label="Download graph as SVG",
                             data=svg_bytes,
