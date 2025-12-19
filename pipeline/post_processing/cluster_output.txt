@@ -1,0 +1,3729 @@
+======================================================================
+Preview Duplicate Clusters
+======================================================================
+Similarity threshold: 0.99
+Min cluster size: 2
+Extracting nodes from Neo4j...
+Extracted 14707 nodes
+Embedding node names...
+Embedded 14707 nodes
+Clustering...
+
+======================================================================
+DUPLICATE CLUSTERS (showing 459 clusters)
+======================================================================
+
+Total duplicate nodes that would be merged: 494
+Canonical nodes that would remain: 459
+
+──────────────────────────────────────────────────────────────────────
+Cluster 1 (5 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: P - values [__Entity__]
+      • P -values [__Entity__]
+      • p -values [__Entity__]
+      • P-values [__Entity__]
+      • p-values [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 2 (4 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Parkinson ’s disease [__Entity__]
+      • Parkinson ’s Disease [__Entity__]
+      • Parkinson’s Disease [__Entity__]
+      • Parkinson’s disease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 3 (4 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Alzheimer ’s disease [__Entity__]
+      • Alzheimer ’s Disease [__Entity__]
+      • Alzheimer’s disease [__Entity__]
+      • Alzheimer’s Disease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 4 (4 nodes)
+  Mean similarity: 0.999
+  Min similarity:  0.998
+  Nodes:
+    → CANONICAL: alpha‑synuclein [__Entity__]
+      • Alpha-synuclein [__Entity__]
+      • alpha-Synuclein [__Entity__]
+      • alpha-synuclein [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 5 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: brain -derived neurotrophic factor [__Entity__]
+      • Brain -derived neurotrophic factor [__Entity__]
+      • brain-derived neurotrophic factor [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 6 (3 nodes)
+  Mean similarity: 0.995
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Vascular and epithelial cells [__Entity__]
+      • vascular and epithelial cells [__Entity__]
+      • vascular/epithelial cells [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 7 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mathematical modelling [__Entity__]
+      • Mathematical Modelling [__Entity__]
+      • Mathematical modelling [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 8 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: IL-  1β [__Entity__]
+      • IL- 1β [__Entity__]
+      • IL-1β [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 9 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: c-  Fos [__Entity__]
+      • c- Fos [__Entity__]
+      • c-fos [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 10 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cognitive Resilience [__Entity__]
+      • cognitive resilience [__Entity__]
+      • Cognitive resilience [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 11 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: locus coeruleus [__Entity__]
+      • Locus coeruleus [__Entity__]
+      • Locus Coeruleus [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 12 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: vesicle trafﬁc [__Entity__]
+      • Vesicle Trafﬁc [__Entity__]
+      • Vesicle trafﬁc [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 13 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Aerobic glycolysis [__Entity__]
+      • aerobic glycolysis [__Entity__]
+      • Aerobic Glycolysis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 14 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: [Ca2+ ]I [__Entity__]
+      • [Ca2+]i [__Entity__]
+      • [Ca2+]I [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 15 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: PLoS ONE [__Entity__]
+      • PLoS One [__Entity__]
+      • PloS One [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 16 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cerebrospinal fluid (CSF) [__Entity__]
+      • cerebrospinal fluid(CSF) [__Entity__]
+      • Cerebrospinal fluid(CSF) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 17 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Human Brain tissue [__Entity__]
+      • human brain tissue [__Entity__]
+      • Human brain tissue [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 18 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neurofilament light chain (NfL) [__Entity__]
+      • Neurofilament light chain (NfL) [__Entity__]
+      • Neurofilament light chain (NFL) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 19 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: p-tau [__Entity__]
+      • P-tau [__Entity__]
+      • p-Tau [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 20 (3 nodes)
+  Mean similarity: 0.994
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: pro -inflammatory cytokines [__Entity__]
+      • pro-inflammatory cytokines [__Entity__]
+      • pro-inflammatory cytokine [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 21 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: brain [__Entity__]
+      • BRAIN [__Entity__]
+      • Brain [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 22 (3 nodes)
+  Mean similarity: 0.995
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: J. Neurosci. [__Entity__]
+      • J. Neurosci [__Entity__]
+      • J.Neurosci [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 23 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: microglia [__Entity__]
+      • Microglia [__Entity__]
+      • MICROGLIA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 24 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: calcium  signaling [__Entity__]
+      • calcium signaling [__Entity__]
+      • Calcium signaling [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 25 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: The Role of Astrocyte Dysfunction in Parkinson ’s Disease Pathogenesis [__Entity__]
+      • The role of astrocyte dysfunction in Parkinson’s disease pathogenesis [__Entity__]
+      • The Role of Astrocyte Dysfunction in Parkinson’s Disease Pathogenesis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 26 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: astrocytic Ca2+ signals [__Entity__]
+      • astrocytic Ca2+signals [__Entity__]
+      • Astrocytic Ca2+signals [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 27 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neurodegenerative diseases [__Entity__]
+      • Neurodegenerative diseases [__Entity__]
+      • NEURODEGENERATIVE DISEASES [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 28 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: ApoE4 [__Entity__]
+      • APOE4 [__Entity__]
+      • Apoe4 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 29 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: astrocytic mitochondria [__Entity__]
+      • Astrocytic Mitochondria [__Entity__]
+      • Astrocytic mitochondria [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 30 (3 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Neurological Disorders [__Entity__]
+      • Neurological disorders [__Entity__]
+      • neurological disorders [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 31 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Genetic risk [__Entity__]
+      • genetic risk [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 32 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Rbfox1 [__Entity__]
+      • RBFOX1 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 33 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: parvalbumin [__Entity__]
+      • Parvalbumin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 34 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Alzheimer’s Dementia [__Entity__]
+      • Alzheimer’s dementia [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 35 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Neuronal hyperexcitability [__Entity__]
+      • neuronal hyperexcitability [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 36 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cell type [__Entity__]
+      • cell type [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 37 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: dopaminergic neurons [__Entity__]
+      • DOPAMINERGIC NEURONS [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 38 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuronal activity [__Entity__]
+      • Neuronal Activity [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 39 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: single -cell analysis [__Entity__]
+      • single-cell analysis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 40 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Polygenic Risk Score [__Entity__]
+      • Polygenic risk score [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 41 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: down -regulation [__Entity__]
+      • Down -regulation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 42 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Pathway activity profiles [__Entity__]
+      • pathway activity profiles [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 43 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Changes [__Entity__]
+      • changes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 44 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Brain region [__Entity__]
+      • brain region [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 45 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuronal excitability [__Entity__]
+      • Neuronal excitability [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 46 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: clusters [__Entity__]
+      • Clusters [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 47 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Pathway Co -expression Network [__Entity__]
+      • Pathway Co-expression Network [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 48 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: box plots [__Entity__]
+      • Box plots [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 49 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Oligodendrocytes [__Entity__]
+      • oligodendrocytes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 50 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ast [__Entity__]
+      • AST [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 51 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Inhibitory neurons [__Entity__]
+      • inhibitory neurons [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 52 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Inh [__Entity__]
+      • INH [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 53 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Exc [__Entity__]
+      • EXC [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 54 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: gene ontology enrichment analysis [__Entity__]
+      • Gene ontology enrichment analysis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 55 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cell proportion changes [__Entity__]
+      • cell proportion changes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 56 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Correlation [__Entity__]
+      • correlation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 57 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Non -canonical Wnt [__Entity__]
+      • Non-canonical Wnt [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 58 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Periostin [__Entity__]
+      • periostin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 59 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: BMPR1B/ACVR2A [__Entity__]
+      • BMPR1A/ACVR2B [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 60 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Signaling pathways [__Entity__]
+      • signaling pathways [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 61 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Differential gene expression analysis [__Entity__]
+      • Differential gene expression analyses [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 62 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: differential expression [__Entity__]
+      • Differential expression [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 63 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cognitive loss [__Entity__]
+      • cognitive loss [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 64 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: up -regulated DEGs [__Entity__]
+      • up-regulated DEGs [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 65 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: group [__Entity__]
+      • Group [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 66 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: log2FC [__Entity__]
+      • Log2FC [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 67 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cell subtypes [__Entity__]
+      • cell subtypes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 68 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Changes in cell composition [__Entity__]
+      • changes in cell composition [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 69 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: rare variant -associated genes [__Entity__]
+      • rare variant associated genes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 70 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Alzheimer ’s [__Entity__]
+      • Alzheimer’s [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 71 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Parkinson ’s [__Entity__]
+      • Parkinson’s [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 72 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ signalling [__Entity__]
+      • Ca2+signalling [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 73 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Neurodegeneration [__Entity__]
+      • neurodegeneration [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 74 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Metabolic reprogramming [__Entity__]
+      • metabolic reprogramming [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 75 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mitochondria [__Entity__]
+      • mitochondria [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 76 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neurotoxicity [__Entity__]
+      • Neurotoxicity [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 77 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Aging [__Entity__]
+      • aging [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 78 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Action potentials [__Entity__]
+      • action potentials [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 79 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: vesicles [__Entity__]
+      • Vesicles [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 80 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ influx [__Entity__]
+      • Ca2+influx [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 81 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: sensors [__Entity__]
+      • Sensors [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 82 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ overload [__Entity__]
+      • Ca2+overload [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 83 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mPTP [__Entity__]
+      • MPTP [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 84 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ levels [__Entity__]
+      • Ca2+levels [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 85 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: metabolism [__Entity__]
+      • METABOLISM [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 86 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: low [__Entity__]
+      • Low [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 87 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: tricarboxylic acid (TCA) cycle [__Entity__]
+      • tricarboxylic acid(TCA) cycle [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 88 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: quality control [__Entity__]
+      • Quality control [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 89 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: dopamine metabolism [__Entity__]
+      • Dopamine metabolism [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 90 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mitochondrial metabolism [__Entity__]
+      • Mitochondrial Metabolism [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 91 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: familial AD [__Entity__]
+      • Familial AD [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 92 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: reaction-diffusion model [__Entity__]
+      • Reaction-diffusion model [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 93 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Whole-cell model [__Entity__]
+      • whole-cell model [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 94 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: adaptation [__Entity__]
+      • Adaptation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 95 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: timescale [__Entity__]
+      • Timescale [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 96 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Glycolysis [__Entity__]
+      • glycolysis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 97 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Molecules [__Entity__]
+      • molecules [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 98 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: Brain energy rescue: an emerging therapeutic concept for neurodegenerative disorders ofageing [__Entity__]
+      • Brain energy rescue: an emerging therapeutic concept for neurodegenerative disorders of [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 99 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Antioxidants [__Entity__]
+      • antioxidants [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 100 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: calcium [__Entity__]
+      • Calcium [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 101 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: amyloid beta [__Entity__]
+      • Amyloid beta [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 102 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: systemic inflammation [__Entity__]
+      • Systemic inflammation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 103 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cognitive inflexibility [__Entity__]
+      • Cognitive Inflexibility [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 104 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: AAV2/9- CaMKII- cre- EYFP- WPRE- pA [__Entity__]
+      • AAV2/9- CaMKII- Cre- EYFP- WPRE- pA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 105 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Latency [__Entity__]
+      • latency [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 106 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: brain sections [__Entity__]
+      • Brain sections [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 107 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: two- way ANOVA [__Entity__]
+      • Two- way ANOVA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 108 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: average speed [__Entity__]
+      • Average speed [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 109 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Vehicle [__Entity__]
+      • vehicle [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 110 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: speed [__Entity__]
+      • Speed [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 111 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: control mice [__Entity__]
+      • Control mice [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 112 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: dCA3 Neuron [__Entity__]
+      • dCA3 neuron [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 113 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Analysis [__Entity__]
+      • analysis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 114 (2 nodes)
+  Mean similarity: 0.994
+  Min similarity:  0.994
+  Nodes:
+    → CANONICAL: IL- 1β + mCherry + CNO groups [__Entity__]
+      • IL- 1β + mCherry + CNO group [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 115 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: IL- 1β + hM3Dq + CNO groups [__Entity__]
+      • IL- 1β + hM3Dq + CNO group [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 116 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Time [__Entity__]
+      • time [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 117 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: anxiety- like behavior [__Entity__]
+      • anxiety-like behavior [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 118 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: hippocampal subregions [__Entity__]
+      • Hippocampal subregions [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 119 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: adult-  born neurons [__Entity__]
+      • adult- born neurons [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 120 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: hippocampus-  dependent mnemonic functions [__Entity__]
+      • hippocampus- dependent mnemonic functions [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 121 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: conceptualization [__Entity__]
+      • Conceptualization [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 122 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neurones [__Entity__]
+      • Neurones [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 123 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: health [__Entity__]
+      • Health [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 124 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cortex [__Entity__]
+      • Cortex [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 125 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuroplasticity [__Entity__]
+      • Neuroplasticity [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 126 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: humans [__Entity__]
+      • Humans [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 127 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Developing brain [__Entity__]
+      • developing brain [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 128 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: synapse [__Entity__]
+      • Synapse [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 129 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: exercise [__Entity__]
+      • Exercise [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 130 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Morphological changes [__Entity__]
+      • morphological changes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 131 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: β-amyloid peptide [__Entity__]
+      • β-Amyloid peptide [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 132 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: impaired [__Entity__]
+      • Impaired [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 133 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Vesicle tracks [__Entity__]
+      • vesicle tracks [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 134 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: LyTR-labelled vesicles [__Entity__]
+      • LyTR-labeled vesicles [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 135 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Speed of ANP-loaded vesicles [__Entity__]
+      • speed of ANP-loaded vesicles [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 136 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: ANP .emd [__Entity__]
+      • ANP.emd [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 137 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: sodium (Na+ ) [__Entity__]
+      • sodium (Na+) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 138 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: modestly diminished speed of LyTR-labeled vesicles [__Entity__]
+      • diminished speed of LyTR-labeled vesicles [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 139 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: store-operated Ca2+ entry [__Entity__]
+      • store-operated Ca2+entry [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 140 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cytosolic Ca2+ [__Entity__]
+      • cytosolic Ca2+ [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 141 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mitochondrial Na+ /Ca2+ exchanger [__Entity__]
+      • mitochondrial Na+/Ca2+ exchanger [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 142 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ uniporter [__Entity__]
+      • Ca2+uniporter [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 143 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cytosolic Ca2+levels [__Entity__]
+      • Cytosolic Ca2+levels [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 144 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Astroglial Ca2+excitability [__Entity__]
+      • astroglial Ca2+excitability [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 145 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ waves [__Entity__]
+      • Ca2+waves [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 146 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: memory consolidation [__Entity__]
+      • Memory consolidation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 147 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: temporal cortex [__Entity__]
+      • Temporal Cortex [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 148 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ oscillations [__Entity__]
+      • Ca2+oscillations [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 149 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: abnormalities [__Entity__]
+      • Abnormalities [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 150 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Protein [__Entity__]
+      • protein [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 151 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Disease [__Entity__]
+      • disease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 152 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: J. Neurochem. [__Entity__]
+      • J. Neurochem [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 153 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Proc. Natl. Acad. Sci. USA [__Entity__]
+      • Proc. Natl. Acad. Sci.USA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 154 (2 nodes)
+  Mean similarity: 0.994
+  Min similarity:  0.994
+  Nodes:
+    → CANONICAL: Trends Neurosci. [__Entity__]
+      • Trends Neurosci [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 155 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: Kreft, M. [__Entity__]
+      • Kreft, M [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 156 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Synapses [__Entity__]
+      • synapses [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 157 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Bushong, E. A. [__Entity__]
+      • Bushong, E.A. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 158 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Oberheim, N. A. [__Entity__]
+      • Oberheim, N.A. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 159 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ad [__Entity__]
+      • AD [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 160 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Verkhratsky, A. [__Entity__]
+      • Verkhratsky, A [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 161 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Anderson, M.A. [__Entity__]
+      • Anderson, M.A [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 162 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Valori, C. F. [__Entity__]
+      • Valori, C.F. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 163 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Acta Neuropathol. [__Entity__]
+      • Acta Neuropathol [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 164 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Parpura, V . [__Entity__]
+      • Parpura, V. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 165 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Neurobiol. Dis. [__Entity__]
+      • Neurobiol. Dis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 166 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Striatal astrocytes [__Entity__]
+      • striatal astrocytes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 167 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: Pangrsic, T. [__Entity__]
+      • Pangrsic, T [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 168 (2 nodes)
+  Mean similarity: 0.995
+  Min similarity:  0.995
+  Nodes:
+    → CANONICAL: Nat. Rev. Mol. Cell Biol. [__Entity__]
+      • Nat. Rev. Mol. Cell Biol [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 169 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Autophagy [__Entity__]
+      • autophagy [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 170 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Cell Death Differ. [__Entity__]
+      • Cell Death Differ [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 171 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Macvicar, B.A. [__Entity__]
+      • MacVicar, B.A. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 172 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Volterra, A. [__Entity__]
+      • Volterra, A [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 173 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: Nat. Rev. Neurosci. [__Entity__]
+      • Nat. Rev. Neurosci [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 174 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Khakh, B. S. [__Entity__]
+      • Khakh, B.S. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 175 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: Pozzan, T. [__Entity__]
+      • Pozzan, T [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 176 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: Canonico, P .L. [__Entity__]
+      • Canonico, P .L [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 177 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: NF- κB [__Entity__]
+      • NF-κB [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 178 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: calcineurin [__Entity__]
+      • Calcineurin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 179 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: calcium transients [__Entity__]
+      • Calcium transients [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 180 (2 nodes)
+  Mean similarity: 0.990
+  Min similarity:  0.990
+  Nodes:
+    → CANONICAL: Takano, T. [__Entity__]
+      • Takano, T [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 181 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: amyloid- β [__Entity__]
+      • Amyloid- β [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 182 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: amyloid precursor protein [__Entity__]
+      • Amyloid precursor protein [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 183 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Rodriguez, J. J. [__Entity__]
+      • Rodriguez, J.J. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 184 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Dysregulation of Ca2+ signaling in astrocytes from mice lacking amyloid precursor protein [__Entity__]
+      • Dysregulation of Ca2+signaling in astrocytes from mice lacking amyloid precursor protein [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 185 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Age-relatedcognitivedecline [__Entity__]
+      • age-relatedcognitivedecline [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 186 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuroimaging biomarkers [__Entity__]
+      • Neuroimaging biomarkers [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 187 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cognitive decline [__Entity__]
+      • cognitive decline [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 188 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: biomarkers [__Entity__]
+      • Biomarkers [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 189 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: membrane [__Entity__]
+      • Membrane [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 190 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: protein synthesis [__Entity__]
+      • Protein synthesis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 191 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: homeostatic regulation [__Entity__]
+      • Homeostatic regulation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 192 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: resilience [__Entity__]
+      • Resilience [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 193 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: tissue samples [__Entity__]
+      • Tissue samples [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 194 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Nfl [__Entity__]
+      • NfL [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 195 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: phosphorylated tau [__Entity__]
+      • Phosphorylated tau [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 196 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuroimaging [__Entity__]
+      • Neuroimaging [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 197 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Animal models [__Entity__]
+      • animal models [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 198 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuroscience [__Entity__]
+      • Neuroscience [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 199 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: molecular and cellular mechanisms [__Entity__]
+      • cellular and molecular mechanisms [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 200 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: 5xFAD mouse model [__Entity__]
+      • 5XFAD mouse model [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 201 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: α-Synuclein [__Entity__]
+      • α-synuclein [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 202 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cells [__Entity__]
+      • Cells [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 203 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: rhesus monkeys [__Entity__]
+      • Rhesus monkeys [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 204 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: REST [__Entity__]
+      • rest [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 205 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mitochondrial function [__Entity__]
+      • mitochondrial function [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 206 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Synaptic plasticity [__Entity__]
+      • synaptic plasticity [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 207 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Aging brain [__Entity__]
+      • aging brain [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 208 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Peripheral blood mononuclear cells [PBMCs] [__Entity__]
+      • peripheral blood mononuclear cells (PBMC) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 209 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: RN7SK LncRNA [__Entity__]
+      • RN7SK lncRNA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 210 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: senescence [__Entity__]
+      • Senescence [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 211 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Upregulated [__Entity__]
+      • upregulated [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 212 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Chronological age [__Entity__]
+      • chronological age [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 213 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: amyloid-beta (A β) [__Entity__]
+      • amyloid-beta(A β) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 214 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Alzheimer’ sdisease [__Entity__]
+      • Alzheimer’sdisease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 215 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: tau proteins [__Entity__]
+      • Tau proteins [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 216 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Tau [__Entity__]
+      • tau [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 217 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: t-tau [__Entity__]
+      • T-tau [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 218 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: tau phosphorylation [__Entity__]
+      • Tau phosphorylation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 219 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: CCL2 (MCP-1) [__Entity__]
+      • CCL2(MCP-1) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 220 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Metabolites [__Entity__]
+      • metabolites [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 221 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cellular senescence [__Entity__]
+      • Cellular senescence [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 222 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: blood–brain barrier (BBB) [__Entity__]
+      • blood-brain barrier (BBB) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 223 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: quercetin [__Entity__]
+      • Quercetin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 224 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: gut microbiota [__Entity__]
+      • Gut microbiota [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 225 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Butyrate [__Entity__]
+      • butyrate [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 226 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: glutamine [__Entity__]
+      • Glutamine [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 227 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mouse models [__Entity__]
+      • mouse models [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 228 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: AMP -AD knowledge portal [__Entity__]
+      • AMP-AD Knowledge Portal [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 229 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Proteomic [__Entity__]
+      • proteomic [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 230 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: iMethyl [__Entity__]
+      • iMETHYL [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 231 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: anxiety symptoms [__Entity__]
+      • Anxiety symptoms [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 232 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Pineal melatonin [__Entity__]
+      • pineal melatonin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 233 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Depression [__Entity__]
+      • depression [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 234 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: gut dysbiosis [__Entity__]
+      • Gut dysbiosis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 235 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Endothelial cells [__Entity__]
+      • endothelial cells [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 236 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Oligodendrocyte progenitor cells (OPCs) [__Entity__]
+      • oligodendrocyte progenitor cells (OPCs) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 237 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Glial fibrillary acidic protein (GFAP) [__Entity__]
+      • glial fibrillary acidic protein(GFAP) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 238 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: hearing loss [__Entity__]
+      • Hearing loss [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 239 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Detection [__Entity__]
+      • detection [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 240 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: olfactory dysfunction [__Entity__]
+      • Olfactory dysfunction [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 241 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Acta Neuropathol. Commun [__Entity__]
+      • Acta Neuropathol Commun [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 242 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Association [__Entity__]
+      • association [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 243 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Genetic animal models [__Entity__]
+      • genetic animal models [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 244 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neurofilament light chain [__Entity__]
+      • Neurofilament light chain [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 245 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Alzheimer’s disease model mice [__Entity__]
+      • Alzheimer’s disease mice model [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 246 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: gut microbiome [__Entity__]
+      • Gut microbiome [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 247 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Discovery of a gut bacterial metabolic pathway that drives α- synucleinaggregation [__Entity__]
+      • Discovery of a gut bacterial metabolic pathway that drives α-synucleinaggregation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 248 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: genomic variation [__Entity__]
+      • Genomic variation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 249 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Anxiety [__Entity__]
+      • anxiety [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 250 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Neuroprotective effects [__Entity__]
+      • neuroprotective effects [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 251 (2 nodes)
+  Mean similarity: 0.997
+  Min similarity:  0.997
+  Nodes:
+    → CANONICAL: CSF and blood biomarkers for the diagnosis of Alzheimer’s disease: a systematic review andmeta-analysis [__Entity__]
+      • CSF and blood biomarkers for the diagnosis of Alzheimer’s disease: a systematic review andmeta [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 252 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neurons [__Entity__]
+      • Neurons [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 253 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Observables [__Entity__]
+      • observables [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 254 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: error signal [__Entity__]
+      • Error signal [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 255 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuron [__Entity__]
+      • Neuron [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 256 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: work [__Entity__]
+      • Work [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 257 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: n [__Entity__]
+      • N [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 258 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: they [__Entity__]
+      • They [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 259 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: experiments [__Entity__]
+      • Experiments [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 260 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Voltage response [__Entity__]
+      • voltage response [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 261 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cell A [__Entity__]
+      • cell A [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 262 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Control [__Entity__]
+      • control [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 263 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cell B [__Entity__]
+      • cell B [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 264 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Feedback controller [__Entity__]
+      • feedback controller [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 265 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: kinetic-based regulation [__Entity__]
+      • Kinetic-based regulation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 266 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: slow inactivation [__Entity__]
+      • Slow inactivation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 267 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cell [__Entity__]
+      • Cell [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 268 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: activation [__Entity__]
+      • Activation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 269 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: expression [__Entity__]
+      • Expression [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 270 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: excitability status [__Entity__]
+      • Excitability status [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 271 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: protein state [__Entity__]
+      • Protein state [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 272 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cellular elements [__Entity__]
+      • cellular elements [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 273 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Protein folding [__Entity__]
+      • protein folding [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 274 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: resilient [__Entity__]
+      • Resilient [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 275 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: Izhikevich, E. M. [__Entity__]
+      • Izhikevich, E. M [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 276 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: FitzHugh, R. [__Entity__]
+      • Fitzhugh, R [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 277 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: PLoS Comput. Biol. [__Entity__]
+      • PLoS Comput. Biol [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 278 (2 nodes)
+  Mean similarity: 0.993
+  Min similarity:  0.993
+  Nodes:
+    → CANONICAL: J. Membr. Biol. [__Entity__]
+      • J. Membr. Biol [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 279 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: eLife [__Entity__]
+      • Elife [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 280 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Nat. Neurosci. [__Entity__]
+      • Nat. Neurosci [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 281 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Šárka Lehtonen [__Entity__]
+      • Sarka Lehtonen [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 282 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: pD patient astrocytes [__Entity__]
+      • PD patient astrocytes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 283 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: pD pathogenesis [__Entity__]
+      • PD pathogenesis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 284 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: astrocytes [__Entity__]
+      • Astrocytes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 285 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: induced pluripotent stem cells [__Entity__]
+      • Induced pluripotent stem cell [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 286 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: pD pathology [__Entity__]
+      • PD pathology [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 287 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Glial fibrillary acidic protein [__Entity__]
+      • glial fibrillary acidic protein [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 288 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Complex I [__Entity__]
+      • complex I [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 289 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Endoplasmic reticulum [__Entity__]
+      • endoplasmic reticulum [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 290 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: unknown [__Entity__]
+      • Unknown [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 291 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: neuroinflammation [__Entity__]
+      • Neuroinflammation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 292 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: astrocyte [__Entity__]
+      • Astrocyte [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 293 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: study [__Entity__]
+      • Study [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 294 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: spheres [__Entity__]
+      • Spheres [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 295 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: glutamate [__Entity__]
+      • Glutamate [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 296 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: pD astrocytes [__Entity__]
+      • PD astrocytes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 297 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: medium [__Entity__]
+      • Medium [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 298 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Nuclei [__Entity__]
+      • nuclei [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 299 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: lipocalin-2 [__Entity__]
+      • Lipocalin-2 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 300 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ release [__Entity__]
+      • Ca2+release [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 301 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ signals [__Entity__]
+      • Ca2+signals [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 302 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: media [__Entity__]
+      • Media [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 303 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Data [__Entity__]
+      • data [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 304 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: fold change [__Entity__]
+      • Fold change [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 305 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cresol [__Entity__]
+      • Cresol [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 306 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: lysoPE [__Entity__]
+      • LysoPE [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 307 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: polyamine [__Entity__]
+      • Polyamine [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 308 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: lysoPC [__Entity__]
+      • LysoPC [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 309 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Extracellular acidification rate (ECAR) [__Entity__]
+      • extracellular acidification rate (ECAR) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 310 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Oxygen consumption rate (OCR) [__Entity__]
+      • oxygen consumption rate (OCR) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 311 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: decreased ER  Ca2+  levels [__Entity__]
+      • decreased ER Ca2+ levels [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 312 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Inflammation [__Entity__]
+      • inflammation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 313 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: insulin resistance [__Entity__]
+      • Insulin resistance [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 314 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mitochondrial defects [__Entity__]
+      • mitochondrial defects [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 315 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: movement disorders [__Entity__]
+      • Movement Disorders [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 316 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mitochondrial respiration [__Entity__]
+      • Mitochondrial Respiration [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 317 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: polyamines [__Entity__]
+      • Polyamines [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 318 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: insulin [__Entity__]
+      • Insulin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 319 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: gene [__Entity__]
+      • Gene [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 320 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: eLiSA [__Entity__]
+      • ELISA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 321 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Biolegend [__Entity__]
+      • BioLegend [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 322 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: ca2+ imaging [__Entity__]
+      • Ca2+ imaging [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 323 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: student’s T -test [__Entity__]
+      • Student’s t-test [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 324 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Astrocytes: biology and pathology [__Entity__]
+      • Astrocytes: Biology and Pathology [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 325 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: Booth, H. D. E. [__Entity__]
+      • Booth, H. D. E [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 326 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: astrocyte dysfunction [__Entity__]
+      • Astrocyte Dysfunction [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 327 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: New Insights Into the Complex Role of Mitochondria in Parkinson ’s Disease [__Entity__]
+      • New insights into the complex role of mitochondria in Parkinson’s disease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 328 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: dopamine [__Entity__]
+      • Dopamine [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 329 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Chen, S.-J. [__Entity__]
+      • Chen, S.-J [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 330 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Nat. Protoc. [__Entity__]
+      • Nat. Protoc [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 331 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Lancet Neurol. [__Entity__]
+      • Lancet Neurol [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 332 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Parkinson ’s disease (PD) [__Entity__]
+      • Parkinson’s disease (PD) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 333 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Protoplasmic astrocytes [__Entity__]
+      • protoplasmic astrocytes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 334 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ signaling [__Entity__]
+      • Ca2+signaling [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 335 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: ApoE [__Entity__]
+      • APOE [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 336 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Apolipoprotein E [__Entity__]
+      • apolipoprotein E [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 337 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ca2+ homeostasis [__Entity__]
+      • Ca2+homeostasis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 338 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Research [__Entity__]
+      • research [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 339 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Glia [__Entity__]
+      • glia [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 340 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mouse Brain [__Entity__]
+      • mouse brain [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 341 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Uniquely hominid features of adult human astrocytes [__Entity__]
+      • Uniquely Hominid Features of Adult Human Astrocytes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 342 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: Proc. Natl. Acad. Sci. U. S. A. [__Entity__]
+      • Proc. Natl. Acad. Sci. U. S. A [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 343 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Xu, J. [__Entity__]
+      • Xu,J. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 344 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Extracellular Matrix [__Entity__]
+      • extracellular matrix [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 345 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: resistance [__Entity__]
+      • Resistance [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 346 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cell types [__Entity__]
+      • Cell types [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 347 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: excitatory neurons [__Entity__]
+      • Excitatory neurons [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 348 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: oligodendrocyte progenitor cells [__Entity__]
+      • Oligodendrocyte progenitor cells [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 349 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: we [__Entity__]
+      • We [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 350 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: cell type-specific expression [__Entity__]
+      • cell-type-specific expression [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 351 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mice [__Entity__]
+      • mice [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 352 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: genes [__Entity__]
+      • Genes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 353 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: https:/ /github.com/elo-nsrb/CellformerRNA/ [__Entity__]
+      • https://github.com/ elo-nsrb/CellformerRNA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 354 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: differential expression analysis [__Entity__]
+      • Differential expression analysis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 355 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: statistical tests [__Entity__]
+      • Statistical tests [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 356 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Biorender [__Entity__]
+      • BioRender [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 357 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: brain samples [__Entity__]
+      • Brain Samples [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 358 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: gene-wise correlations [__Entity__]
+      • gene-wise correlation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 359 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: RNA integrity number (RIN) [__Entity__]
+      • RNA Integrity number (RIN) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 360 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: post -mortem interval (PMI) [__Entity__]
+      • post-mortem interval (PMI) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 361 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: anterior cingulate cortex [__Entity__]
+      • Anterior cingulate cortex [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 362 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: chemerin [__Entity__]
+      • Chemerin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 363 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: age > 80 [__Entity__]
+      • Age >80 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 364 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Dorsolateral prefrontal cortex [__Entity__]
+      • dorsolateral prefrontal cortex [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 365 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: GO enrichment [__Entity__]
+      • GO Enrichment [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 366 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: differentially expressed genes [__Entity__]
+      • Differentially expressed genes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 367 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Edges [__Entity__]
+      • edges [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 368 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: hippocampus [__Entity__]
+      • Hippocampus [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 369 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cerebral cortex [__Entity__]
+      • Cerebral cortex [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 370 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: false discovery rate [__Entity__]
+      • False discovery rate [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 371 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: nucleus [__Entity__]
+      • Nucleus [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 372 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cytoplasm [__Entity__]
+      • Cytoplasm [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 373 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Single -cell multiregion dissection of Alzheimer’s disease [__Entity__]
+      • Single-cell multiregion dissection of Alzheimer’s disease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 374 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Arenaza -Urquijo EM [__Entity__]
+      • Arenaza-Urquijo EM [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 375 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Memantine [__Entity__]
+      • memantine [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 376 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: Boston, MA, United States [__Entity__]
+      • Boston, MA, USA [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 377 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Subjects [__Entity__]
+      • subjects [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 378 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Excitatory neuronal subpopulations [__Entity__]
+      • excitatory neuronal subpopulations [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 379 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: angiopoietin [__Entity__]
+      • Angiopoietin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 380 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Cellular resilience [__Entity__]
+      • cellular resilience [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 381 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: entorhinal cortex [__Entity__]
+      • Entorhinal cortex [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 382 (2 nodes)
+  Mean similarity: 0.990
+  Min similarity:  0.990
+  Nodes:
+    → CANONICAL: excitatory -inhibitory balance [__Entity__]
+      • excitatory/inhibitory balance [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 383 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: MEF2C [__Entity__]
+      • Mef2c [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 384 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Alzheimer's disease [__Entity__]
+      • Alzheimer's Disease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 385 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Genetic [__Entity__]
+      • genetic [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 386 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: presymptomatic [__Entity__]
+      • Presymptomatic [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 387 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: AD -PRS [__Entity__]
+      • AD-PRS [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 388 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: pathway activity analysis [__Entity__]
+      • Pathway Activity Analysis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 389 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: pathways [__Entity__]
+      • Pathways [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 390 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: down -regulated [__Entity__]
+      • down-regulated [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 391 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Rare genetic variants [__Entity__]
+      • rare genetic variants [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 392 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: genetic variants [__Entity__]
+      • Genetic variants [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 393 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: clustering [__Entity__]
+      • Clustering [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 394 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: TGF -β [__Entity__]
+      • TGF-β [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 395 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: oxidative stress [__Entity__]
+      • Oxidative stress [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 396 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: tau hyperphosphorylation [__Entity__]
+      • Tau hyperphosphorylation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 397 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: high [__Entity__]
+      • High [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 398 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: covariates [__Entity__]
+      • Covariates [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 399 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Braak Stage [__Entity__]
+      • Braak stage [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 400 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: no cognitive impairment [__Entity__]
+      • No cognitive impairment [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 401 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: tau pathology [__Entity__]
+      • Tau pathology [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 402 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Limma package [__Entity__]
+      • limma package [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 403 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: canonical pathways [__Entity__]
+      • Canonical Pathways [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 404 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Z -score [__Entity__]
+      • z -score [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 405 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: somatostatin [__Entity__]
+      • Somatostatin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 406 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: QuPath [__Entity__]
+      • Qupath [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 407 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Polygenic risk scores [__Entity__]
+      • polygenic risk scores [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 408 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Gene ontology [__Entity__]
+      • Gene Ontology [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 409 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Krüppel -like factor 4 [__Entity__]
+      • Kruppel -like factor 4 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 410 (2 nodes)
+  Mean similarity: 0.995
+  Min similarity:  0.995
+  Nodes:
+    → CANONICAL: single -nucleus RNA sequencing [__Entity__]
+      • single-nucleus RNA-sequencing [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 411 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Bulk RNAseq data [__Entity__]
+      • bulk RNAseq data [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 412 (2 nodes)
+  Mean similarity: 0.994
+  Min similarity:  0.994
+  Nodes:
+    → CANONICAL: Baltimore Longitudinal Study on Aging (BLSA) study [__Entity__]
+      • Baltimore Longitudinal Study on Aging (BLSA) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 413 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: memory function [__Entity__]
+      • Memory function [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 414 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Protein co-expression network [__Entity__]
+      • protein co-expression network [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 415 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: October 30, 2025 [__Entity__]
+      • October 30,2025 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 416 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: Gene co-expression networks [__Entity__]
+      • gene co-expression network [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 417 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: node [__Entity__]
+      • Node [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 418 (2 nodes)
+  Mean similarity: 0.990
+  Min similarity:  0.990
+  Nodes:
+    → CANONICAL: human iPSC-derived astrocyte cultures [__Entity__]
+      • human iPSC-derived astrocyte culture [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 419 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: ERBIN [__Entity__]
+      • Erbin [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 420 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mouse 5xFAD andWTproteomics [__Entity__]
+      • Mouse 5XFAD andWTproteomics [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 421 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Multiscale proteom icmodeling reveals protein networks driving Alzheimer’ sdisease patho- genesis [__Entity__]
+      • Multiscale proteom icmodeling reveals protein networks driving Alzheimer’ sdisease patho-genesis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 422 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: The [__Entity__]
+      • the [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 423 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Li, Y. [__Entity__]
+      • Li,Y. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 424 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Bai, B. [__Entity__]
+      • Bai,B. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 425 (2 nodes)
+  Mean similarity: 0.991
+  Min similarity:  0.991
+  Nodes:
+    → CANONICAL: J.Proteome Res. [__Entity__]
+      • J.Proteome Res [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 426 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Mei, L. [__Entity__]
+      • Mei,L. [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 427 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Immunity [__Entity__]
+      • immunity [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 428 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Proteomics profiling [__Entity__]
+      • proteomics profiling [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 429 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: normal [__Entity__]
+      • Normal [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 430 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: demented [__Entity__]
+      • Demented [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 431 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Keydriver analysis (KDA) [__Entity__]
+      • keydriver analysis (KDA) [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 432 (2 nodes)
+  Mean similarity: 0.995
+  Min similarity:  0.995
+  Nodes:
+    → CANONICAL: Multiscal eproteomic modeling reveals protein networks driving Alzheimer’s disease patho- genesis [__Entity__]
+      • Multiscal eproteomic modeling reveals protein networks driving Alzheimer’s disease patho [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 433 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Axion BioSystems [__Entity__]
+      • Axion Biosystems [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 434 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Calpain1 [__Entity__]
+      • calpain1 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 435 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: calpain [__Entity__]
+      • Calpain [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 436 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: glucose utilization [__Entity__]
+      • Glucose Utilization [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 437 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mitochondrial Ca2+ overload [__Entity__]
+      • Mitochondrial Ca2+ overload [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 438 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: lysosome [__Entity__]
+      • Lysosome [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 439 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: APOE cascade hypothesis [__Entity__]
+      • ApoE cascade hypothesis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 440 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Donepezil [__Entity__]
+      • donepezil [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 441 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Senicapoc [__Entity__]
+      • senicapoc [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 442 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Dantrolene [__Entity__]
+      • dantrolene [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 443 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Diltiazem [__Entity__]
+      • diltiazem [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 444 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Ferroptosis [__Entity__]
+      • ferroptosis [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 445 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: nilvadipine [__Entity__]
+      • Nilvadipine [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 446 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: calcium overload [__Entity__]
+      • Calcium overload [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 447 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: calcium hypothesis of Alzheimer’s disease [__Entity__]
+      • Calcium hypothesis of Alzheimer’s disease [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 448 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: Dephosphorylation [__Entity__]
+      • dephosphorylation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 449 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: frontotemporal dementia [__Entity__]
+      • Frontotemporal Dementia [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 450 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mitochondria-associated endoplasmic reticulum membranes [__Entity__]
+      • Mitochondria-associated endoplasmic reticulum membranes [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 451 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: mTORC1 [__Entity__]
+      • MTORC1 [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 452 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: inﬂammation [__Entity__]
+      • Inﬂammation [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 453 (2 nodes)
+  Mean similarity: 0.996
+  Min similarity:  0.996
+  Nodes:
+    → CANONICAL: cerebral blood ﬂow [__Entity__]
+      • cerebral bloodﬂow [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 454 (2 nodes)
+  Mean similarity: 0.997
+  Min similarity:  0.997
+  Nodes:
+    → CANONICAL: College of Sports Medicine at Wuhan Sports University [__Entity__]
+      • College of Sports Medicine, Wuhan Sports University [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 455 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: astrocyte-neuron metabolic interplay [__Entity__]
+      • Astrocyte-Neuron metabolic interplay [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 456 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: cerebral hypoperfusion [__Entity__]
+      • Cerebral hypoperfusion [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 457 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: glutathione (GSH) precursors [__Entity__]
+      • glutathione (GSH)precursors [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 458 (2 nodes)
+  Mean similarity: 1.000
+  Min similarity:  1.000
+  Nodes:
+    → CANONICAL: DJ-1 expression [__Entity__]
+      • DJ-1 Expression [__Entity__]
+
+──────────────────────────────────────────────────────────────────────
+Cluster 459 (2 nodes)
+  Mean similarity: 0.992
+  Min similarity:  0.992
+  Nodes:
+    → CANONICAL: astrocyte-neuron coupling [__Entity__]
+      • Neuron-Astrocyte Coupling [__Entity__]
+
+======================================================================
+LABEL DISTRIBUTION IN CLUSTERS
+======================================================================
+  __Entity__: 953

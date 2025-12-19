@@ -1,0 +1,2496 @@
+
+======================================================================
+Neo4j Node Deduplication Pipeline
+======================================================================
+Neo4j URI: bolt://localhost:7687
+Database: neo4j-2025-10-20T05-46-11-c7ad3094
+Similarity threshold: 0.99
+Mode: DRY RUN
+Connecting to Neo4j at bolt://localhost:7687...
+Initializing embedding model: nomic-embed-text
+
+======================================================================
+STEP 1: Extracting entity nodes from Neo4j
+======================================================================
+**Extracted 14707 entity nodes
+
+Label distribution:
+  __Entity__: 14707
+
+======================================================================
+STEP 2: Embedding node names
+======================================================================
+Embedding 14707 node names...
+  Progress: 1000/14707 (234.0 nodes/sec)
+  Progress: 2000/14707 (245.8 nodes/sec)
+  Progress: 3000/14707 (237.9 nodes/sec)
+  Progress: 4000/14707 (238.6 nodes/sec)
+  Progress: 5000/14707 (241.9 nodes/sec)
+  Progress: 6000/14707 (243.0 nodes/sec)
+  Progress: 7000/14707 (241.2 nodes/sec)
+  Progress: 8000/14707 (241.7 nodes/sec)
+  Progress: 9000/14707 (242.7 nodes/sec)
+  Progress: 10000/14707 (243.2 nodes/sec)
+  Progress: 11000/14707 (242.0 nodes/sec)
+  Progress: 12000/14707 (241.5 nodes/sec)
+  Progress: 13000/14707 (241.1 nodes/sec)
+  Progress: 14000/14707 (240.4 nodes/sec)
+Done embedding 14707 nodes in 61.50s
+  Embedding shape: (14707, 768)
+
+======================================================================
+STEP 3: Clustering similar nodes
+======================================================================
+Similarity threshold: 0.99
+Computing pairwise cosine similarities...
+**Computed 108140571 pairwise distances in 61.37s
+Performing hierarchical clustering...
+***Found 459 clusters with duplicates
+  Total duplicate nodes: 953
+
+Example duplicate clusters:
+
+  Cluster 1 (2 nodes):
+    - Genetic risk [__Entity__]
+    - genetic risk [__Entity__]
+
+  Cluster 2 (2 nodes):
+    - Rbfox1 [__Entity__]
+    - RBFOX1 [__Entity__]
+
+  Cluster 3 (2 nodes):
+    - parvalbumin [__Entity__]
+    - Parvalbumin [__Entity__]
+
+  Cluster 4 (2 nodes):
+    - Alzheimer’s Dementia [__Entity__]
+    - Alzheimer’s dementia [__Entity__]
+
+  Cluster 5 (2 nodes):
+    - Neuronal hyperexcitability [__Entity__]
+    - neuronal hyperexcitability [__Entity__]
+
+======================================================================
+CLUSTER STATISTICS
+======================================================================
+
+Cluster 1:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - Genetic risk [__Entity__]
+    - genetic risk [__Entity__]
+
+Cluster 2:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - Rbfox1 [__Entity__]
+    - RBFOX1 [__Entity__]
+
+Cluster 3:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - parvalbumin [__Entity__]
+    - Parvalbumin [__Entity__]
+
+Cluster 4:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - Alzheimer’s Dementia [__Entity__]
+    - Alzheimer’s dementia [__Entity__]
+
+Cluster 5:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - Neuronal hyperexcitability [__Entity__]
+    - neuronal hyperexcitability [__Entity__]
+
+Cluster 6:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - Cell type [__Entity__]
+    - cell type [__Entity__]
+
+Cluster 7:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - dopaminergic neurons [__Entity__]
+    - DOPAMINERGIC NEURONS [__Entity__]
+
+Cluster 8:
+  Size: 3
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - brain -derived neurotrophic factor [__Entity__]
+    - brain-derived neurotrophic factor [__Entity__]
+    - Brain -derived neurotrophic factor [__Entity__]
+
+Cluster 9:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - neuronal activity [__Entity__]
+    - Neuronal Activity [__Entity__]
+
+Cluster 10:
+  Size: 2
+  Mean similarity: 1.000
+  Min similarity: 1.000
+  Nodes:
+    - single -cell analysis [__Entity__]
+    - single-cell analysis [__Entity__]
+
+======================================================================
+STEP 4: Dry run - showing what would be merged
+======================================================================
+
+Cluster 1: Would merge 1 nodes into:
+  Canonical: Genetic risk [__Entity__]
+  Duplicates:
+    - genetic risk
+
+Cluster 2: Would merge 1 nodes into:
+  Canonical: Rbfox1 [__Entity__]
+  Duplicates:
+    - RBFOX1
+
+Cluster 3: Would merge 1 nodes into:
+  Canonical: parvalbumin [__Entity__]
+  Duplicates:
+    - Parvalbumin
+
+Cluster 4: Would merge 1 nodes into:
+  Canonical: Alzheimer’s Dementia [__Entity__]
+  Duplicates:
+    - Alzheimer’s dementia
+
+Cluster 5: Would merge 1 nodes into:
+  Canonical: Neuronal hyperexcitability [__Entity__]
+  Duplicates:
+    - neuronal hyperexcitability
+
+Cluster 6: Would merge 1 nodes into:
+  Canonical: Cell type [__Entity__]
+  Duplicates:
+    - cell type
+
+Cluster 7: Would merge 1 nodes into:
+  Canonical: dopaminergic neurons [__Entity__]
+  Duplicates:
+    - DOPAMINERGIC NEURONS
+
+Cluster 8: Would merge 2 nodes into:
+  Canonical: brain -derived neurotrophic factor [__Entity__]
+  Duplicates:
+    - brain-derived neurotrophic factor
+    - Brain -derived neurotrophic factor
+
+Cluster 9: Would merge 1 nodes into:
+  Canonical: neuronal activity [__Entity__]
+  Duplicates:
+    - Neuronal Activity
+
+Cluster 10: Would merge 1 nodes into:
+  Canonical: single -cell analysis [__Entity__]
+  Duplicates:
+    - single-cell analysis
+
+Cluster 11: Would merge 1 nodes into:
+  Canonical: Polygenic Risk Score [__Entity__]
+  Duplicates:
+    - Polygenic risk score
+
+Cluster 12: Would merge 1 nodes into:
+  Canonical: down -regulation [__Entity__]
+  Duplicates:
+    - Down -regulation
+
+Cluster 13: Would merge 1 nodes into:
+  Canonical: Pathway activity profiles [__Entity__]
+  Duplicates:
+    - pathway activity profiles
+
+Cluster 14: Would merge 1 nodes into:
+  Canonical: Changes [__Entity__]
+  Duplicates:
+    - changes
+
+Cluster 15: Would merge 1 nodes into:
+  Canonical: Brain region [__Entity__]
+  Duplicates:
+    - brain region
+
+Cluster 16: Would merge 1 nodes into:
+  Canonical: neuronal excitability [__Entity__]
+  Duplicates:
+    - Neuronal excitability
+
+Cluster 17: Would merge 1 nodes into:
+  Canonical: clusters [__Entity__]
+  Duplicates:
+    - Clusters
+
+Cluster 18: Would merge 1 nodes into:
+  Canonical: Pathway Co -expression Network [__Entity__]
+  Duplicates:
+    - Pathway Co-expression Network
+
+Cluster 19: Would merge 1 nodes into:
+  Canonical: box plots [__Entity__]
+  Duplicates:
+    - Box plots
+
+Cluster 20: Would merge 2 nodes into:
+  Canonical: Vascular and epithelial cells [__Entity__]
+  Duplicates:
+    - vascular/epithelial cells
+    - vascular and epithelial cells
+
+Cluster 21: Would merge 1 nodes into:
+  Canonical: Oligodendrocytes [__Entity__]
+  Duplicates:
+    - oligodendrocytes
+
+Cluster 22: Would merge 1 nodes into:
+  Canonical: Ast [__Entity__]
+  Duplicates:
+    - AST
+
+Cluster 23: Would merge 1 nodes into:
+  Canonical: Inhibitory neurons [__Entity__]
+  Duplicates:
+    - inhibitory neurons
+
+Cluster 24: Would merge 1 nodes into:
+  Canonical: Inh [__Entity__]
+  Duplicates:
+    - INH
+
+Cluster 25: Would merge 1 nodes into:
+  Canonical: Exc [__Entity__]
+  Duplicates:
+    - EXC
+
+Cluster 26: Would merge 1 nodes into:
+  Canonical: gene ontology enrichment analysis [__Entity__]
+  Duplicates:
+    - Gene ontology enrichment analysis
+
+Cluster 27: Would merge 1 nodes into:
+  Canonical: Cell proportion changes [__Entity__]
+  Duplicates:
+    - cell proportion changes
+
+Cluster 28: Would merge 1 nodes into:
+  Canonical: Correlation [__Entity__]
+  Duplicates:
+    - correlation
+
+Cluster 29: Would merge 1 nodes into:
+  Canonical: Non -canonical Wnt [__Entity__]
+  Duplicates:
+    - Non-canonical Wnt
+
+Cluster 30: Would merge 1 nodes into:
+  Canonical: Periostin [__Entity__]
+  Duplicates:
+    - periostin
+
+Cluster 31: Would merge 1 nodes into:
+  Canonical: BMPR1B/ACVR2A [__Entity__]
+  Duplicates:
+    - BMPR1A/ACVR2B
+
+Cluster 32: Would merge 1 nodes into:
+  Canonical: Signaling pathways [__Entity__]
+  Duplicates:
+    - signaling pathways
+
+Cluster 33: Would merge 1 nodes into:
+  Canonical: Differential gene expression analysis [__Entity__]
+  Duplicates:
+    - Differential gene expression analyses
+
+Cluster 34: Would merge 1 nodes into:
+  Canonical: differential expression [__Entity__]
+  Duplicates:
+    - Differential expression
+
+Cluster 35: Would merge 1 nodes into:
+  Canonical: Cognitive loss [__Entity__]
+  Duplicates:
+    - cognitive loss
+
+Cluster 36: Would merge 4 nodes into:
+  Canonical: P - values [__Entity__]
+  Duplicates:
+    - P-values
+    - P -values
+    - p -values
+    - p-values
+
+Cluster 37: Would merge 1 nodes into:
+  Canonical: up -regulated DEGs [__Entity__]
+  Duplicates:
+    - up-regulated DEGs
+
+Cluster 38: Would merge 1 nodes into:
+  Canonical: group [__Entity__]
+  Duplicates:
+    - Group
+
+Cluster 39: Would merge 1 nodes into:
+  Canonical: log2FC [__Entity__]
+  Duplicates:
+    - Log2FC
+
+Cluster 40: Would merge 1 nodes into:
+  Canonical: Cell subtypes [__Entity__]
+  Duplicates:
+    - cell subtypes
+
+Cluster 41: Would merge 1 nodes into:
+  Canonical: Changes in cell composition [__Entity__]
+  Duplicates:
+    - changes in cell composition
+
+Cluster 42: Would merge 1 nodes into:
+  Canonical: rare variant -associated genes [__Entity__]
+  Duplicates:
+    - rare variant associated genes
+
+Cluster 43: Would merge 1 nodes into:
+  Canonical: Alzheimer ’s [__Entity__]
+  Duplicates:
+    - Alzheimer’s
+
+Cluster 44: Would merge 2 nodes into:
+  Canonical: mathematical modelling [__Entity__]
+  Duplicates:
+    - Mathematical Modelling
+    - Mathematical modelling
+
+Cluster 45: Would merge 1 nodes into:
+  Canonical: Parkinson ’s [__Entity__]
+  Duplicates:
+    - Parkinson’s
+
+Cluster 46: Would merge 1 nodes into:
+  Canonical: Ca2+ signalling [__Entity__]
+  Duplicates:
+    - Ca2+signalling
+
+Cluster 47: Would merge 1 nodes into:
+  Canonical: Neurodegeneration [__Entity__]
+  Duplicates:
+    - neurodegeneration
+
+Cluster 48: Would merge 1 nodes into:
+  Canonical: Metabolic reprogramming [__Entity__]
+  Duplicates:
+    - metabolic reprogramming
+
+Cluster 49: Would merge 1 nodes into:
+  Canonical: Mitochondria [__Entity__]
+  Duplicates:
+    - mitochondria
+
+Cluster 50: Would merge 1 nodes into:
+  Canonical: neurotoxicity [__Entity__]
+  Duplicates:
+    - Neurotoxicity
+
+Cluster 51: Would merge 1 nodes into:
+  Canonical: Aging [__Entity__]
+  Duplicates:
+    - aging
+
+Cluster 52: Would merge 1 nodes into:
+  Canonical: Action potentials [__Entity__]
+  Duplicates:
+    - action potentials
+
+Cluster 53: Would merge 1 nodes into:
+  Canonical: vesicles [__Entity__]
+  Duplicates:
+    - Vesicles
+
+Cluster 54: Would merge 1 nodes into:
+  Canonical: Ca2+ influx [__Entity__]
+  Duplicates:
+    - Ca2+influx
+
+Cluster 55: Would merge 1 nodes into:
+  Canonical: sensors [__Entity__]
+  Duplicates:
+    - Sensors
+
+Cluster 56: Would merge 1 nodes into:
+  Canonical: Ca2+ overload [__Entity__]
+  Duplicates:
+    - Ca2+overload
+
+Cluster 57: Would merge 1 nodes into:
+  Canonical: mPTP [__Entity__]
+  Duplicates:
+    - MPTP
+
+Cluster 58: Would merge 1 nodes into:
+  Canonical: Ca2+ levels [__Entity__]
+  Duplicates:
+    - Ca2+levels
+
+Cluster 59: Would merge 1 nodes into:
+  Canonical: metabolism [__Entity__]
+  Duplicates:
+    - METABOLISM
+
+Cluster 60: Would merge 1 nodes into:
+  Canonical: low [__Entity__]
+  Duplicates:
+    - Low
+
+Cluster 61: Would merge 1 nodes into:
+  Canonical: tricarboxylic acid (TCA) cycle [__Entity__]
+  Duplicates:
+    - tricarboxylic acid(TCA) cycle
+
+Cluster 62: Would merge 1 nodes into:
+  Canonical: quality control [__Entity__]
+  Duplicates:
+    - Quality control
+
+Cluster 63: Would merge 1 nodes into:
+  Canonical: dopamine metabolism [__Entity__]
+  Duplicates:
+    - Dopamine metabolism
+
+Cluster 64: Would merge 1 nodes into:
+  Canonical: mitochondrial metabolism [__Entity__]
+  Duplicates:
+    - Mitochondrial Metabolism
+
+Cluster 65: Would merge 1 nodes into:
+  Canonical: familial AD [__Entity__]
+  Duplicates:
+    - Familial AD
+
+Cluster 66: Would merge 1 nodes into:
+  Canonical: reaction-diffusion model [__Entity__]
+  Duplicates:
+    - Reaction-diffusion model
+
+Cluster 67: Would merge 1 nodes into:
+  Canonical: Whole-cell model [__Entity__]
+  Duplicates:
+    - whole-cell model
+
+Cluster 68: Would merge 1 nodes into:
+  Canonical: adaptation [__Entity__]
+  Duplicates:
+    - Adaptation
+
+Cluster 69: Would merge 1 nodes into:
+  Canonical: timescale [__Entity__]
+  Duplicates:
+    - Timescale
+
+Cluster 70: Would merge 1 nodes into:
+  Canonical: Glycolysis [__Entity__]
+  Duplicates:
+    - glycolysis
+
+Cluster 71: Would merge 3 nodes into:
+  Canonical: Parkinson ’s disease [__Entity__]
+  Duplicates:
+    - Parkinson’s Disease
+    - Parkinson’s disease
+    - Parkinson ’s Disease
+
+Cluster 72: Would merge 1 nodes into:
+  Canonical: Molecules [__Entity__]
+  Duplicates:
+    - molecules
+
+Cluster 73: Would merge 1 nodes into:
+  Canonical: Brain energy rescue: an emerging therapeutic concept for neurodegenerative disorders ofageing [__Entity__]
+  Duplicates:
+    - Brain energy rescue: an emerging therapeutic concept for neurodegenerative disorders of
+
+Cluster 74: Would merge 1 nodes into:
+  Canonical: Antioxidants [__Entity__]
+  Duplicates:
+    - antioxidants
+
+Cluster 75: Would merge 3 nodes into:
+  Canonical: Alzheimer ’s disease [__Entity__]
+  Duplicates:
+    - Alzheimer ’s Disease
+    - Alzheimer’s disease
+    - Alzheimer’s Disease
+
+Cluster 76: Would merge 1 nodes into:
+  Canonical: calcium [__Entity__]
+  Duplicates:
+    - Calcium
+
+Cluster 77: Would merge 1 nodes into:
+  Canonical: amyloid beta [__Entity__]
+  Duplicates:
+    - Amyloid beta
+
+Cluster 78: Would merge 2 nodes into:
+  Canonical: IL-  1β [__Entity__]
+  Duplicates:
+    - IL- 1β
+    - IL-1β
+
+Cluster 79: Would merge 1 nodes into:
+  Canonical: systemic inflammation [__Entity__]
+  Duplicates:
+    - Systemic inflammation
+
+Cluster 80: Would merge 1 nodes into:
+  Canonical: cognitive inflexibility [__Entity__]
+  Duplicates:
+    - Cognitive Inflexibility
+
+Cluster 81: Would merge 1 nodes into:
+  Canonical: AAV2/9- CaMKII- cre- EYFP- WPRE- pA [__Entity__]
+  Duplicates:
+    - AAV2/9- CaMKII- Cre- EYFP- WPRE- pA
+
+Cluster 82: Would merge 1 nodes into:
+  Canonical: Latency [__Entity__]
+  Duplicates:
+    - latency
+
+Cluster 83: Would merge 1 nodes into:
+  Canonical: brain sections [__Entity__]
+  Duplicates:
+    - Brain sections
+
+Cluster 84: Would merge 2 nodes into:
+  Canonical: c-  Fos [__Entity__]
+  Duplicates:
+    - c- Fos
+    - c-fos
+
+Cluster 85: Would merge 1 nodes into:
+  Canonical: two- way ANOVA [__Entity__]
+  Duplicates:
+    - Two- way ANOVA
+
+Cluster 86: Would merge 1 nodes into:
+  Canonical: average speed [__Entity__]
+  Duplicates:
+    - Average speed
+
+Cluster 87: Would merge 1 nodes into:
+  Canonical: Vehicle [__Entity__]
+  Duplicates:
+    - vehicle
+
+Cluster 88: Would merge 1 nodes into:
+  Canonical: speed [__Entity__]
+  Duplicates:
+    - Speed
+
+Cluster 89: Would merge 1 nodes into:
+  Canonical: control mice [__Entity__]
+  Duplicates:
+    - Control mice
+
+Cluster 90: Would merge 1 nodes into:
+  Canonical: dCA3 Neuron [__Entity__]
+  Duplicates:
+    - dCA3 neuron
+
+Cluster 91: Would merge 2 nodes into:
+  Canonical: Cognitive Resilience [__Entity__]
+  Duplicates:
+    - cognitive resilience
+    - Cognitive resilience
+
+Cluster 92: Would merge 1 nodes into:
+  Canonical: Analysis [__Entity__]
+  Duplicates:
+    - analysis
+
+Cluster 93: Would merge 1 nodes into:
+  Canonical: IL- 1β + mCherry + CNO groups [__Entity__]
+  Duplicates:
+    - IL- 1β + mCherry + CNO group
+
+Cluster 94: Would merge 1 nodes into:
+  Canonical: IL- 1β + hM3Dq + CNO groups [__Entity__]
+  Duplicates:
+    - IL- 1β + hM3Dq + CNO group
+
+Cluster 95: Would merge 1 nodes into:
+  Canonical: Time [__Entity__]
+  Duplicates:
+    - time
+
+Cluster 96: Would merge 1 nodes into:
+  Canonical: anxiety- like behavior [__Entity__]
+  Duplicates:
+    - anxiety-like behavior
+
+Cluster 97: Would merge 1 nodes into:
+  Canonical: hippocampal subregions [__Entity__]
+  Duplicates:
+    - Hippocampal subregions
+
+Cluster 98: Would merge 1 nodes into:
+  Canonical: adult-  born neurons [__Entity__]
+  Duplicates:
+    - adult- born neurons
+
+Cluster 99: Would merge 1 nodes into:
+  Canonical: hippocampus-  dependent mnemonic functions [__Entity__]
+  Duplicates:
+    - hippocampus- dependent mnemonic functions
+
+Cluster 100: Would merge 2 nodes into:
+  Canonical: locus coeruleus [__Entity__]
+  Duplicates:
+    - Locus coeruleus
+    - Locus Coeruleus
+
+Cluster 101: Would merge 1 nodes into:
+  Canonical: conceptualization [__Entity__]
+  Duplicates:
+    - Conceptualization
+
+Cluster 102: Would merge 1 nodes into:
+  Canonical: neurones [__Entity__]
+  Duplicates:
+    - Neurones
+
+Cluster 103: Would merge 2 nodes into:
+  Canonical: vesicle trafﬁc [__Entity__]
+  Duplicates:
+    - Vesicle Trafﬁc
+    - Vesicle trafﬁc
+
+Cluster 104: Would merge 1 nodes into:
+  Canonical: health [__Entity__]
+  Duplicates:
+    - Health
+
+Cluster 105: Would merge 1 nodes into:
+  Canonical: cortex [__Entity__]
+  Duplicates:
+    - Cortex
+
+Cluster 106: Would merge 1 nodes into:
+  Canonical: neuroplasticity [__Entity__]
+  Duplicates:
+    - Neuroplasticity
+
+Cluster 107: Would merge 1 nodes into:
+  Canonical: humans [__Entity__]
+  Duplicates:
+    - Humans
+
+Cluster 108: Would merge 1 nodes into:
+  Canonical: Developing brain [__Entity__]
+  Duplicates:
+    - developing brain
+
+Cluster 109: Would merge 2 nodes into:
+  Canonical: Aerobic glycolysis [__Entity__]
+  Duplicates:
+    - aerobic glycolysis
+    - Aerobic Glycolysis
+
+Cluster 110: Would merge 1 nodes into:
+  Canonical: synapse [__Entity__]
+  Duplicates:
+    - Synapse
+
+Cluster 111: Would merge 1 nodes into:
+  Canonical: exercise [__Entity__]
+  Duplicates:
+    - Exercise
+
+Cluster 112: Would merge 1 nodes into:
+  Canonical: Morphological changes [__Entity__]
+  Duplicates:
+    - morphological changes
+
+Cluster 113: Would merge 2 nodes into:
+  Canonical: [Ca2+ ]I [__Entity__]
+  Duplicates:
+    - [Ca2+]i
+    - [Ca2+]I
+
+Cluster 114: Would merge 1 nodes into:
+  Canonical: β-amyloid peptide [__Entity__]
+  Duplicates:
+    - β-Amyloid peptide
+
+Cluster 115: Would merge 1 nodes into:
+  Canonical: impaired [__Entity__]
+  Duplicates:
+    - Impaired
+
+Cluster 116: Would merge 1 nodes into:
+  Canonical: Vesicle tracks [__Entity__]
+  Duplicates:
+    - vesicle tracks
+
+Cluster 117: Would merge 1 nodes into:
+  Canonical: LyTR-labelled vesicles [__Entity__]
+  Duplicates:
+    - LyTR-labeled vesicles
+
+Cluster 118: Would merge 1 nodes into:
+  Canonical: Speed of ANP-loaded vesicles [__Entity__]
+  Duplicates:
+    - speed of ANP-loaded vesicles
+
+Cluster 119: Would merge 1 nodes into:
+  Canonical: ANP .emd [__Entity__]
+  Duplicates:
+    - ANP.emd
+
+Cluster 120: Would merge 1 nodes into:
+  Canonical: sodium (Na+ ) [__Entity__]
+  Duplicates:
+    - sodium (Na+)
+
+Cluster 121: Would merge 1 nodes into:
+  Canonical: modestly diminished speed of LyTR-labeled vesicles [__Entity__]
+  Duplicates:
+    - diminished speed of LyTR-labeled vesicles
+
+Cluster 122: Would merge 1 nodes into:
+  Canonical: store-operated Ca2+ entry [__Entity__]
+  Duplicates:
+    - store-operated Ca2+entry
+
+Cluster 123: Would merge 1 nodes into:
+  Canonical: Cytosolic Ca2+ [__Entity__]
+  Duplicates:
+    - cytosolic Ca2+
+
+Cluster 124: Would merge 1 nodes into:
+  Canonical: mitochondrial Na+ /Ca2+ exchanger [__Entity__]
+  Duplicates:
+    - mitochondrial Na+/Ca2+ exchanger
+
+Cluster 125: Would merge 1 nodes into:
+  Canonical: Ca2+ uniporter [__Entity__]
+  Duplicates:
+    - Ca2+uniporter
+
+Cluster 126: Would merge 1 nodes into:
+  Canonical: cytosolic Ca2+levels [__Entity__]
+  Duplicates:
+    - Cytosolic Ca2+levels
+
+Cluster 127: Would merge 1 nodes into:
+  Canonical: Astroglial Ca2+excitability [__Entity__]
+  Duplicates:
+    - astroglial Ca2+excitability
+
+Cluster 128: Would merge 1 nodes into:
+  Canonical: Ca2+ waves [__Entity__]
+  Duplicates:
+    - Ca2+waves
+
+Cluster 129: Would merge 1 nodes into:
+  Canonical: memory consolidation [__Entity__]
+  Duplicates:
+    - Memory consolidation
+
+Cluster 130: Would merge 1 nodes into:
+  Canonical: temporal cortex [__Entity__]
+  Duplicates:
+    - Temporal Cortex
+
+Cluster 131: Would merge 1 nodes into:
+  Canonical: Ca2+ oscillations [__Entity__]
+  Duplicates:
+    - Ca2+oscillations
+
+Cluster 132: Would merge 1 nodes into:
+  Canonical: abnormalities [__Entity__]
+  Duplicates:
+    - Abnormalities
+
+Cluster 133: Would merge 1 nodes into:
+  Canonical: Protein [__Entity__]
+  Duplicates:
+    - protein
+
+Cluster 134: Would merge 1 nodes into:
+  Canonical: Disease [__Entity__]
+  Duplicates:
+    - disease
+
+Cluster 135: Would merge 1 nodes into:
+  Canonical: J. Neurochem. [__Entity__]
+  Duplicates:
+    - J. Neurochem
+
+Cluster 136: Would merge 1 nodes into:
+  Canonical: Proc. Natl. Acad. Sci. USA [__Entity__]
+  Duplicates:
+    - Proc. Natl. Acad. Sci.USA
+
+Cluster 137: Would merge 1 nodes into:
+  Canonical: Trends Neurosci. [__Entity__]
+  Duplicates:
+    - Trends Neurosci
+
+Cluster 138: Would merge 1 nodes into:
+  Canonical: Kreft, M. [__Entity__]
+  Duplicates:
+    - Kreft, M
+
+Cluster 139: Would merge 1 nodes into:
+  Canonical: Synapses [__Entity__]
+  Duplicates:
+    - synapses
+
+Cluster 140: Would merge 1 nodes into:
+  Canonical: Bushong, E. A. [__Entity__]
+  Duplicates:
+    - Bushong, E.A.
+
+Cluster 141: Would merge 1 nodes into:
+  Canonical: Oberheim, N. A. [__Entity__]
+  Duplicates:
+    - Oberheim, N.A.
+
+Cluster 142: Would merge 1 nodes into:
+  Canonical: Ad [__Entity__]
+  Duplicates:
+    - AD
+
+Cluster 143: Would merge 1 nodes into:
+  Canonical: Verkhratsky, A. [__Entity__]
+  Duplicates:
+    - Verkhratsky, A
+
+Cluster 144: Would merge 1 nodes into:
+  Canonical: Anderson, M.A. [__Entity__]
+  Duplicates:
+    - Anderson, M.A
+
+Cluster 145: Would merge 1 nodes into:
+  Canonical: Valori, C. F. [__Entity__]
+  Duplicates:
+    - Valori, C.F.
+
+Cluster 146: Would merge 1 nodes into:
+  Canonical: Acta Neuropathol. [__Entity__]
+  Duplicates:
+    - Acta Neuropathol
+
+Cluster 147: Would merge 1 nodes into:
+  Canonical: Parpura, V . [__Entity__]
+  Duplicates:
+    - Parpura, V.
+
+Cluster 148: Would merge 1 nodes into:
+  Canonical: Neurobiol. Dis. [__Entity__]
+  Duplicates:
+    - Neurobiol. Dis
+
+Cluster 149: Would merge 1 nodes into:
+  Canonical: Striatal astrocytes [__Entity__]
+  Duplicates:
+    - striatal astrocytes
+
+Cluster 150: Would merge 1 nodes into:
+  Canonical: Pangrsic, T. [__Entity__]
+  Duplicates:
+    - Pangrsic, T
+
+Cluster 151: Would merge 1 nodes into:
+  Canonical: Nat. Rev. Mol. Cell Biol. [__Entity__]
+  Duplicates:
+    - Nat. Rev. Mol. Cell Biol
+
+Cluster 152: Would merge 1 nodes into:
+  Canonical: Autophagy [__Entity__]
+  Duplicates:
+    - autophagy
+
+Cluster 153: Would merge 1 nodes into:
+  Canonical: Cell Death Differ. [__Entity__]
+  Duplicates:
+    - Cell Death Differ
+
+Cluster 154: Would merge 2 nodes into:
+  Canonical: PLoS ONE [__Entity__]
+  Duplicates:
+    - PLoS One
+    - PloS One
+
+Cluster 155: Would merge 1 nodes into:
+  Canonical: Macvicar, B.A. [__Entity__]
+  Duplicates:
+    - MacVicar, B.A.
+
+Cluster 156: Would merge 1 nodes into:
+  Canonical: Volterra, A. [__Entity__]
+  Duplicates:
+    - Volterra, A
+
+Cluster 157: Would merge 1 nodes into:
+  Canonical: Nat. Rev. Neurosci. [__Entity__]
+  Duplicates:
+    - Nat. Rev. Neurosci
+
+Cluster 158: Would merge 1 nodes into:
+  Canonical: Khakh, B. S. [__Entity__]
+  Duplicates:
+    - Khakh, B.S.
+
+Cluster 159: Would merge 1 nodes into:
+  Canonical: Pozzan, T. [__Entity__]
+  Duplicates:
+    - Pozzan, T
+
+Cluster 160: Would merge 1 nodes into:
+  Canonical: Canonico, P .L. [__Entity__]
+  Duplicates:
+    - Canonico, P .L
+
+Cluster 161: Would merge 1 nodes into:
+  Canonical: NF- κB [__Entity__]
+  Duplicates:
+    - NF-κB
+
+Cluster 162: Would merge 1 nodes into:
+  Canonical: calcineurin [__Entity__]
+  Duplicates:
+    - Calcineurin
+
+Cluster 163: Would merge 1 nodes into:
+  Canonical: calcium transients [__Entity__]
+  Duplicates:
+    - Calcium transients
+
+Cluster 164: Would merge 1 nodes into:
+  Canonical: Takano, T. [__Entity__]
+  Duplicates:
+    - Takano, T
+
+Cluster 165: Would merge 1 nodes into:
+  Canonical: amyloid- β [__Entity__]
+  Duplicates:
+    - Amyloid- β
+
+Cluster 166: Would merge 1 nodes into:
+  Canonical: amyloid precursor protein [__Entity__]
+  Duplicates:
+    - Amyloid precursor protein
+
+Cluster 167: Would merge 1 nodes into:
+  Canonical: Rodriguez, J. J. [__Entity__]
+  Duplicates:
+    - Rodriguez, J.J.
+
+Cluster 168: Would merge 1 nodes into:
+  Canonical: Dysregulation of Ca2+ signaling in astrocytes from mice lacking amyloid precursor protein [__Entity__]
+  Duplicates:
+    - Dysregulation of Ca2+signaling in astrocytes from mice lacking amyloid precursor protein
+
+Cluster 169: Would merge 1 nodes into:
+  Canonical: Age-relatedcognitivedecline [__Entity__]
+  Duplicates:
+    - age-relatedcognitivedecline
+
+Cluster 170: Would merge 1 nodes into:
+  Canonical: neuroimaging biomarkers [__Entity__]
+  Duplicates:
+    - Neuroimaging biomarkers
+
+Cluster 171: Would merge 1 nodes into:
+  Canonical: Cognitive decline [__Entity__]
+  Duplicates:
+    - cognitive decline
+
+Cluster 172: Would merge 1 nodes into:
+  Canonical: biomarkers [__Entity__]
+  Duplicates:
+    - Biomarkers
+
+Cluster 173: Would merge 1 nodes into:
+  Canonical: membrane [__Entity__]
+  Duplicates:
+    - Membrane
+
+Cluster 174: Would merge 1 nodes into:
+  Canonical: protein synthesis [__Entity__]
+  Duplicates:
+    - Protein synthesis
+
+Cluster 175: Would merge 1 nodes into:
+  Canonical: homeostatic regulation [__Entity__]
+  Duplicates:
+    - Homeostatic regulation
+
+Cluster 176: Would merge 1 nodes into:
+  Canonical: resilience [__Entity__]
+  Duplicates:
+    - Resilience
+
+Cluster 177: Would merge 1 nodes into:
+  Canonical: tissue samples [__Entity__]
+  Duplicates:
+    - Tissue samples
+
+Cluster 178: Would merge 1 nodes into:
+  Canonical: Nfl [__Entity__]
+  Duplicates:
+    - NfL
+
+Cluster 179: Would merge 2 nodes into:
+  Canonical: cerebrospinal fluid (CSF) [__Entity__]
+  Duplicates:
+    - cerebrospinal fluid(CSF)
+    - Cerebrospinal fluid(CSF)
+
+Cluster 180: Would merge 1 nodes into:
+  Canonical: phosphorylated tau [__Entity__]
+  Duplicates:
+    - Phosphorylated tau
+
+Cluster 181: Would merge 1 nodes into:
+  Canonical: neuroimaging [__Entity__]
+  Duplicates:
+    - Neuroimaging
+
+Cluster 182: Would merge 1 nodes into:
+  Canonical: Animal models [__Entity__]
+  Duplicates:
+    - animal models
+
+Cluster 183: Would merge 1 nodes into:
+  Canonical: neuroscience [__Entity__]
+  Duplicates:
+    - Neuroscience
+
+Cluster 184: Would merge 1 nodes into:
+  Canonical: molecular and cellular mechanisms [__Entity__]
+  Duplicates:
+    - cellular and molecular mechanisms
+
+Cluster 185: Would merge 1 nodes into:
+  Canonical: 5xFAD mouse model [__Entity__]
+  Duplicates:
+    - 5XFAD mouse model
+
+Cluster 186: Would merge 1 nodes into:
+  Canonical: α-Synuclein [__Entity__]
+  Duplicates:
+    - α-synuclein
+
+Cluster 187: Would merge 1 nodes into:
+  Canonical: cells [__Entity__]
+  Duplicates:
+    - Cells
+
+Cluster 188: Would merge 1 nodes into:
+  Canonical: rhesus monkeys [__Entity__]
+  Duplicates:
+    - Rhesus monkeys
+
+Cluster 189: Would merge 1 nodes into:
+  Canonical: REST [__Entity__]
+  Duplicates:
+    - rest
+
+Cluster 190: Would merge 1 nodes into:
+  Canonical: Mitochondrial function [__Entity__]
+  Duplicates:
+    - mitochondrial function
+
+Cluster 191: Would merge 1 nodes into:
+  Canonical: Synaptic plasticity [__Entity__]
+  Duplicates:
+    - synaptic plasticity
+
+Cluster 192: Would merge 1 nodes into:
+  Canonical: Aging brain [__Entity__]
+  Duplicates:
+    - aging brain
+
+Cluster 193: Would merge 1 nodes into:
+  Canonical: Peripheral blood mononuclear cells [PBMCs] [__Entity__]
+  Duplicates:
+    - peripheral blood mononuclear cells (PBMC)
+
+Cluster 194: Would merge 1 nodes into:
+  Canonical: RN7SK LncRNA [__Entity__]
+  Duplicates:
+    - RN7SK lncRNA
+
+Cluster 195: Would merge 1 nodes into:
+  Canonical: senescence [__Entity__]
+  Duplicates:
+    - Senescence
+
+Cluster 196: Would merge 1 nodes into:
+  Canonical: Upregulated [__Entity__]
+  Duplicates:
+    - upregulated
+
+Cluster 197: Would merge 2 nodes into:
+  Canonical: Human Brain tissue [__Entity__]
+  Duplicates:
+    - human brain tissue
+    - Human brain tissue
+
+Cluster 198: Would merge 1 nodes into:
+  Canonical: Chronological age [__Entity__]
+  Duplicates:
+    - chronological age
+
+Cluster 199: Would merge 1 nodes into:
+  Canonical: amyloid-beta (A β) [__Entity__]
+  Duplicates:
+    - amyloid-beta(A β)
+
+Cluster 200: Would merge 2 nodes into:
+  Canonical: neurofilament light chain (NfL) [__Entity__]
+  Duplicates:
+    - Neurofilament light chain (NfL)
+    - Neurofilament light chain (NFL)
+
+Cluster 201: Would merge 1 nodes into:
+  Canonical: Alzheimer’ sdisease [__Entity__]
+  Duplicates:
+    - Alzheimer’sdisease
+
+Cluster 202: Would merge 1 nodes into:
+  Canonical: tau proteins [__Entity__]
+  Duplicates:
+    - Tau proteins
+
+Cluster 203: Would merge 1 nodes into:
+  Canonical: Tau [__Entity__]
+  Duplicates:
+    - tau
+
+Cluster 204: Would merge 2 nodes into:
+  Canonical: p-tau [__Entity__]
+  Duplicates:
+    - P-tau
+    - p-Tau
+
+Cluster 205: Would merge 1 nodes into:
+  Canonical: t-tau [__Entity__]
+  Duplicates:
+    - T-tau
+
+Cluster 206: Would merge 2 nodes into:
+  Canonical: pro -inflammatory cytokines [__Entity__]
+  Duplicates:
+    - pro-inflammatory cytokine
+    - pro-inflammatory cytokines
+
+Cluster 207: Would merge 1 nodes into:
+  Canonical: tau phosphorylation [__Entity__]
+  Duplicates:
+    - Tau phosphorylation
+
+Cluster 208: Would merge 1 nodes into:
+  Canonical: CCL2 (MCP-1) [__Entity__]
+  Duplicates:
+    - CCL2(MCP-1)
+
+Cluster 209: Would merge 1 nodes into:
+  Canonical: Metabolites [__Entity__]
+  Duplicates:
+    - metabolites
+
+Cluster 210: Would merge 1 nodes into:
+  Canonical: cellular senescence [__Entity__]
+  Duplicates:
+    - Cellular senescence
+
+Cluster 211: Would merge 1 nodes into:
+  Canonical: blood–brain barrier (BBB) [__Entity__]
+  Duplicates:
+    - blood-brain barrier (BBB)
+
+Cluster 212: Would merge 1 nodes into:
+  Canonical: quercetin [__Entity__]
+  Duplicates:
+    - Quercetin
+
+Cluster 213: Would merge 1 nodes into:
+  Canonical: gut microbiota [__Entity__]
+  Duplicates:
+    - Gut microbiota
+
+Cluster 214: Would merge 1 nodes into:
+  Canonical: Butyrate [__Entity__]
+  Duplicates:
+    - butyrate
+
+Cluster 215: Would merge 1 nodes into:
+  Canonical: glutamine [__Entity__]
+  Duplicates:
+    - Glutamine
+
+Cluster 216: Would merge 1 nodes into:
+  Canonical: Mouse models [__Entity__]
+  Duplicates:
+    - mouse models
+
+Cluster 217: Would merge 1 nodes into:
+  Canonical: AMP -AD knowledge portal [__Entity__]
+  Duplicates:
+    - AMP-AD Knowledge Portal
+
+Cluster 218: Would merge 1 nodes into:
+  Canonical: Proteomic [__Entity__]
+  Duplicates:
+    - proteomic
+
+Cluster 219: Would merge 1 nodes into:
+  Canonical: iMethyl [__Entity__]
+  Duplicates:
+    - iMETHYL
+
+Cluster 220: Would merge 1 nodes into:
+  Canonical: anxiety symptoms [__Entity__]
+  Duplicates:
+    - Anxiety symptoms
+
+Cluster 221: Would merge 1 nodes into:
+  Canonical: Pineal melatonin [__Entity__]
+  Duplicates:
+    - pineal melatonin
+
+Cluster 222: Would merge 1 nodes into:
+  Canonical: Depression [__Entity__]
+  Duplicates:
+    - depression
+
+Cluster 223: Would merge 1 nodes into:
+  Canonical: gut dysbiosis [__Entity__]
+  Duplicates:
+    - Gut dysbiosis
+
+Cluster 224: Would merge 1 nodes into:
+  Canonical: Endothelial cells [__Entity__]
+  Duplicates:
+    - endothelial cells
+
+Cluster 225: Would merge 1 nodes into:
+  Canonical: Oligodendrocyte progenitor cells (OPCs) [__Entity__]
+  Duplicates:
+    - oligodendrocyte progenitor cells (OPCs)
+
+Cluster 226: Would merge 1 nodes into:
+  Canonical: Glial fibrillary acidic protein (GFAP) [__Entity__]
+  Duplicates:
+    - glial fibrillary acidic protein(GFAP)
+
+Cluster 227: Would merge 1 nodes into:
+  Canonical: hearing loss [__Entity__]
+  Duplicates:
+    - Hearing loss
+
+Cluster 228: Would merge 1 nodes into:
+  Canonical: Detection [__Entity__]
+  Duplicates:
+    - detection
+
+Cluster 229: Would merge 1 nodes into:
+  Canonical: olfactory dysfunction [__Entity__]
+  Duplicates:
+    - Olfactory dysfunction
+
+Cluster 230: Would merge 1 nodes into:
+  Canonical: Acta Neuropathol. Commun [__Entity__]
+  Duplicates:
+    - Acta Neuropathol Commun
+
+Cluster 231: Would merge 1 nodes into:
+  Canonical: Association [__Entity__]
+  Duplicates:
+    - association
+
+Cluster 232: Would merge 1 nodes into:
+  Canonical: Genetic animal models [__Entity__]
+  Duplicates:
+    - genetic animal models
+
+Cluster 233: Would merge 1 nodes into:
+  Canonical: neurofilament light chain [__Entity__]
+  Duplicates:
+    - Neurofilament light chain
+
+Cluster 234: Would merge 1 nodes into:
+  Canonical: Alzheimer’s disease model mice [__Entity__]
+  Duplicates:
+    - Alzheimer’s disease mice model
+
+Cluster 235: Would merge 1 nodes into:
+  Canonical: gut microbiome [__Entity__]
+  Duplicates:
+    - Gut microbiome
+
+Cluster 236: Would merge 1 nodes into:
+  Canonical: Discovery of a gut bacterial metabolic pathway that drives α- synucleinaggregation [__Entity__]
+  Duplicates:
+    - Discovery of a gut bacterial metabolic pathway that drives α-synucleinaggregation
+
+Cluster 237: Would merge 1 nodes into:
+  Canonical: genomic variation [__Entity__]
+  Duplicates:
+    - Genomic variation
+
+Cluster 238: Would merge 1 nodes into:
+  Canonical: Anxiety [__Entity__]
+  Duplicates:
+    - anxiety
+
+Cluster 239: Would merge 1 nodes into:
+  Canonical: Neuroprotective effects [__Entity__]
+  Duplicates:
+    - neuroprotective effects
+
+Cluster 240: Would merge 1 nodes into:
+  Canonical: CSF and blood biomarkers for the diagnosis of Alzheimer’s disease: a systematic review andmeta-analysis [__Entity__]
+  Duplicates:
+    - CSF and blood biomarkers for the diagnosis of Alzheimer’s disease: a systematic review andmeta
+
+Cluster 241: Would merge 1 nodes into:
+  Canonical: neurons [__Entity__]
+  Duplicates:
+    - Neurons
+
+Cluster 242: Would merge 1 nodes into:
+  Canonical: Observables [__Entity__]
+  Duplicates:
+    - observables
+
+Cluster 243: Would merge 1 nodes into:
+  Canonical: error signal [__Entity__]
+  Duplicates:
+    - Error signal
+
+Cluster 244: Would merge 1 nodes into:
+  Canonical: neuron [__Entity__]
+  Duplicates:
+    - Neuron
+
+Cluster 245: Would merge 1 nodes into:
+  Canonical: work [__Entity__]
+  Duplicates:
+    - Work
+
+Cluster 246: Would merge 1 nodes into:
+  Canonical: n [__Entity__]
+  Duplicates:
+    - N
+
+Cluster 247: Would merge 1 nodes into:
+  Canonical: they [__Entity__]
+  Duplicates:
+    - They
+
+Cluster 248: Would merge 1 nodes into:
+  Canonical: experiments [__Entity__]
+  Duplicates:
+    - Experiments
+
+Cluster 249: Would merge 1 nodes into:
+  Canonical: Voltage response [__Entity__]
+  Duplicates:
+    - voltage response
+
+Cluster 250: Would merge 1 nodes into:
+  Canonical: Cell A [__Entity__]
+  Duplicates:
+    - cell A
+
+Cluster 251: Would merge 1 nodes into:
+  Canonical: Control [__Entity__]
+  Duplicates:
+    - control
+
+Cluster 252: Would merge 1 nodes into:
+  Canonical: Cell B [__Entity__]
+  Duplicates:
+    - cell B
+
+Cluster 253: Would merge 1 nodes into:
+  Canonical: Feedback controller [__Entity__]
+  Duplicates:
+    - feedback controller
+
+Cluster 254: Would merge 1 nodes into:
+  Canonical: kinetic-based regulation [__Entity__]
+  Duplicates:
+    - Kinetic-based regulation
+
+Cluster 255: Would merge 1 nodes into:
+  Canonical: slow inactivation [__Entity__]
+  Duplicates:
+    - Slow inactivation
+
+Cluster 256: Would merge 1 nodes into:
+  Canonical: cell [__Entity__]
+  Duplicates:
+    - Cell
+
+Cluster 257: Would merge 1 nodes into:
+  Canonical: activation [__Entity__]
+  Duplicates:
+    - Activation
+
+Cluster 258: Would merge 1 nodes into:
+  Canonical: expression [__Entity__]
+  Duplicates:
+    - Expression
+
+Cluster 259: Would merge 1 nodes into:
+  Canonical: excitability status [__Entity__]
+  Duplicates:
+    - Excitability status
+
+Cluster 260: Would merge 1 nodes into:
+  Canonical: protein state [__Entity__]
+  Duplicates:
+    - Protein state
+
+Cluster 261: Would merge 1 nodes into:
+  Canonical: Cellular elements [__Entity__]
+  Duplicates:
+    - cellular elements
+
+Cluster 262: Would merge 1 nodes into:
+  Canonical: Protein folding [__Entity__]
+  Duplicates:
+    - protein folding
+
+Cluster 263: Would merge 2 nodes into:
+  Canonical: brain [__Entity__]
+  Duplicates:
+    - BRAIN
+    - Brain
+
+Cluster 264: Would merge 1 nodes into:
+  Canonical: resilient [__Entity__]
+  Duplicates:
+    - Resilient
+
+Cluster 265: Would merge 1 nodes into:
+  Canonical: Izhikevich, E. M. [__Entity__]
+  Duplicates:
+    - Izhikevich, E. M
+
+Cluster 266: Would merge 1 nodes into:
+  Canonical: FitzHugh, R. [__Entity__]
+  Duplicates:
+    - Fitzhugh, R
+
+Cluster 267: Would merge 1 nodes into:
+  Canonical: PLoS Comput. Biol. [__Entity__]
+  Duplicates:
+    - PLoS Comput. Biol
+
+Cluster 268: Would merge 2 nodes into:
+  Canonical: J. Neurosci. [__Entity__]
+  Duplicates:
+    - J. Neurosci
+    - J.Neurosci
+
+Cluster 269: Would merge 1 nodes into:
+  Canonical: J. Membr. Biol. [__Entity__]
+  Duplicates:
+    - J. Membr. Biol
+
+Cluster 270: Would merge 1 nodes into:
+  Canonical: eLife [__Entity__]
+  Duplicates:
+    - Elife
+
+Cluster 271: Would merge 1 nodes into:
+  Canonical: Nat. Neurosci. [__Entity__]
+  Duplicates:
+    - Nat. Neurosci
+
+Cluster 272: Would merge 1 nodes into:
+  Canonical: Šárka Lehtonen [__Entity__]
+  Duplicates:
+    - Sarka Lehtonen
+
+Cluster 273: Would merge 1 nodes into:
+  Canonical: pD patient astrocytes [__Entity__]
+  Duplicates:
+    - PD patient astrocytes
+
+Cluster 274: Would merge 1 nodes into:
+  Canonical: pD pathogenesis [__Entity__]
+  Duplicates:
+    - PD pathogenesis
+
+Cluster 275: Would merge 1 nodes into:
+  Canonical: astrocytes [__Entity__]
+  Duplicates:
+    - Astrocytes
+
+Cluster 276: Would merge 1 nodes into:
+  Canonical: induced pluripotent stem cells [__Entity__]
+  Duplicates:
+    - Induced pluripotent stem cell
+
+Cluster 277: Would merge 3 nodes into:
+  Canonical: alpha‑synuclein [__Entity__]
+  Duplicates:
+    - Alpha-synuclein
+    - alpha-Synuclein
+    - alpha-synuclein
+
+Cluster 278: Would merge 1 nodes into:
+  Canonical: pD pathology [__Entity__]
+  Duplicates:
+    - PD pathology
+
+Cluster 279: Would merge 1 nodes into:
+  Canonical: Glial fibrillary acidic protein [__Entity__]
+  Duplicates:
+    - glial fibrillary acidic protein
+
+Cluster 280: Would merge 1 nodes into:
+  Canonical: Complex I [__Entity__]
+  Duplicates:
+    - complex I
+
+Cluster 281: Would merge 1 nodes into:
+  Canonical: Endoplasmic reticulum [__Entity__]
+  Duplicates:
+    - endoplasmic reticulum
+
+Cluster 282: Would merge 1 nodes into:
+  Canonical: unknown [__Entity__]
+  Duplicates:
+    - Unknown
+
+Cluster 283: Would merge 1 nodes into:
+  Canonical: neuroinflammation [__Entity__]
+  Duplicates:
+    - Neuroinflammation
+
+Cluster 284: Would merge 1 nodes into:
+  Canonical: astrocyte [__Entity__]
+  Duplicates:
+    - Astrocyte
+
+Cluster 285: Would merge 1 nodes into:
+  Canonical: study [__Entity__]
+  Duplicates:
+    - Study
+
+Cluster 286: Would merge 1 nodes into:
+  Canonical: spheres [__Entity__]
+  Duplicates:
+    - Spheres
+
+Cluster 287: Would merge 1 nodes into:
+  Canonical: glutamate [__Entity__]
+  Duplicates:
+    - Glutamate
+
+Cluster 288: Would merge 1 nodes into:
+  Canonical: pD astrocytes [__Entity__]
+  Duplicates:
+    - PD astrocytes
+
+Cluster 289: Would merge 1 nodes into:
+  Canonical: medium [__Entity__]
+  Duplicates:
+    - Medium
+
+Cluster 290: Would merge 1 nodes into:
+  Canonical: Nuclei [__Entity__]
+  Duplicates:
+    - nuclei
+
+Cluster 291: Would merge 2 nodes into:
+  Canonical: microglia [__Entity__]
+  Duplicates:
+    - Microglia
+    - MICROGLIA
+
+Cluster 292: Would merge 1 nodes into:
+  Canonical: lipocalin-2 [__Entity__]
+  Duplicates:
+    - Lipocalin-2
+
+Cluster 293: Would merge 1 nodes into:
+  Canonical: Ca2+ release [__Entity__]
+  Duplicates:
+    - Ca2+release
+
+Cluster 294: Would merge 1 nodes into:
+  Canonical: Ca2+ signals [__Entity__]
+  Duplicates:
+    - Ca2+signals
+
+Cluster 295: Would merge 1 nodes into:
+  Canonical: media [__Entity__]
+  Duplicates:
+    - Media
+
+Cluster 296: Would merge 1 nodes into:
+  Canonical: Data [__Entity__]
+  Duplicates:
+    - data
+
+Cluster 297: Would merge 1 nodes into:
+  Canonical: fold change [__Entity__]
+  Duplicates:
+    - Fold change
+
+Cluster 298: Would merge 1 nodes into:
+  Canonical: cresol [__Entity__]
+  Duplicates:
+    - Cresol
+
+Cluster 299: Would merge 1 nodes into:
+  Canonical: lysoPE [__Entity__]
+  Duplicates:
+    - LysoPE
+
+Cluster 300: Would merge 1 nodes into:
+  Canonical: polyamine [__Entity__]
+  Duplicates:
+    - Polyamine
+
+Cluster 301: Would merge 1 nodes into:
+  Canonical: lysoPC [__Entity__]
+  Duplicates:
+    - LysoPC
+
+Cluster 302: Would merge 1 nodes into:
+  Canonical: Extracellular acidification rate (ECAR) [__Entity__]
+  Duplicates:
+    - extracellular acidification rate (ECAR)
+
+Cluster 303: Would merge 1 nodes into:
+  Canonical: Oxygen consumption rate (OCR) [__Entity__]
+  Duplicates:
+    - oxygen consumption rate (OCR)
+
+Cluster 304: Would merge 1 nodes into:
+  Canonical: decreased ER  Ca2+  levels [__Entity__]
+  Duplicates:
+    - decreased ER Ca2+ levels
+
+Cluster 305: Would merge 2 nodes into:
+  Canonical: calcium  signaling [__Entity__]
+  Duplicates:
+    - calcium signaling
+    - Calcium signaling
+
+Cluster 306: Would merge 1 nodes into:
+  Canonical: Inflammation [__Entity__]
+  Duplicates:
+    - inflammation
+
+Cluster 307: Would merge 1 nodes into:
+  Canonical: insulin resistance [__Entity__]
+  Duplicates:
+    - Insulin resistance
+
+Cluster 308: Would merge 1 nodes into:
+  Canonical: Mitochondrial defects [__Entity__]
+  Duplicates:
+    - mitochondrial defects
+
+Cluster 309: Would merge 1 nodes into:
+  Canonical: movement disorders [__Entity__]
+  Duplicates:
+    - Movement Disorders
+
+Cluster 310: Would merge 1 nodes into:
+  Canonical: mitochondrial respiration [__Entity__]
+  Duplicates:
+    - Mitochondrial Respiration
+
+Cluster 311: Would merge 1 nodes into:
+  Canonical: polyamines [__Entity__]
+  Duplicates:
+    - Polyamines
+
+Cluster 312: Would merge 1 nodes into:
+  Canonical: insulin [__Entity__]
+  Duplicates:
+    - Insulin
+
+Cluster 313: Would merge 1 nodes into:
+  Canonical: gene [__Entity__]
+  Duplicates:
+    - Gene
+
+Cluster 314: Would merge 1 nodes into:
+  Canonical: eLiSA [__Entity__]
+  Duplicates:
+    - ELISA
+
+Cluster 315: Would merge 1 nodes into:
+  Canonical: Biolegend [__Entity__]
+  Duplicates:
+    - BioLegend
+
+Cluster 316: Would merge 1 nodes into:
+  Canonical: ca2+ imaging [__Entity__]
+  Duplicates:
+    - Ca2+ imaging
+
+Cluster 317: Would merge 1 nodes into:
+  Canonical: student’s T -test [__Entity__]
+  Duplicates:
+    - Student’s t-test
+
+Cluster 318: Would merge 1 nodes into:
+  Canonical: Astrocytes: biology and pathology [__Entity__]
+  Duplicates:
+    - Astrocytes: Biology and Pathology
+
+Cluster 319: Would merge 1 nodes into:
+  Canonical: Booth, H. D. E. [__Entity__]
+  Duplicates:
+    - Booth, H. D. E
+
+Cluster 320: Would merge 1 nodes into:
+  Canonical: astrocyte dysfunction [__Entity__]
+  Duplicates:
+    - Astrocyte Dysfunction
+
+Cluster 321: Would merge 2 nodes into:
+  Canonical: The Role of Astrocyte Dysfunction in Parkinson ’s Disease Pathogenesis [__Entity__]
+  Duplicates:
+    - The role of astrocyte dysfunction in Parkinson’s disease pathogenesis
+    - The Role of Astrocyte Dysfunction in Parkinson’s Disease Pathogenesis
+
+Cluster 322: Would merge 1 nodes into:
+  Canonical: New Insights Into the Complex Role of Mitochondria in Parkinson ’s Disease [__Entity__]
+  Duplicates:
+    - New insights into the complex role of mitochondria in Parkinson’s disease
+
+Cluster 323: Would merge 1 nodes into:
+  Canonical: dopamine [__Entity__]
+  Duplicates:
+    - Dopamine
+
+Cluster 324: Would merge 1 nodes into:
+  Canonical: Chen, S.-J. [__Entity__]
+  Duplicates:
+    - Chen, S.-J
+
+Cluster 325: Would merge 1 nodes into:
+  Canonical: Nat. Protoc. [__Entity__]
+  Duplicates:
+    - Nat. Protoc
+
+Cluster 326: Would merge 1 nodes into:
+  Canonical: Lancet Neurol. [__Entity__]
+  Duplicates:
+    - Lancet Neurol
+
+Cluster 327: Would merge 2 nodes into:
+  Canonical: astrocytic Ca2+ signals [__Entity__]
+  Duplicates:
+    - astrocytic Ca2+signals
+    - Astrocytic Ca2+signals
+
+Cluster 328: Would merge 2 nodes into:
+  Canonical: neurodegenerative diseases [__Entity__]
+  Duplicates:
+    - Neurodegenerative diseases
+    - NEURODEGENERATIVE DISEASES
+
+Cluster 329: Would merge 1 nodes into:
+  Canonical: Parkinson ’s disease (PD) [__Entity__]
+  Duplicates:
+    - Parkinson’s disease (PD)
+
+Cluster 330: Would merge 1 nodes into:
+  Canonical: Protoplasmic astrocytes [__Entity__]
+  Duplicates:
+    - protoplasmic astrocytes
+
+Cluster 331: Would merge 2 nodes into:
+  Canonical: ApoE4 [__Entity__]
+  Duplicates:
+    - APOE4
+    - Apoe4
+
+Cluster 332: Would merge 2 nodes into:
+  Canonical: astrocytic mitochondria [__Entity__]
+  Duplicates:
+    - Astrocytic Mitochondria
+    - Astrocytic mitochondria
+
+Cluster 333: Would merge 1 nodes into:
+  Canonical: Ca2+ signaling [__Entity__]
+  Duplicates:
+    - Ca2+signaling
+
+Cluster 334: Would merge 1 nodes into:
+  Canonical: ApoE [__Entity__]
+  Duplicates:
+    - APOE
+
+Cluster 335: Would merge 1 nodes into:
+  Canonical: Apolipoprotein E [__Entity__]
+  Duplicates:
+    - apolipoprotein E
+
+Cluster 336: Would merge 1 nodes into:
+  Canonical: Ca2+ homeostasis [__Entity__]
+  Duplicates:
+    - Ca2+homeostasis
+
+Cluster 337: Would merge 1 nodes into:
+  Canonical: Research [__Entity__]
+  Duplicates:
+    - research
+
+Cluster 338: Would merge 1 nodes into:
+  Canonical: Glia [__Entity__]
+  Duplicates:
+    - glia
+
+Cluster 339: Would merge 1 nodes into:
+  Canonical: Mouse Brain [__Entity__]
+  Duplicates:
+    - mouse brain
+
+Cluster 340: Would merge 1 nodes into:
+  Canonical: Uniquely hominid features of adult human astrocytes [__Entity__]
+  Duplicates:
+    - Uniquely Hominid Features of Adult Human Astrocytes
+
+Cluster 341: Would merge 1 nodes into:
+  Canonical: Proc. Natl. Acad. Sci. U. S. A. [__Entity__]
+  Duplicates:
+    - Proc. Natl. Acad. Sci. U. S. A
+
+Cluster 342: Would merge 2 nodes into:
+  Canonical: Neurological Disorders [__Entity__]
+  Duplicates:
+    - Neurological disorders
+    - neurological disorders
+
+Cluster 343: Would merge 1 nodes into:
+  Canonical: Xu, J. [__Entity__]
+  Duplicates:
+    - Xu,J.
+
+Cluster 344: Would merge 1 nodes into:
+  Canonical: Extracellular Matrix [__Entity__]
+  Duplicates:
+    - extracellular matrix
+
+Cluster 345: Would merge 1 nodes into:
+  Canonical: resistance [__Entity__]
+  Duplicates:
+    - Resistance
+
+Cluster 346: Would merge 1 nodes into:
+  Canonical: cell types [__Entity__]
+  Duplicates:
+    - Cell types
+
+Cluster 347: Would merge 1 nodes into:
+  Canonical: excitatory neurons [__Entity__]
+  Duplicates:
+    - Excitatory neurons
+
+Cluster 348: Would merge 1 nodes into:
+  Canonical: oligodendrocyte progenitor cells [__Entity__]
+  Duplicates:
+    - Oligodendrocyte progenitor cells
+
+Cluster 349: Would merge 1 nodes into:
+  Canonical: we [__Entity__]
+  Duplicates:
+    - We
+
+Cluster 350: Would merge 1 nodes into:
+  Canonical: cell type-specific expression [__Entity__]
+  Duplicates:
+    - cell-type-specific expression
+
+Cluster 351: Would merge 1 nodes into:
+  Canonical: Mice [__Entity__]
+  Duplicates:
+    - mice
+
+Cluster 352: Would merge 1 nodes into:
+  Canonical: genes [__Entity__]
+  Duplicates:
+    - Genes
+
+Cluster 353: Would merge 1 nodes into:
+  Canonical: https:/ /github.com/elo-nsrb/CellformerRNA/ [__Entity__]
+  Duplicates:
+    - https://github.com/ elo-nsrb/CellformerRNA
+
+Cluster 354: Would merge 1 nodes into:
+  Canonical: differential expression analysis [__Entity__]
+  Duplicates:
+    - Differential expression analysis
+
+Cluster 355: Would merge 1 nodes into:
+  Canonical: statistical tests [__Entity__]
+  Duplicates:
+    - Statistical tests
+
+Cluster 356: Would merge 1 nodes into:
+  Canonical: Biorender [__Entity__]
+  Duplicates:
+    - BioRender
+
+Cluster 357: Would merge 1 nodes into:
+  Canonical: brain samples [__Entity__]
+  Duplicates:
+    - Brain Samples
+
+Cluster 358: Would merge 1 nodes into:
+  Canonical: gene-wise correlations [__Entity__]
+  Duplicates:
+    - gene-wise correlation
+
+Cluster 359: Would merge 1 nodes into:
+  Canonical: RNA integrity number (RIN) [__Entity__]
+  Duplicates:
+    - RNA Integrity number (RIN)
+
+Cluster 360: Would merge 1 nodes into:
+  Canonical: post -mortem interval (PMI) [__Entity__]
+  Duplicates:
+    - post-mortem interval (PMI)
+
+Cluster 361: Would merge 1 nodes into:
+  Canonical: anterior cingulate cortex [__Entity__]
+  Duplicates:
+    - Anterior cingulate cortex
+
+Cluster 362: Would merge 1 nodes into:
+  Canonical: chemerin [__Entity__]
+  Duplicates:
+    - Chemerin
+
+Cluster 363: Would merge 1 nodes into:
+  Canonical: age > 80 [__Entity__]
+  Duplicates:
+    - Age >80
+
+Cluster 364: Would merge 1 nodes into:
+  Canonical: Dorsolateral prefrontal cortex [__Entity__]
+  Duplicates:
+    - dorsolateral prefrontal cortex
+
+Cluster 365: Would merge 1 nodes into:
+  Canonical: GO enrichment [__Entity__]
+  Duplicates:
+    - GO Enrichment
+
+Cluster 366: Would merge 1 nodes into:
+  Canonical: differentially expressed genes [__Entity__]
+  Duplicates:
+    - Differentially expressed genes
+
+Cluster 367: Would merge 1 nodes into:
+  Canonical: Edges [__Entity__]
+  Duplicates:
+    - edges
+
+Cluster 368: Would merge 1 nodes into:
+  Canonical: hippocampus [__Entity__]
+  Duplicates:
+    - Hippocampus
+
+Cluster 369: Would merge 1 nodes into:
+  Canonical: cerebral cortex [__Entity__]
+  Duplicates:
+    - Cerebral cortex
+
+Cluster 370: Would merge 1 nodes into:
+  Canonical: false discovery rate [__Entity__]
+  Duplicates:
+    - False discovery rate
+
+Cluster 371: Would merge 1 nodes into:
+  Canonical: nucleus [__Entity__]
+  Duplicates:
+    - Nucleus
+
+Cluster 372: Would merge 1 nodes into:
+  Canonical: cytoplasm [__Entity__]
+  Duplicates:
+    - Cytoplasm
+
+Cluster 373: Would merge 1 nodes into:
+  Canonical: Single -cell multiregion dissection of Alzheimer’s disease [__Entity__]
+  Duplicates:
+    - Single-cell multiregion dissection of Alzheimer’s disease
+
+Cluster 374: Would merge 1 nodes into:
+  Canonical: Arenaza -Urquijo EM [__Entity__]
+  Duplicates:
+    - Arenaza-Urquijo EM
+
+Cluster 375: Would merge 1 nodes into:
+  Canonical: Memantine [__Entity__]
+  Duplicates:
+    - memantine
+
+Cluster 376: Would merge 1 nodes into:
+  Canonical: Boston, MA, United States [__Entity__]
+  Duplicates:
+    - Boston, MA, USA
+
+Cluster 377: Would merge 1 nodes into:
+  Canonical: Subjects [__Entity__]
+  Duplicates:
+    - subjects
+
+Cluster 378: Would merge 1 nodes into:
+  Canonical: Excitatory neuronal subpopulations [__Entity__]
+  Duplicates:
+    - excitatory neuronal subpopulations
+
+Cluster 379: Would merge 1 nodes into:
+  Canonical: angiopoietin [__Entity__]
+  Duplicates:
+    - Angiopoietin
+
+Cluster 380: Would merge 1 nodes into:
+  Canonical: Cellular resilience [__Entity__]
+  Duplicates:
+    - cellular resilience
+
+Cluster 381: Would merge 1 nodes into:
+  Canonical: entorhinal cortex [__Entity__]
+  Duplicates:
+    - Entorhinal cortex
+
+Cluster 382: Would merge 1 nodes into:
+  Canonical: excitatory -inhibitory balance [__Entity__]
+  Duplicates:
+    - excitatory/inhibitory balance
+
+Cluster 383: Would merge 1 nodes into:
+  Canonical: MEF2C [__Entity__]
+  Duplicates:
+    - Mef2c
+
+Cluster 384: Would merge 1 nodes into:
+  Canonical: Alzheimer's disease [__Entity__]
+  Duplicates:
+    - Alzheimer's Disease
+
+Cluster 385: Would merge 1 nodes into:
+  Canonical: Genetic [__Entity__]
+  Duplicates:
+    - genetic
+
+Cluster 386: Would merge 1 nodes into:
+  Canonical: presymptomatic [__Entity__]
+  Duplicates:
+    - Presymptomatic
+
+Cluster 387: Would merge 1 nodes into:
+  Canonical: AD -PRS [__Entity__]
+  Duplicates:
+    - AD-PRS
+
+Cluster 388: Would merge 1 nodes into:
+  Canonical: pathway activity analysis [__Entity__]
+  Duplicates:
+    - Pathway Activity Analysis
+
+Cluster 389: Would merge 1 nodes into:
+  Canonical: pathways [__Entity__]
+  Duplicates:
+    - Pathways
+
+Cluster 390: Would merge 1 nodes into:
+  Canonical: down -regulated [__Entity__]
+  Duplicates:
+    - down-regulated
+
+Cluster 391: Would merge 1 nodes into:
+  Canonical: Rare genetic variants [__Entity__]
+  Duplicates:
+    - rare genetic variants
+
+Cluster 392: Would merge 1 nodes into:
+  Canonical: genetic variants [__Entity__]
+  Duplicates:
+    - Genetic variants
+
+Cluster 393: Would merge 1 nodes into:
+  Canonical: clustering [__Entity__]
+  Duplicates:
+    - Clustering
+
+Cluster 394: Would merge 1 nodes into:
+  Canonical: TGF -β [__Entity__]
+  Duplicates:
+    - TGF-β
+
+Cluster 395: Would merge 1 nodes into:
+  Canonical: oxidative stress [__Entity__]
+  Duplicates:
+    - Oxidative stress
+
+Cluster 396: Would merge 1 nodes into:
+  Canonical: tau hyperphosphorylation [__Entity__]
+  Duplicates:
+    - Tau hyperphosphorylation
+
+Cluster 397: Would merge 1 nodes into:
+  Canonical: high [__Entity__]
+  Duplicates:
+    - High
+
+Cluster 398: Would merge 1 nodes into:
+  Canonical: covariates [__Entity__]
+  Duplicates:
+    - Covariates
+
+Cluster 399: Would merge 1 nodes into:
+  Canonical: Braak Stage [__Entity__]
+  Duplicates:
+    - Braak stage
+
+Cluster 400: Would merge 1 nodes into:
+  Canonical: no cognitive impairment [__Entity__]
+  Duplicates:
+    - No cognitive impairment
+
+Cluster 401: Would merge 1 nodes into:
+  Canonical: tau pathology [__Entity__]
+  Duplicates:
+    - Tau pathology
+
+Cluster 402: Would merge 1 nodes into:
+  Canonical: Limma package [__Entity__]
+  Duplicates:
+    - limma package
+
+Cluster 403: Would merge 1 nodes into:
+  Canonical: canonical pathways [__Entity__]
+  Duplicates:
+    - Canonical Pathways
+
+Cluster 404: Would merge 1 nodes into:
+  Canonical: Z -score [__Entity__]
+  Duplicates:
+    - z -score
+
+Cluster 405: Would merge 1 nodes into:
+  Canonical: somatostatin [__Entity__]
+  Duplicates:
+    - Somatostatin
+
+Cluster 406: Would merge 1 nodes into:
+  Canonical: QuPath [__Entity__]
+  Duplicates:
+    - Qupath
+
+Cluster 407: Would merge 1 nodes into:
+  Canonical: Polygenic risk scores [__Entity__]
+  Duplicates:
+    - polygenic risk scores
+
+Cluster 408: Would merge 1 nodes into:
+  Canonical: Gene ontology [__Entity__]
+  Duplicates:
+    - Gene Ontology
+
+Cluster 409: Would merge 1 nodes into:
+  Canonical: Krüppel -like factor 4 [__Entity__]
+  Duplicates:
+    - Kruppel -like factor 4
+
+Cluster 410: Would merge 1 nodes into:
+  Canonical: single -nucleus RNA sequencing [__Entity__]
+  Duplicates:
+    - single-nucleus RNA-sequencing
+
+Cluster 411: Would merge 1 nodes into:
+  Canonical: Bulk RNAseq data [__Entity__]
+  Duplicates:
+    - bulk RNAseq data
+
+Cluster 412: Would merge 1 nodes into:
+  Canonical: Baltimore Longitudinal Study on Aging (BLSA) study [__Entity__]
+  Duplicates:
+    - Baltimore Longitudinal Study on Aging (BLSA)
+
+Cluster 413: Would merge 1 nodes into:
+  Canonical: memory function [__Entity__]
+  Duplicates:
+    - Memory function
+
+Cluster 414: Would merge 1 nodes into:
+  Canonical: Protein co-expression network [__Entity__]
+  Duplicates:
+    - protein co-expression network
+
+Cluster 415: Would merge 1 nodes into:
+  Canonical: October 30, 2025 [__Entity__]
+  Duplicates:
+    - October 30,2025
+
+Cluster 416: Would merge 1 nodes into:
+  Canonical: Gene co-expression networks [__Entity__]
+  Duplicates:
+    - gene co-expression network
+
+Cluster 417: Would merge 1 nodes into:
+  Canonical: node [__Entity__]
+  Duplicates:
+    - Node
+
+Cluster 418: Would merge 1 nodes into:
+  Canonical: human iPSC-derived astrocyte cultures [__Entity__]
+  Duplicates:
+    - human iPSC-derived astrocyte culture
+
+Cluster 419: Would merge 1 nodes into:
+  Canonical: ERBIN [__Entity__]
+  Duplicates:
+    - Erbin
+
+Cluster 420: Would merge 1 nodes into:
+  Canonical: Mouse 5xFAD andWTproteomics [__Entity__]
+  Duplicates:
+    - Mouse 5XFAD andWTproteomics
+
+Cluster 421: Would merge 1 nodes into:
+  Canonical: Multiscale proteom icmodeling reveals protein networks driving Alzheimer’ sdisease patho- genesis [__Entity__]
+  Duplicates:
+    - Multiscale proteom icmodeling reveals protein networks driving Alzheimer’ sdisease patho-genesis
+
+Cluster 422: Would merge 1 nodes into:
+  Canonical: The [__Entity__]
+  Duplicates:
+    - the
+
+Cluster 423: Would merge 1 nodes into:
+  Canonical: Li, Y. [__Entity__]
+  Duplicates:
+    - Li,Y.
+
+Cluster 424: Would merge 1 nodes into:
+  Canonical: Bai, B. [__Entity__]
+  Duplicates:
+    - Bai,B.
+
+Cluster 425: Would merge 1 nodes into:
+  Canonical: J.Proteome Res. [__Entity__]
+  Duplicates:
+    - J.Proteome Res
+
+Cluster 426: Would merge 1 nodes into:
+  Canonical: Mei, L. [__Entity__]
+  Duplicates:
+    - Mei,L.
+
+Cluster 427: Would merge 1 nodes into:
+  Canonical: Immunity [__Entity__]
+  Duplicates:
+    - immunity
+
+Cluster 428: Would merge 1 nodes into:
+  Canonical: Proteomics profiling [__Entity__]
+  Duplicates:
+    - proteomics profiling
+
+Cluster 429: Would merge 1 nodes into:
+  Canonical: normal [__Entity__]
+  Duplicates:
+    - Normal
+
+Cluster 430: Would merge 1 nodes into:
+  Canonical: demented [__Entity__]
+  Duplicates:
+    - Demented
+
+Cluster 431: Would merge 1 nodes into:
+  Canonical: Keydriver analysis (KDA) [__Entity__]
+  Duplicates:
+    - keydriver analysis (KDA)
+
+Cluster 432: Would merge 1 nodes into:
+  Canonical: Multiscal eproteomic modeling reveals protein networks driving Alzheimer’s disease patho- genesis [__Entity__]
+  Duplicates:
+    - Multiscal eproteomic modeling reveals protein networks driving Alzheimer’s disease patho
+
+Cluster 433: Would merge 1 nodes into:
+  Canonical: Axion BioSystems [__Entity__]
+  Duplicates:
+    - Axion Biosystems
+
+Cluster 434: Would merge 1 nodes into:
+  Canonical: Calpain1 [__Entity__]
+  Duplicates:
+    - calpain1
+
+Cluster 435: Would merge 1 nodes into:
+  Canonical: calpain [__Entity__]
+  Duplicates:
+    - Calpain
+
+Cluster 436: Would merge 1 nodes into:
+  Canonical: glucose utilization [__Entity__]
+  Duplicates:
+    - Glucose Utilization
+
+Cluster 437: Would merge 1 nodes into:
+  Canonical: mitochondrial Ca2+ overload [__Entity__]
+  Duplicates:
+    - Mitochondrial Ca2+ overload
+
+Cluster 438: Would merge 1 nodes into:
+  Canonical: lysosome [__Entity__]
+  Duplicates:
+    - Lysosome
+
+Cluster 439: Would merge 1 nodes into:
+  Canonical: APOE cascade hypothesis [__Entity__]
+  Duplicates:
+    - ApoE cascade hypothesis
+
+Cluster 440: Would merge 1 nodes into:
+  Canonical: Donepezil [__Entity__]
+  Duplicates:
+    - donepezil
+
+Cluster 441: Would merge 1 nodes into:
+  Canonical: Senicapoc [__Entity__]
+  Duplicates:
+    - senicapoc
+
+Cluster 442: Would merge 1 nodes into:
+  Canonical: Dantrolene [__Entity__]
+  Duplicates:
+    - dantrolene
+
+Cluster 443: Would merge 1 nodes into:
+  Canonical: Diltiazem [__Entity__]
+  Duplicates:
+    - diltiazem
+
+Cluster 444: Would merge 1 nodes into:
+  Canonical: Ferroptosis [__Entity__]
+  Duplicates:
+    - ferroptosis
+
+Cluster 445: Would merge 1 nodes into:
+  Canonical: nilvadipine [__Entity__]
+  Duplicates:
+    - Nilvadipine
+
+Cluster 446: Would merge 1 nodes into:
+  Canonical: calcium overload [__Entity__]
+  Duplicates:
+    - Calcium overload
+
+Cluster 447: Would merge 1 nodes into:
+  Canonical: calcium hypothesis of Alzheimer’s disease [__Entity__]
+  Duplicates:
+    - Calcium hypothesis of Alzheimer’s disease
+
+Cluster 448: Would merge 1 nodes into:
+  Canonical: Dephosphorylation [__Entity__]
+  Duplicates:
+    - dephosphorylation
+
+Cluster 449: Would merge 1 nodes into:
+  Canonical: frontotemporal dementia [__Entity__]
+  Duplicates:
+    - Frontotemporal Dementia
+
+Cluster 450: Would merge 1 nodes into:
+  Canonical: mitochondria-associated endoplasmic reticulum membranes [__Entity__]
+  Duplicates:
+    - Mitochondria-associated endoplasmic reticulum membranes
+
+Cluster 451: Would merge 1 nodes into:
+  Canonical: mTORC1 [__Entity__]
+  Duplicates:
+    - MTORC1
+
+Cluster 452: Would merge 1 nodes into:
+  Canonical: inﬂammation [__Entity__]
+  Duplicates:
+    - Inﬂammation
+
+Cluster 453: Would merge 1 nodes into:
+  Canonical: cerebral blood ﬂow [__Entity__]
+  Duplicates:
+    - cerebral bloodﬂow
+
+Cluster 454: Would merge 1 nodes into:
+  Canonical: College of Sports Medicine at Wuhan Sports University [__Entity__]
+  Duplicates:
+    - College of Sports Medicine, Wuhan Sports University
+
+Cluster 455: Would merge 1 nodes into:
+  Canonical: astrocyte-neuron metabolic interplay [__Entity__]
+  Duplicates:
+    - Astrocyte-Neuron metabolic interplay
+
+Cluster 456: Would merge 1 nodes into:
+  Canonical: cerebral hypoperfusion [__Entity__]
+  Duplicates:
+    - Cerebral hypoperfusion
+
+Cluster 457: Would merge 1 nodes into:
+  Canonical: glutathione (GSH) precursors [__Entity__]
+  Duplicates:
+    - glutathione (GSH)precursors
+
+Cluster 458: Would merge 1 nodes into:
+  Canonical: DJ-1 expression [__Entity__]
+  Duplicates:
+    - DJ-1 Expression
+
+Cluster 459: Would merge 1 nodes into:
+  Canonical: astrocyte-neuron coupling [__Entity__]
+  Duplicates:
+    - Neuron-Astrocyte Coupling
+
+ Would merge 0 duplicate nodes
+
+======================================================================
+Deduplication complete!
+======================================================================
