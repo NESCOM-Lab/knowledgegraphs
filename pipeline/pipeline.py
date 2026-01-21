@@ -18,6 +18,7 @@ from langchain_core.documents import Document
 
 from query_agent import QueryAgent
 from subgraph_agent import SubGraphAgent
+from preprocessing.entity_normalizer import normalize_graph_documents
 
 def clean_graph(graph) -> None:
     query = """
@@ -113,7 +114,12 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
                     print("Converting to graph documents")
                     graph_docs = await llm_transformer.aconvert_to_graph_documents(batch)
                     print(f"Finished converting to graph documents {i // batch_size + 1}:")
-                    
+
+                    # normalize entities before adding to DB
+                    print("Normalizing entities")
+                    graph_docs = normalize_graph_documents(graph_docs)
+                    print("Entities normalized")
+
                     # Add to Neo4j
                     print("adding to DB")
                     try:
