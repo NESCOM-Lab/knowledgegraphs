@@ -49,7 +49,7 @@ DEFAULT_ONTOLOGIES = [
 
 NEURO_KEYWORDS = [
     # broad, intentionally high-recall
-    "neuro", "neuron", "neuronal", "glia", "glial", "astrocyte", "microglia",
+    "calcium", "alzheimer's", "neuro", "neuron", "neuronal", "glia", "glial", "astrocyte", "microglia",
     "oligodendrocyte", "synapse", "synaptic", "axon", "axonal", "dendrite",
     "hippocampus", "cortex", "cortical", "thalamus", "amygdala", "cerebellum",
     "brain", "spinal cord", "ganglion", "nerve", "neuromuscular",
