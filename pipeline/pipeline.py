@@ -8,7 +8,7 @@ import getpass
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
-# from langchain_ollama import ChatOllama
+from langchain_ollama import ChatOllama
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
 from langchain_community.vectorstores import Neo4jVector
 from langchain_community.document_loaders import PyPDFLoader
@@ -148,7 +148,7 @@ async def ingest_document(processed_chunks, embed, llm_transformer, graph) -> No
 # returns llm_tranformer, embedding model, and vector_retriever
 def load_llm_transformer() -> tuple[LLMGraphTransformer, OllamaEmbeddings, any]:
 
-    llm = build_gemini_llm()
+    llm = build_ollama_llm()
     llm_transformer = LLMGraphTransformer(llm=llm)
 
     # Embeddings for later search queries
@@ -197,14 +197,23 @@ def build_gemini_llm() -> GoogleGenerativeAI:
         # region="us-central1",
     )
 
+def build_ollama_llm() -> ChatOllama:
+    model = os.getenv("LLM", "MedAIBase/MedGemma1.5:4b")
+    base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    return ChatOllama(
+        model=model,
+        base_url=base_url,
+        temperature=float(os.getenv("LLM_TEMPERATURE", "0.5")),
+    )
+
 async def main():
     # Initialize neo4j
     print("Initializing neo4j")
     graph = neo4j_setup()
 
 
-    # Initialize openai
-    print("Initializing Gemini")
+    # Initialize LLM
+    print("Initializing Ollama LLM")
     llm_transformer, embed, vector_retriever = load_llm_transformer()
     
     
