@@ -37,7 +37,8 @@ def normalize_string(text):
 def load_aliases(alias_path=None):
     """Load alias dictionary from JSON file."""
     if alias_path is None:
-        alias_path = Path(__file__).parent / "ontology" / "aliases.json"
+        repo_root = Path(__file__).parent.parent.parent
+        alias_path = repo_root / "ontology" / "aliases.json"
 
     if not Path(alias_path).exists():
         print(f"Warning: No aliases file at {alias_path}, using empty dict")
