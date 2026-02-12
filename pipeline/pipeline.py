@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 import os
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain_community.embeddings import OllamaEmbeddings
-from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
 from langchain_community.vectorstores import Neo4jVector
