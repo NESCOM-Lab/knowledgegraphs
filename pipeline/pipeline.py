@@ -2,9 +2,6 @@
 from langchain_neo4j import Neo4jGraph
 from dotenv import load_dotenv
 import os
-from langchain_neo4j import GraphCypherQAChain
-from langchain_core.prompts import PromptTemplate
-import getpass
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_openai import ChatOpenAI

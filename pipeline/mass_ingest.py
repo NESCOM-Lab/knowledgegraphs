@@ -1,6 +1,5 @@
 import asyncio
 import os
-from langchain_openai import ChatOpenAI
 from pipeline import *
 from pipeline import neo4j_setup
 from pipeline import load_llm_transformer
@@ -16,7 +15,7 @@ async def main():
 
     # Initialize openai
     print("Initializing Gemini")
-    api_key = os.getenv("OPENAI_API_KEY")
+    # api_key = os.getenv("OPENAI_API_KEY")
     # llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
     llm_transformer, embed, vector_retriever = load_llm_transformer()
     

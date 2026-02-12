@@ -3,7 +3,6 @@ from pipeline import chunk_document, ingest_document
 import streamlit as st
 import os
 from dotenv import load_dotenv
-from openai import OpenAI
 import networkx as nx
 import plotly.graph_objects as go
 
