@@ -5,7 +5,7 @@ import os
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_ollama import ChatOllama
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
+# from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
 from langchain_community.vectorstores import Neo4jVector
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -148,7 +148,10 @@ def load_llm_transformer() -> tuple[LLMGraphTransformer, OllamaEmbeddings, any]:
     llm_transformer = LLMGraphTransformer(llm=llm)
 
     # Embeddings for later search queries
-    embed = OllamaEmbeddings(model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"))
+    embed = OllamaEmbeddings(
+        model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"),
+        base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    )
     vector_index = Neo4jVector.from_existing_graph(
         embedding=embed,
         search_type="vector",
@@ -181,17 +184,17 @@ def query_neo4j(user_prompt, k_value, query_agent, subgraph_agent, comparison=Fa
         
 
 
-def build_gemini_llm() -> GoogleGenerativeAI:
-    api_key = os.getenv("GOOGLE_API_KEY")
-    if not api_key:
-        raise ValueError("Set the GOOGLE_API_KEY environment variable.")
-    return GoogleGenerativeAI(
-        model="gemini-2.0-flash-lite",
-        api_key=api_key,               
-        temperature=0.2,
-        max_output_tokens=1024,
-        # region="us-central1",
-    )
+# def build_gemini_llm() -> GoogleGenerativeAI:
+#     api_key = os.getenv("GOOGLE_API_KEY")
+#     if not api_key:
+#         raise ValueError("Set the GOOGLE_API_KEY environment variable.")
+#     return GoogleGenerativeAI(
+#         model="gemini-2.0-flash-lite",
+#         api_key=api_key,               
+#         temperature=0.2,
+#         max_output_tokens=1024,
+#         # region="us-central1",
+#     )
 
 def build_ollama_llm() -> ChatOllama:
     model = os.getenv("LLM", "MedAIBase/MedGemma1.5:4b")

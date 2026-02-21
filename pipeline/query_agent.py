@@ -5,7 +5,10 @@ import os
 class QueryAgent():
     def __init__(self, vect_retriever, embed_model):
         self.vector_retriever = vect_retriever
-        self.embed_model = OllamaEmbeddings(model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"))
+        self.embed_model = OllamaEmbeddings(
+            model=os.getenv("EMBEDDING_MODEL", "nomic-embed-text"),
+            base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        )
 
 
     def run(self, query, k_value) -> list:
