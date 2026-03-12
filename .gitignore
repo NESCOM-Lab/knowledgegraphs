@@ -2,6 +2,6 @@
 documents
 __pycache__
 .condaDELETE
-venv
+.venv
 lib
 story.pdf
