@@ -9,6 +9,7 @@ import plotly.graph_objects as go
 from pipeline import *
 from response_agent import *
 from comparison_agent import *
+from research_agent import ResearchAgent
 
 
 # Load llm
@@ -54,6 +55,12 @@ if "k_value" not in st.session_state:
 
 if "compare_mode" not in st.session_state:
     st.session_state.compare_mode = False
+
+if "research_mode" not in st.session_state:
+    st.session_state.research_mode = False
+
+if "research_agent" not in st.session_state:
+    st.session_state.research_agent = None
 
 if "current_graph_fig" not in st.session_state:
     st.session_state.current_graph_fig = None
@@ -265,6 +272,12 @@ with col1:
     if not compare_toggle:
         st.session_state.compare_mode = False
 
+    # toggle research mode (agentic Plan→Explore→Hypothesize→Verify→Conclude)
+    research_toggle = st.toggle("Research mode (agentic)")
+    st.session_state.research_mode = research_toggle
+    if research_toggle:
+        st.info("Research mode uses skills to autonomously explore the knowledge graph and surface contradictions/consensus across papers.")
+
 if st.session_state.loaded_neo4j is False:
     with st.spinner(text="Running load_neo4j()"):
         st.session_state.graph = load_neo4j()
@@ -278,9 +291,83 @@ if st.session_state.loaded_neo4j is False:
         load_agents(st.session_state.graph, vector_retriever) # prob need to switch to session state
         st.session_state.loaded_agents = True
 
+        # Load research agent (uses same Ollama LLM as the rest of the pipeline)
+        st.session_state.research_agent = ResearchAgent(
+            graph=st.session_state.graph,
+            embed_model=st.session_state.embed,
+            vector_retriever=vector_retriever,
+        )
+
 if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
     if user_prompt := st.chat_input("Query your documents here"):
-        if st.session_state.compare_mode:
+
+        # ── RESEARCH MODE ────────────────────────────────────────────────────
+        if st.session_state.research_mode:
+            if st.session_state.research_agent is None:
+                st.error("Research agent not initialized. Check Ollama is running.")
+            else:
+                with col1:
+                    display_all_messages()
+                    with st.chat_message("user"):
+                        st.markdown(user_prompt)
+                    st.session_state.messages.append({"role": "user", "content": user_prompt})
+
+                    # Status container for live skill updates
+                    status_area = st.empty()
+                    skill_log: list[str] = []
+
+                    def on_update(skill: str, message: str):
+                        skill_log.append(f"**[{skill}]** {message}")
+                        status_area.markdown("\n\n".join(skill_log[-8:]))
+
+                    # Re-init agent with the callback (lightweight, same connections)
+                    research_agent = ResearchAgent(
+                        graph=st.session_state.graph,
+                        embed_model=st.session_state.embed,
+                        vector_retriever=st.session_state.query_agent.vector_retriever,
+                        on_update=on_update,
+                    )
+
+                    with st.spinner("Running agentic research loop..."):
+                        result = research_agent.run(user_prompt)
+
+                    status_area.empty()
+
+                    # Display conclusion
+                    with st.chat_message("assistant"):
+                        st.markdown(result["conclusion"])
+
+                        with st.expander(f"Hypotheses ({len(result['hypotheses'])})"):
+                            for h in result["hypotheses"]:
+                                confidence_pct = int(h["confidence"] * 100)
+                                st.markdown(
+                                    f"**{h['id']}** (confidence: {confidence_pct}%)\n\n"
+                                    f"{h['statement']}\n\n"
+                                    f"*Supporting:* {', '.join(h['supporting_ids']) or 'none'}  \n"
+                                    f"*Contradicting:* {', '.join(h['contradicting_ids']) or 'none'}"
+                                )
+                                if h.get("verification_notes"):
+                                    st.caption(h["verification_notes"])
+                                st.divider()
+
+                        with st.expander(f"All findings ({len(result['findings'])})"):
+                            for f in result["findings"]:
+                                st.markdown(
+                                    f"**{f['id']}** (confidence: {int(f['confidence']*100)}%)\n\n{f['content']}"
+                                )
+                                st.divider()
+
+                        with st.expander("Skill-by-skill outputs"):
+                            for skill, output in result["skill_outputs"].items():
+                                st.markdown(f"### {skill}\n{output}")
+
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "content": result["conclusion"],
+                    })
+
+        # ── COMPARISON MODE ──────────────────────────────────────────────────
+        elif st.session_state.compare_mode:
             # Comparison Mode
             with col1:
                 display_all_messages()
@@ -328,7 +415,7 @@ if st.session_state.loaded_neo4j and st.session_state.loaded_agents is True:
                 
 
 
-        if st.session_state.compare_mode == False:
+        elif not st.session_state.compare_mode and not st.session_state.research_mode:
             # Regular GraphRAG
 
             with col1:
